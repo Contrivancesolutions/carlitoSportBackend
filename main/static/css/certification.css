@@ -1,0 +1,13 @@
+.videoCertif {
+  width: 80%;
+  height: 60%;
+  border-radius: 4px;
+}
+
+.portraitCertif img {
+  width: 18%;
+  display: inline-block;
+  margin-top: 50px;
+  margin: 30px;
+  border-radius: 50%;
+}

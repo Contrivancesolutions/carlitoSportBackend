@@ -1,0 +1,19 @@
+#bonus {
+  border: none;
+  background-color: #00001a;
+  color: white;
+  padding-left: 0;
+  padding-right: 0;
+  width: 80%;
+}
+
+#bonus h1 {
+  text-align: justify; 
+  padding-left: 4%;
+}
+
+.toBonus:hover {
+	background-color: #ffcc80;
+	color: black;
+  	cursor: pointer;
+}

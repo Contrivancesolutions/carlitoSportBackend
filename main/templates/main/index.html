@@ -1,0 +1,176 @@
+{% extends "main/header.html" %}
+{% block content %}
+			<div id="popupID" class="popup">
+				<div>
+					<h2>Je confirme avoir plus de 16ans</h2>
+					{% load static %}	
+					<a href=""><img src="{% static 'img/belgium.png' %}" id="country"></a>
+					<a href=""><img src="{% static 'img/france.png' %}" id="country"></a>
+					<a href=""><img src="{% static 'img/germany.png' %}" id="country"></a>
+				</div>
+			</div>
+			<div class="slice">
+				<div id="appear" class="textBlock">
+					<div class="specialEntry">
+						<h1>
+							SATISFAITS OU REMBOURSE
+
+						</h1>
+						<p>
+							SOIT ON ENCAISSE SOIT ON TE REMBOURSE!!!<br><br>Toutes les infos par email ou lors de ton
+							{% if user.is_authenticated %}
+								inscription
+							{% else %} 
+							<a href="/inscription" class="hrefInscription">inscription</a>
+							{% endif %}
+						</p>
+					</div>
+				</div>
+				<iframe frameborder="0" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1">
+				</iframe>
+			</div>
+			<div class="slice">
+				<div class="textBlock">
+					<h1 id="logo">CarlitoSport: </h1>
+					<h1 id="title">Comment ça marche?</h1>
+					<ol>
+						<li>TU VAS DANS INSCRIPTION ET TU CHOISIS LA DE TON ABONNEMENT </li>
+						<li>TU T'INSCRIS SUR LES SITES PARTENAIRES POUR PROFITER DES MEILLEURS BONUS (Jusqu'à 1000€ OFFERTS!!!) </li>
+						<li>TU SUIS NOS PRONOS TOUS LES JOURS VIA NOS METHODES QUANTITATIVES ET QUALITATIVES </li>
+						<li>TU COMMENCES A SOIT ON ENCAISSE SOIT ON TE REMBOURSE!!! </li>
+					</ol>
+				</div>
+				<div class="textBlock" id="parier">
+					<h1>MEILLEURS SITES POUR PARIER</h1>
+					<table>
+						<tr>
+							<td class="title" id="firstLineRight">Bookmaker</td>
+							<td class="title" id="firstLineLeft">Bonus</td>
+						</tr>
+						<tr class="toBonus" onclick="window.location.href = '';">
+							<td> bingoal  </td>
+							<td>  200€  </td>
+						</tr>
+						<tr class="toBonus" onclick="window.location.href = '';">
+							<td>  ladbrokes  </td>
+							<td>  50€ </td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="slice">
+				<div class="textBlock" id="abonnements">
+					<h1>
+						ABONNEMENTS
+					</h1>
+					<a href="">
+						<button class="package">
+							Package1
+							<p>
+								Package description<br>sur plusieurs lignes
+							</p>
+						</button>
+					</a>
+					<a href="">
+						<button class="package">
+							Package2
+							<p>
+								Package description
+							</p>
+						</button>
+					</a>				
+				</div>
+				<div class="textBlock" id="prono">
+					<h1>
+						PRONOS
+					</h1>
+					<table>
+						<tr>
+							<td class="title" id="firstLineRight">Match</td>
+							<td class="title" id="firstLine">Côte</td>
+							<td class="title" id="firstLineLeft">Gain</td>
+						</tr>
+						<tr>
+							<td>Chealsea<br>vs<br>Manchester United</td>
+							<td>Chelsea 2-0<br>4.0</td>
+							<td>470€</td>
+						</tr>					
+					</table>
+				</div>
+			</div>
+			<div class="News">
+				<h1>
+					News
+				</h1>
+				<div class="slice">
+					<div class="article" onclick="window.location.href = '/article1';" >
+						<p>
+							<img src="{% static 'img/article1.jpg' %}">
+							article1 title	
+						</p>
+					</div>
+					<div class="article" onclick="window.location.href = '/article2';">
+						<p>
+							<img src="{% static 'img/article2.jpg' %}">
+							article2 title	
+						</p>
+					</div>
+				</div>
+				<div class="slice">
+					<div class="article" onclick="window.location.href = '/article3';">
+						<p>
+							<img src="{% static 'img/article3.jpg' %}">
+							article3<br>title
+						</p>
+					</div>
+					<div class="article">
+						<button class="moreArticles" onclick="window.location.href = '/news';">
+							Plus d'articles ici
+						</button>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="belowArticles">
+					<div class="stayConnectedBlock">
+						<h1 id="title">Restez Connecté à </h1>
+						<h1 id="logo" class="stayConnectedLogo">CarlitoSport</h1>
+						<div>
+							<div class="stayConnectedRight" id="facebook" onclick="window.location.href = '';">
+								Facebook
+							</div>
+							<div class="stayConnectedLeft" id="snapchat" onclick="window.location.href = '';">
+								Snapchat
+							</div>
+						</div>
+						<br>
+						<div>
+							<div class="stayConnectedRight" id="instagram" onclick="window.location.href = '';">
+								Instagram
+							</div>
+							<div class="stayConnectedLeft" id="youtube" onclick="window.location.href = '';">
+								Youtube
+							</div>
+						</div>
+					</div>
+					<div class="advertise">
+						<img src="{% static 'img/ladbrokes.png' %}" class="advertiseImage" onclick="window.location.href = '';">
+					</div>
+				</div>
+				{% if not user.is_authenticated %}
+					<div class="lastSlice">
+						<div class="leftSide">
+							<h1>Tu vas adorer</h1>
+							<a href="/inscription">
+								<img src="{% static 'img/skerk.jpg' %}">
+							</a>
+						</div>
+						<div class="inscription" onclick="window.location.href = '/inscription';">
+							INSCRIS TOI MAINTENANT!
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</center>
+		</div>
+{% endblock %}

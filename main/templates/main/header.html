@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="description" content="Site d’actualité sportives faisant la promotion de bookmakers français et belge et proposant des pronostiques payants sous forme d’abonnements" />
+		<meta name="author" content="Givron Azim" />
+		<title>CarlitoSport</title>
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bonus.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/certification.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/inscription.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
+		<link href="https://fonts.googleapis.com/css?family=Martel&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+		<script src="{% static 'js/jsFile.js' %}"></script>
+	</head>
+	<body>
+		<div class="upperBar">
+			<div class="countryBlock">
+				<div class="countrySelector">
+					<a href=""><img src="{% static 'img/belgium.png' %}" id="belgium" class="country"></a>
+					<a href=""><img src="{% static 'img/france.png' %}" id="france" class="country"></a>
+					<a href=""><img src="{% static 'img/germany.png' %}" id="germany" class="country"></a>
+				</div>
+			</div>
+			<div class="loginBlock">
+				{% if user.is_authenticated %}
+					<div style="font-size: 12px; margin-top: 10px; display: inline-block;">{{ user.email }}</div>
+					<a class="loginButton" href="/logout">Se déconnecter</a>
+				{% else %}
+					<a class="loginButton" href="/login">S'identifier</a>
+					<a class="loginButton" href="/inscription">S'inscrire</a>
+				{% endif %}
+			</div>
+		</div>  
+		<div class="navbar">
+			<div class="logo" onclick="window.location.href = '/';"> CarlitoSport </div>
+			<div class="navbar-right">
+				<a class="active" href="/">Acceuil</a>
+				{% if not user.is_authenticated %}
+					<a class="non-active" href="/inscription">Inscription</a>
+				{% endif %}
+				<a class="non-active" href="/bonus">Bonus</a>
+				<a class="non-active" href="/pronos">Pronos</a>
+				<a class="non-active" href="/certification">Certification</a>
+				<a class="non-active" href="/faq">FAQ</a>
+				<a class="non-active" href="#fb">Réseaux</a>
+				<a class="non-active" href="/contact">Contact</a>
+				<a class="non-active" href="/news">News</a>
+			</div>
+		</div>
+		<center>
+		<div class="back">
+			{% block content %}
+			{% endblock  %}	
+		</div>
+		</center>
+		<div class="preFooter">
+			{% if not user.is_authenticated %}
+				<div class="mailNext">
+					<h1>NE LAISSEZ PASSER AUCUNES OFFRES!</h1>
+					<p>Tu veux profiter de bonus, promo et jeux concours?<br>
+					Inscris toi sans plus attendre</p>
+					<form id="emailEntry">
+						<input type="email" name="email" placeholder="Email"><br>
+						<input type="email" name="emailConf" placeholder="Confirmation Email"><br>
+						<input type="submit" value="Suivant">
+					</form>
+				</div>
+			{% endif %}
+			<div class="socialNet">
+				<h1>Suivez nous!</h1>
+				<center>
+				<div>
+					<img id="fb" src="{% static 'img/facebook.png' %}">
+				</div>
+				<div>
+					<img id="snp" src="{% static 'img/snapchat.png' %}">
+				</div>
+				<div>
+					<img id="insta" src="{% static 'img/instagram.png' %}">
+				</div>
+			</center>
+			</div>
+			<div class="multiRef">
+				<a href="/">Navigation</a>
+				{% if not user.is_authenticated %}
+					<a href="/inscription">Devenir VIP</a>
+				{% endif %}
+				<a href="/bonus">Bonus</a>
+				<a href="/contact">Contact</a>
+			</div>
+		</div>
+		<footer>
+			<div>Préventions</div>
+			<div>conditions: blabla <br>
+			blabla</div>
+		</footer>
+	</body>
+</html>

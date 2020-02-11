@@ -1,0 +1,286 @@
+@media screen and (max-width: 1366px) {
+  .navbar a {
+    padding: 10px;
+    font-size: 20px; 
+  }
+
+  .logo {
+    font-size: 45px;
+  }
+
+
+  .textBlock p {
+    font-size: 20px;
+  }
+
+  .socialNet img {
+    width: 30%;
+    border-radius: 50%;
+    padding: 10px;
+  }
+
+  .popup > div {
+    font-size: 18px;
+    width: 400px;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+  }
+
+  .close {
+    line-height: 28px;
+    width: 24px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+    .navbar a {
+      padding: 8px;
+      font-size: 16px; 
+    }
+
+    .logo {
+      font-size: 45px;
+    }
+  }
+
+@media screen and (max-width: 1112px) {
+  #byThree.textBlock h1 {
+    margin-bottom: 25px;
+  }
+
+  #byTwo.textBlock{
+    width: 45%;
+  }
+  .slice img {
+    width: 45%;
+  }
+
+  .textBlock p {
+    font-size: 18px;
+  }
+
+  #byTwo.textBlock h1 {
+    margin-bottom: 30px;
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .slice img {
+    width: 44%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .navbar {
+    padding: 20px 10px !important;
+  }
+
+  .logo {
+    padding-bottom: 10px;
+  }
+
+  .navbar a {
+    float: none;
+    text-align: left;
+    margin-left: 20px;
+    font-size: 20px; 
+    padding: 12px;
+  }
+
+  .navbar a.non-active {
+    float: none;
+    display: none;
+  }
+
+  .navbar-right {
+    float: none;
+  }
+
+  .navbar:hover a.non-active {
+    display: block;
+  }
+
+  .navbar a.non-active:hover {
+    background-color: #ddd;
+  }
+
+  .navbar a.active {
+    display: block;
+    background-color: dodgerblue;
+    color: white;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  #byTwo.textBlock{
+    font-size: 16px;
+  }
+
+  #byTwo.textBlock h1 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  #byThree.textBlock{
+    font-size: 14px;
+    margin: 10px;
+  }
+
+  #byThree.textBlock h1 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .textBlock p {
+    font-size: 16px;
+  }
+
+  .textBlock button.package p {
+    font-size: 14px;
+  }
+
+  #byTwo.textBlock{
+    width: 46%;
+  }
+  .slice img {
+    width: 47%;
+  }
+
+  .popup > div {
+    font-size: 14px;
+    width: 200px;
+    margin: 20% auto;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .slice {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pronostic {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+
+  .pronostic div {
+    width: 90%;
+  }
+
+  .pronostic table {
+    width: 60%;
+    margin-bottom: 15px;
+  }
+
+  #byTwo.textBlock{
+    font-size: 14px; 
+    width: 90%;
+    margin-top: 10px;
+  }
+
+  #byThree.textBlock {
+    font-size: 14px; 
+    width: 90%;
+    margin-top: 10px;
+  }
+
+  .slice img {
+    border-radius: 4px;
+    margin-top: 10px;
+    width: 93%;
+  }
+
+  .close {
+    line-height: 20px;
+    width: 18px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+   .slice img {
+    margin-left: 12px;
+    width: 96%;
+  }
+
+  .pronostic div {
+    margin-bottom: 20px;
+  }
+
+  .slice {
+  	margin-left: 1%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  #byTwo.textBlock{
+    font-size: 12px;
+    width: 89%;
+  }
+
+  #byTwo.textBlock h1 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  #byThree.textBlock{
+    font-size: 12px;
+    margin: 10px;
+    width: 89%;
+  }
+
+  #byThree.textBlock h1 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .textBlock p {
+    font-size: 14px;
+  }
+
+  .textBlock button.package p {
+    font-size: 14px;
+  }
+
+  .logo {
+    font-size: 45px;
+  }
+
+  .slice img {
+    margin-left: 12px;
+    width: 96%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #byTwo.textBlock{
+    font-size: 12px;
+    width: 89%;
+  }
+
+  #byThree.textBlock{
+    font-size: 10px;
+    width: 89%;
+  }
+
+  .logo {
+    font-size: 40px;
+  }
+
+  .slice img {
+    width: 97%;
+  }
+
+  .textBlock ol {
+    width: 75%;
+  }
+
+  .slice {
+  	margin-left: -1%;
+  }
+
+}
+

@@ -1,0 +1,52 @@
+.article {
+	width: 48%;
+	padding: 10px;
+	font-size: 14px;
+}
+
+.article:hover {
+	border: solid 2px #ffcc80;
+	border-radius: 8px;
+	padding: 8px;
+  cursor: pointer;
+}
+
+.article a {
+  text-decoration: none; 
+  color: white;
+}
+
+.moreArticles {
+	width: 75%;
+	height: 90%;
+	margin-top: 1%;
+	font-size: 26px;
+	background-color: black;
+	border: none;
+	color: white;
+	font-weight: bold;
+}
+
+.moreArticles:hover {
+  cursor: pointer;
+}
+
+.News {
+	width: 93%; 
+	background-color: black; 
+	color: white; 
+	border-radius: 4px; 
+	padding-top: 10px; 
+	padding-bottom: 10px; 
+	margin-top: 10px;
+}
+
+.News h1 {
+	font-size: 26px;
+}
+
+.News img {
+	height: 150px; 
+	float: left; 
+	margin-right: 10px;
+}

@@ -1,0 +1,67 @@
+#contactBlock {
+  width: 90%;
+}
+
+#contactBlock h1 {
+  text-align: justify;
+  margin-left: 2%;
+  margin-bottom: 0;
+}
+
+.proDemand {
+  text-align: justify;
+  font-size: 14px;
+  margin-top: 60px; 
+  margin-left: 4%; 
+  margin-bottom: 0;
+}
+
+#contact p {
+  padding: 4% 2%;
+}
+
+#contact label { 
+  display: block;
+  text-align: left;
+}
+
+#contact input[type=text] {
+  float: left;
+  width: 40%;
+  border-radius: 4px; 
+  border: none; 
+  padding: 10px; 
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+#contact input[type=email] {
+  float: left;
+  width: 40%;
+  border-radius: 4px; 
+  border: none; 
+  padding: 10px; 
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+#contact textarea {
+  float: left; 
+  width: 90%;
+  border-radius: 4px;
+  border: none; 
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+#contact input[type=submit] {
+  background-color: dodgerblue;
+  width: 35%;
+  color: white;
+}
+
+#contact input[type=submit]:hover {
+  background-color: #ffcc80;
+  color: black;
+}
