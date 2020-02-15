@@ -1,4 +1,3 @@
-
 name: Continous Integration
 
 on: [push, pull_request]
@@ -8,17 +7,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-python@v1
-      with:
-        python-version: 3.7
-    - uses: dschep/install-pipenv-action@v1
-    - name: Install dependencies
-      run: |
-        pipenv install --dev
-    - uses: wemake-services/wemake-python-styleguide@0.13.4
-      with:
-        path: './main/*.py'
-    - name: Django Testing project
-      run: |
-        pipenv run manage.py test
+      - uses: actions/checkout@v1
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - uses: dschep/install-pipenv-action@v1
+      - name: Install dependencies
+        run: |
+          pipenv install --dev
+      - name: Lint
+        run: /
+          flake8 --config=setup.cfg ./main/*.py
+      - name: Django Testing project
+        run: |
+          pipenv run manage.py test

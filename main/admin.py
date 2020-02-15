@@ -1,12 +1,4 @@
-from .models import User
 from django.contrib import admin
+from main.models import Abonnement
 
-
-class UserAdmin(admin.ModelAdmin):
-    search_fields = ['email']
-
-    class Meta:
-        Model = User
-
-
-admin.site.register(User, UserAdmin)
+admin.site.register(Abonnement)

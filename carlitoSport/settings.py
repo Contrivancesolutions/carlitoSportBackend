@@ -44,7 +44,6 @@ MIDDLEWARE_CLASSES = [
     'livesync.core.middleware.DjangoLiveSyncMiddleware',
 ]
 
-AUTH_USER_MODEL = 'main.User'
 
 
 MIDDLEWARE = [
