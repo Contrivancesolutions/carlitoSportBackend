@@ -17,7 +17,7 @@ jobs:
           pipenv install --dev
       - name: Lint
         run: /
-          flake8 --config=setup.cfg ./main/*.py
+          pipenv run lint
       - name: Django Testing project
         run: |
-          pipenv run manage.py test
+          pipenv run tests

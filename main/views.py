@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 
 from main.forms import AuthenticationForm, ContactForm, InscriptionForm
-from main.models import Abonnement
+from main.models import Abonnement, User
 
 
 def homepage(request):

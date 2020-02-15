@@ -17,6 +17,8 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 from main import views
 
+app_name = 'main'
+
 urlpatterns = [
     path('', views.homepage, name='homepage'),
     path('inscription/', views.register, name='register'),

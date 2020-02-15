@@ -1,13 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm as DjangoAuthenticatorForm
-from django.contrib.auth.models import User
+from main.models import User
 
 
-class InscriptionForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = []
-
+class InscriptionForm(forms.Form):
     email = forms.EmailField(
         label='Email', required=True, widget=forms.TextInput(
             attrs={
