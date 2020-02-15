@@ -8,18 +8,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Python 3.7
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.7
+    - uses: actions/setup-python@v1
+    - uses: dschep/install-pipenv-action@v1
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install pipenv
-        pipenv install
-        pipenv shell
-    - name: wemake-python-styleguide
-      uses: wemake-services/wemake-python-styleguide@0.13.4
+        pipenv install --dev
+    - uses: wemake-services/wemake-python-styleguide@0.13.4
     - name: Django Testing project
       run: |
-        python3 manage.py test
+        pipenv run manage.py test
