@@ -17,6 +17,8 @@ jobs:
       run: |
         pipenv install --dev
     - uses: wemake-services/wemake-python-styleguide@0.13.4
+      with:
+        path: './main/*.py'
     - name: Django Testing project
       run: |
         pipenv run manage.py test
