@@ -16,7 +16,7 @@ jobs:
         run: |
           pipenv install --dev
       - name: Lint
-        run: /
+        run: |
           pipenv run lint
       - name: Django Testing project
         run: |
