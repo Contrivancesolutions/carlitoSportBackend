@@ -16,7 +16,7 @@ class HomeView(TemplateView):
 
 
 class RegisterView(UserPassesTestMixin, FormView):
-    template_name = 'main/register.html'
+    template_name = 'auth/register.html'
     form_class = RegisterForm
     success_url = 'subscription'
 
@@ -33,7 +33,7 @@ class RegisterView(UserPassesTestMixin, FormView):
 
 
 class LoginView(UserPassesTestMixin, FormView):
-    template_name = 'main/login.html'
+    template_name = 'auth/login.html'
     form_class = LoginForm
     success_url = 'homepage'
 
@@ -54,23 +54,23 @@ class LoginView(UserPassesTestMixin, FormView):
 
 
 class PasswordResetView(auth_views.PasswordResetView):
-    template_name = 'main/resetPassword.html'
+    template_name = 'auth/reset_password.html'
 
 
 class PasswordResetDoneView(auth_views.PasswordResetDoneView):
-    template_name = 'main/resetPasswordDone.html'
+    template_name = 'auth/reset_password_done.html'
 
 
 class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
-    template_name = 'main/confirmResetPassword.html'
+    template_name = 'auth/confirm_reset_password.html'
 
 
 class PasswordResetCompleteView(auth_views.PasswordResetCompleteView):
-    template_name = 'main/resetPasswordComplete.html'
+    template_name = 'auth/reset_password_complete.html'
 
 
 class LogoutView(LoginRequiredMixin, auth_views.LogoutView):
-    template_name = 'main/logged_out.html'
+    template_name = 'auth/logged_out.html'
 
 
 class SubscriptionView(LoginRequiredMixin, CreateView):

@@ -45,7 +45,7 @@
 		<div class="logo" onclick="window.location.href = '/';"> CarlitoSport </div>
 		<div class="navbar-right">
 			<a class="active" href="/">Acceuil</a>
-			{% if not user.is_authenticated %}
+			{% if user.is_anonymous %}
 			<a class="non-active" href="/inscription">Inscription</a>
 			{% endif %}
 			<a class="non-active" href="/bonus">Bonus</a>
@@ -74,7 +74,7 @@
 		</div>
 	</center>
 	<div class="preFooter">
-		{% if not user.is_authenticated %}
+		{% if user.is_anonymous %}
 		<div class="mailNext">
 			<h1>NE LAISSEZ PASSER AUCUNES OFFRES!</h1>
 			<p>Tu veux profiter de bonus, promo et jeux concours?<br>
@@ -102,7 +102,7 @@
 		</div>
 		<div class="multiRef">
 			<a href="/">Navigation</a>
-			{% if not user.is_authenticated %}
+			{% if user.is_anonymous %}
 			<a href="/inscription">Devenir VIP</a>
 			{% endif %}
 			<a href="/bonus">Bonus</a>
