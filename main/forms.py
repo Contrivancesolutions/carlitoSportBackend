@@ -1,10 +1,10 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm as DjangoAuthenticatorForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from main.models import User
 
-class InscriptionForm(forms.Form):
+class RegisterForm(forms.Form):
     email = forms.EmailField(
         label='Email', required=True, widget=forms.TextInput(
             attrs={
@@ -52,14 +52,14 @@ class InscriptionForm(forms.Form):
         try:
             validate_email(email)
         except ValidationError:
-            self._errors['email'] = 'Veuillez insérer un email valide'
+            self._errors['email']= ['Veuillez insérer un email valide']
 
         if email != email_confirmation:
-            self._errors['email'] = 'Les emails ne correspondent pas'
+            self._errors['email'] = ['Les emails ne correspondent pas']
         if password != password_confirmation:
-            self._errors['password'] = 'Les mots de passe ne correspondent pas'
+            self._errors['password'] = ['Les mots de passe ne correspondent pas']
         if User.objects.filter(email=email):
-            self._errors['email'] = 'Cet email est déjà utilisé'
+            self._errors['email'] = ['Cet email est déjà utilisé']
         return self.cleaned_data
 
     def save(self, commit=True):
@@ -108,7 +108,8 @@ class ContactForm(forms.Form):
         except ValidationError:
             self._errors['email'] = 'Veuillez insérer un email valide'
 
-class AuthenticationForm(DjangoAuthenticatorForm):
+
+class LoginForm(AuthenticationForm):
     username = forms.EmailField(
         label='Email', required=True, widget=forms.TextInput(
             attrs={

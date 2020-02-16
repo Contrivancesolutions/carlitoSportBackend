@@ -21,9 +21,9 @@ from main import views
 
 urlpatterns = [
     path('', views.homepage, name='homepage'),
-    path('inscription/', views.register, name='register'),
-    path('logout/', views.logout_request, name='logout'),
-    path('login/', views.login_request, name='login'),
+    path('inscription/', views.RegisterView.as_view(), name='register'),
+    path('logout/', views.LogoutView.as_view(), name='logout'),
+    path('login/', views.LoginView.as_view(), name='login'),
     path('subscription/', views.subscription, name='subscription'),
     path(
         'password-reset/',
@@ -47,9 +47,9 @@ urlpatterns = [
     ),
     path('bonus/', views.bonus, name='bonus'),
     path('certification/', views.certification, name='certification'),
-    path('contact/', views.contact, name='contact'),
+    path('contact/', views.ContactView.as_view(), name='contact'),
     path('faq/', views.faq, name='faq'),
     path('pronos', views.pronos, name='pronos'),
-    path('news', views.news, name='news'),
+    path('news', views.NewsView.as_view(), name='news'),
     path('article/<int:article_id>-<str:article_slug>', views.article, name='article'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
