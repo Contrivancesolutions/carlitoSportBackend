@@ -1,7 +1,9 @@
 {% extends "layout/base.html" %}
 {% block content %}
+{% load i18n %}
+
 <div class="loginFirstRight">
-	<h1>Connecte toi</h1>
+	<h1>{% trans 'Connecte toi' %}</h1>
 	<form id="emailEntry2" method="POST">
 		{% csrf_token  %}
 		<div>
@@ -9,6 +11,6 @@
 		</div>
 		<input type="submit" value="Se connecter"><br>
 	</form>
-	<a href="/password-reset">mot de passe oublié?</a>
+	<a href="{% url 'password_reset' %}">{% trans 'Mot de passe oublié?' %}</a>
 </div>
 {% endblock %}

@@ -2,15 +2,16 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 from django.shortcuts import reverse
 from django.utils import timezone
+from django.utils.translation import gettext as _
 
 
 class UserManager(BaseUserManager):
     def create_user(self, email, **kwargs):
         if not email:
-            raise ValueError('User must have an email')
+            raise ValueError(_('User must have an email'))
         password = kwargs.get('password')
         if not password:
-            raise ValueError('User must have a password')
+            raise ValueError(_('User must have a password'))
         user_obj = self.model(email=self.normalize_email(email))
         user_obj.set_password(password)
 

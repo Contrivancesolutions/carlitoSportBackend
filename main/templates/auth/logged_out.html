@@ -1,9 +1,11 @@
 {% extends "layout/base.html" %}
+{% load i18n %}
+
 {% block content %}
 <div class="loginFirstLeft">
-	<a href="/login"><button>Déjà un compte? Connecte toi</button></a>
+	<a href="{% url 'login' %}"><button>{% trans 'Déjà un compte? Connecte toi' %}</button></a>
 </div>
 <div class="loginFirstRight">
-	Vous avez bien été deconnecté
+	{% trans 'Vous avez bien été deconnecté' %}
 </div>
 {% endblock %}

@@ -2,9 +2,9 @@
 {% block content %}
 <div class="textBlock" id="abonnements">
 	<p style="margin-bottom: 10px;">
-		Ton compte a bien été créé!
+		{% trans 'Ton compte a bien été créé!' %}
 		<br>
-		Il ne te reste plus qu'à choisir un <b>Abonnement<b>.
+		{% trans "Il ne te reste plus qu'à choisir un <b>Abonnement<b>." %}
 	</p>
 	<form method="post">{% csrf_token %}
 		{% for package in packages %}

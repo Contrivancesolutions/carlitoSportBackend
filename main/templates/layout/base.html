@@ -1,12 +1,13 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description"
-		content="Site d’actualité sportives faisant la promotion de bookmakers français et belge et proposant des pronostiques payants sous forme d’abonnements" />
+		content="{% trans 'Site d’actualité sportives faisant la promotion de bookmakers français et belge et proposant des pronostiques payants sous forme d’abonnements' %}" />
 	<meta name="author" content="Givron Azim" />
-	<title>CarlitoSport</title>
+	<title>{% trans 'CarlitoSport' %}</title>
 	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
@@ -34,30 +35,30 @@
 		<div class="loginBlock">
 			{% if user.is_authenticated %}
 			<div style="font-size: 12px; margin-top: 10px; display: inline-block;">{{ user.email }}</div>
-			<a class="loginButton" href="/logout">Se déconnecter</a>
+			<a class="loginButton" href="{% url 'logout' %}">{% trans 'Se déconnecter' %}</a>
 			{% else %}
-			<a class="loginButton" href="/login">S'identifier</a>
-			<a class="loginButton" href="/inscription">S'inscrire</a>
+			<a class="loginButton" href="{% url 'login' %}">{% trans "S'identifier" %}</a>
+			<a class="loginButton" href="{% url 'register' %}">{% trans "S'inscrire" %}</a>
 			{% endif %}
 		</div>
 	</div>
 	<div class="navbar">
-		<div class="logo" onclick="window.location.href = '/';"> CarlitoSport </div>
+		<div class="logo" onclick="window.location.href = '/';">{% trans 'CarlitoSport' %}</div>
 		<div class="navbar-right">
-			<a class="active" href="/">Acceuil</a>
+			<a class="active" href="{% url 'homepage' %}">{% trans 'Acceuil' %}</a>
 			{% if user.is_anonymous %}
-			<a class="non-active" href="/inscription">Inscription</a>
+			<a class="non-active" href="{% url 'register' %}">{% trans 'Inscription' %}</a>
 			{% endif %}
-			<a class="non-active" href="/bonus">Bonus</a>
+			<a class="non-active" href="{% url 'bonus' %}">{% trans 'Bonus' %}</a>
 			{% if user.is_authenticated and user.is_subscribed %}
 
-			<a class="non-active" href="/pronos">Pronos</a>
+			<a class="non-active" href="{% url 'pronos' %}">{% trans 'Pronos' %}</a>
 			{% endif %}
-			<a class="non-active" href="/certification">Certification</a>
-			<a class="non-active" href="/faq">FAQ</a>
-			<a class="non-active" href="#fb">Réseaux</a>
-			<a class="non-active" href="/contact">Contact</a>
-			<a class="non-active" href="/news">News</a>
+			<a class="non-active" href="{% url 'certification' %}">{% trans 'Certification' %}</a>
+			<a class="non-active" href="{% url 'faq' %}">{% trans 'FAQ' %}</a>
+			<a class="non-active" href="#fb">{% trans 'Réseaux' %}</a>
+			<a class="non-active" href="{% url 'contact' %}">{% trans 'Contact' %}</a>
+			<a class="non-active" href="{% url 'news' %}">{% trans 'News' %}</a>
 		</div>
 	</div>
 	<center>
@@ -76,18 +77,18 @@
 	<div class="preFooter">
 		{% if user.is_anonymous %}
 		<div class="mailNext">
-			<h1>NE LAISSEZ PASSER AUCUNES OFFRES!</h1>
-			<p>Tu veux profiter de bonus, promo et jeux concours?<br>
-				Inscris toi sans plus attendre</p>
+			<h1>{% trans 'NE LAISSEZ PASSER AUCUNES OFFRES!' %}</h1>
+			<p>{% trans 'Tu veux profiter de bonus, promo et jeux concours?' %}<br>
+				{% trans 'Inscris toi sans plus attendre' %}</p>
 			<form id="emailEntry">
-				<input type="email" name="email" placeholder="Email"><br>
-				<input type="email" name="emailConf" placeholder="Confirmation Email"><br>
-				<input type="submit" value="Suivant">
+				<input type="email" name="email" placeholder="{% trans 'Email' %}"><br>
+				<input type="email" name="emailConf" placeholder="{% trans 'Confirmation Email' %}"><br>
+				<input type="submit" value="{% trans 'Suivant' %}">
 			</form>
 		</div>
 		{% endif %}
 		<div class="socialNet">
-			<h1>Suivez nous!</h1>
+			<h1>{% trans 'Suivez nous!' %}</h1>
 			<center>
 				<div>
 					<img id="fb" src="{% static 'img/facebook.png' %}">
@@ -101,18 +102,18 @@
 			</center>
 		</div>
 		<div class="multiRef">
-			<a href="/">Navigation</a>
+			<a href="/">{% trans 'Navigation' %}</a>
 			{% if user.is_anonymous %}
-			<a href="/inscription">Devenir VIP</a>
+			<a href="/inscription">{% trans 'Devenir VIP' %}</a>
 			{% endif %}
-			<a href="/bonus">Bonus</a>
-			<a href="/contact">Contact</a>
+			<a href="/bonus">{% trans 'Bonus' %}</a>
+			<a href="/contact">{% trans 'Contact' %}</a>
 		</div>
 	</div>
 	<footer>
-		<div>Préventions</div>
-		<div>conditions: blabla <br>
-			blabla</div>
+		<div>{% trans 'Préventions' %}</div>
+		<div>{% trans 'conditions: blabla' %}<br>
+			{% trans 'blabla' %}</div>
 	</footer>
 </body>
 

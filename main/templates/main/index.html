@@ -60,27 +60,23 @@
 	</div>
 </div>
 <div class="slice">
+	{% if not user.is_subscribed %}
 	<div class="textBlock" id="abonnements">
 		<h1>
 			ABONNEMENTS
 		</h1>
-		<a href="">
+		{% for package in packages %}
+		<a href="{% url 'subscription' %}">
 			<button class="package">
-				Package1
+				{{package.name}}
 				<p>
-					Package description<br>sur plusieurs lignes
+					{{package.description}}
 				</p>
 			</button>
 		</a>
-		<a href="">
-			<button class="package">
-				Package2
-				<p>
-					Package description
-				</p>
-			</button>
-		</a>
+		{% endfor %}
 	</div>
+	{% endif %}
 	<div class="textBlock" id="prono">
 		<h1>
 			PRONOS
@@ -103,32 +99,23 @@
 	<h1>
 		News
 	</h1>
-	<div class="slice">
-		<div class="article" onclick="window.location.href = '/article1';">
-			<p>
-				<img src="{% static 'img/article1.jpg' %}">
-				article1 title
-			</p>
-		</div>
-		<div class="article" onclick="window.location.href = '/article2';">
-			<p>
-				<img src="{% static 'img/article2.jpg' %}">
-				article2 title
-			</p>
-		</div>
+	<div class="articles">
+		{% for article in articles %}
+		<article>
+			<a href="{{ article.absolute_url }}">
+				<h2>{{ article.title }}</h2>
+				<p>
+					<img src="{{ article.image_url }}">
+					{{ article.preview }}
+				</p>
+			</a>
+		</article>
+		{% endfor %}
 	</div>
-	<div class="slice">
-		<div class="article" onclick="window.location.href = '/article3';">
-			<p>
-				<img src="{% static 'img/article3.jpg' %}">
-				article3<br>title
-			</p>
-		</div>
-		<div class="article">
-			<button class="moreArticles" onclick="window.location.href = '/news';">
-				Plus d'articles ici
-			</button>
-		</div>
+	<div class="article">
+		<a class="moreArticles" href='{% url "news" %}'>
+			Plus d'articles ici
+		</a>
 	</div>
 </div>
 <div>

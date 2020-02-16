@@ -1,14 +1,15 @@
 {% extends "layout/base.html" %}
+{% load i18n %}
 {% block content %}
 <div class="textBlock" id="bonus">
 	<h1>
-		PRONOS
+		{% tarns 'PRONOS' %}
 	</h1>
 	<table>
 		<tr>
-			<td class="title" id="firstLineRight">Match</td>
-			<td class="title" id="firstLine">Côte</td>
-			<td class="title" id="firstLineLeft">Gain</td>
+			<td class="title" id="firstLineRight">{% tarns 'Match' %}</td>
+			<td class="title" id="firstLine">{% tarns 'Côte' %}</td>
+			<td class="title" id="firstLineLeft">{% tarns 'Gain' %}</td>
 		</tr>
 		<tr>
 			<td>Real<br>vs<br>Barca</td>

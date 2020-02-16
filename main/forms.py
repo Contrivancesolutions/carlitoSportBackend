@@ -2,42 +2,43 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
+from django.utils.translation import gettext as _
 from main.models import User
 
 
 class RegisterForm(forms.Form):
     email = forms.EmailField(
-        label='Email', required=True, widget=forms.TextInput(
+        label=_('Email'), required=True, widget=forms.TextInput(
             attrs={
                 'type': 'email',
-                'placeholder': 'Email',
+                'placeholder': _('Email'),
                 'class': 'inscriptionField',
             },
         ))
     email_confirmation = forms.EmailField(
-        label="Confirmation de l'email", required=True, widget=forms.TextInput(
+        label=_("Confirmation de l'email"), required=True, widget=forms.TextInput(
             attrs={
                 'type': 'email',
-                'placeholder': "Confirmation de l'email",
+                'placeholder': _("Confirmation de l'email"),
                 'class': 'inscriptionField',
             },
         ))
     password = forms.CharField(
-        label='Mot de passe', min_length=6, max_length=32,
+        label=_('Mot de passe'), min_length=6, max_length=32,
         required=True,
-        help_text='Le mot de passe doit contenir entre 6 et 32 caractères',
+        help_text=_('Le mot de passe doit contenir entre 6 et 32 caractères'),
         widget=forms.PasswordInput(
             attrs={
-                'placeholder': 'Mot de passe',
+                'placeholder': _('Mot de passe'),
                 'class': 'inscriptionField',
             },
         ))
     password_confirmation = forms.CharField(
-        min_length=6, max_length=32, label='Confirmation du mot de passe',
+        min_length=6, max_length=32, label=_('Confirmation du mot de passe'),
         required=True,
         widget=forms.PasswordInput(
             attrs={
-                'placeholder': 'Confirmation du mot de passe',
+                'placeholder': _('Confirmation du mot de passe'),
                 'class': 'inscriptionField',
             },
         ))
@@ -53,14 +54,14 @@ class RegisterForm(forms.Form):
         try:
             validate_email(email)
         except ValidationError:
-            self._errors['email'] = ['Veuillez insérer un email valide']
+            self._errors['email'] = [_('Veuillez insérer un email valide')]
 
         if email != email_confirmation:
-            self._errors['email'] = ['Les emails ne correspondent pas']
+            self._errors['email'] = [_('Les emails ne correspondent pas')]
         if password != password_confirmation:
-            self._errors['password'] = ['Les mots de passe ne correspondent pas']
+            self._errors['password'] = [_('Les mots de passe ne correspondent pas')]
         if User.objects.filter(email=email):
-            self._errors['email'] = ['Cet email est déjà utilisé']
+            self._errors['email'] = [_('Cet email est déjà utilisé')]
         return self.cleaned_data
 
     def save(self, commit=True):
@@ -69,34 +70,34 @@ class RegisterForm(forms.Form):
 
 class ContactForm(forms.Form):
     last_name = forms.CharField(
-        max_length=255, label='Nom', widget=forms.TextInput(
+        max_length=255, label=_('Nom'), widget=forms.TextInput(
             attrs={
-                'placeholder': 'Nom',
+                'placeholder': _('Nom'),
             },
         ))
     first_name = forms.CharField(
-        max_length=255, label='Prénom', widget=forms.TextInput(
+        max_length=255, label=_('Prénom'), widget=forms.TextInput(
             attrs={
-                'placeholder': 'Prénom',
+                'placeholder': _('Prénom'),
             },
         ))
     email = forms.EmailField(
-        label='Email', required=True, widget=forms.TextInput(
+        label=_('Email'), required=True, widget=forms.TextInput(
             attrs={
                 'type': 'email',
-                'placeholder': 'Email',
+                'placeholder': _('Email'),
             },
         ))
     subject = forms.CharField(
-        max_length=255, label='Objet', widget=forms.TextInput(
+        max_length=255, label=_('Objet'), widget=forms.TextInput(
             attrs={
-                'placeholder': 'Objet',
+                'placeholder': _('Objet'),
             },
         ))
     message = forms.CharField(
-        label='Entrez votre message', widget=forms.Textarea(
+        label=_('Entrez votre message'), widget=forms.Textarea(
             attrs={
-                'placeholder': 'Ecrivez votre message',
+                'placeholder': _('Ecrivez votre message'),
             },
         ))
 
@@ -107,24 +108,24 @@ class ContactForm(forms.Form):
         try:
             validate_email(email)
         except ValidationError:
-            self._errors['email'] = 'Veuillez insérer un email valide'
+            self._errors['email'] = [_('Veuillez insérer un email valide')]
 
 
 class LoginForm(AuthenticationForm):
     username = forms.EmailField(
-        label='Email', required=True, widget=forms.TextInput(
+        label=_('Email'), required=True, widget=forms.TextInput(
             attrs={
                 'type': 'email',
-                'placeholder': 'Email',
+                'placeholder': _('Email'),
                 'class': 'inscriptionField',
             },
         ))
     password = forms.CharField(
-        min_length=6, max_length=32, label='Mot de passe',
-        help_text='Le mot de passe doit contenir entre 6 et 32 caractères',
+        min_length=6, max_length=32, label=_('Mot de passe'),
+        help_text=_('Le mot de passe doit contenir entre 6 et 32 caractères'),
         widget=forms.PasswordInput(
             attrs={
-                'placeholder': 'Mot de passe',
+                'placeholder': _('Mot de passe'),
                 'class': 'inscriptionField',
             },
         ))

@@ -1,16 +1,18 @@
 {% extends "layout/base.html" %}
+{% load i18n %}
 {% block content %}
+
 <div class="loginFirstLeft">
-	<a href="/login"><button>Déjà un compte? Connecte toi</button></a>
+	<a href="{% url 'login' %}"><button>{% trans 'Déjà un compte? Connecte toi' %}</button></a>
 </div>
 <div class="loginFirstRight">
-	<h1>CREER UN COMPTE EN 10SEC</h1>
+	<h1>{% trans 'CREER UN COMPTE EN 10SEC' %}</h1>
 	<form id="emailEntry2" method="POST">
 		{% csrf_token  %}
 		<div>
 			{{ form }}
 		</div>
-		<input type="submit" value="S'inscrire"><br>
+		<input type="submit" value='{% trans "S'inscrire" %}'><br>
 	</form>
 </div>
 {% endblock %}

@@ -1,0 +1,259 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-16 15:49+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: main/forms.py:11 main/forms.py:14 main/forms.py:85 main/forms.py:88
+#: main/forms.py:116 main/forms.py:119 main/templates/layout/base.html:84
+msgid "Email"
+msgstr ""
+
+#: main/forms.py:19 main/forms.py:22
+msgid "Confirmation de l'email"
+msgstr ""
+
+#: main/forms.py:27 main/forms.py:32 main/forms.py:124 main/forms.py:128
+msgid "Mot de passe"
+msgstr ""
+
+#: main/forms.py:29 main/forms.py:125
+msgid "Le mot de passe doit contenir entre 6 et 32 caractères"
+msgstr ""
+
+#: main/forms.py:37 main/forms.py:41
+msgid "Confirmation du mot de passe"
+msgstr ""
+
+#: main/forms.py:57 main/forms.py:111
+msgid "Veuillez insérer un email valide"
+msgstr ""
+
+#: main/forms.py:60
+msgid "Les emails ne correspondent pas"
+msgstr ""
+
+#: main/forms.py:62
+msgid "Les mots de passe ne correspondent pas"
+msgstr ""
+
+#: main/forms.py:64
+msgid "Cet email est déjà utilisé"
+msgstr ""
+
+#: main/forms.py:73 main/forms.py:75
+msgid "Nom"
+msgstr ""
+
+#: main/forms.py:79 main/forms.py:81
+msgid "Prénom"
+msgstr ""
+
+#: main/forms.py:92 main/forms.py:94
+msgid "Objet"
+msgstr ""
+
+#: main/forms.py:98
+msgid "Entrez votre message"
+msgstr ""
+
+#: main/forms.py:100
+msgid "Ecrivez votre message"
+msgstr ""
+
+#: main/models.py:10
+msgid "User must have an email"
+msgstr ""
+
+#: main/models.py:13
+msgid "User must have a password"
+msgstr ""
+
+#: main/templates/auth/confirm_reset_password.html:6
+#: main/templates/auth/reset_password.html:5
+#: main/templates/auth/reset_password_complete.html:5
+#: main/templates/auth/reset_password_done.html:5
+msgid "Réinitialise ton mot de passe"
+msgstr ""
+
+#: main/templates/auth/confirm_reset_password.html:12
+#: main/templates/auth/reset_password.html:11
+#: main/templates/auth/reset_password_complete.html:11
+#: main/templates/auth/reset_password_done.html:11
+msgid "Réinitialiser mon mot de passe"
+msgstr ""
+
+#: main/templates/auth/logged_out.html:6 main/templates/auth/register.html:6
+msgid "Déjà un compte? Connecte toi"
+msgstr ""
+
+#: main/templates/auth/logged_out.html:9
+msgid "Vous avez bien été deconnecté"
+msgstr ""
+
+#: main/templates/auth/login.html:6
+msgid "Connecte toi"
+msgstr ""
+
+#: main/templates/auth/login.html:14
+msgid "Mot de passe oublié?"
+msgstr ""
+
+#: main/templates/auth/register.html:9
+msgid "CREER UN COMPTE EN 10SEC"
+msgstr ""
+
+#: main/templates/auth/register.html:15 main/templates/layout/base.html:41
+msgid "S'inscrire"
+msgstr ""
+
+#: main/templates/layout/base.html:8
+msgid ""
+"Site d’actualité sportives faisant la promotion de bookmakers français et "
+"belge et proposant des pronostiques payants sous forme d’abonnements"
+msgstr ""
+
+#: main/templates/layout/base.html:10 main/templates/layout/base.html:46
+msgid "CarlitoSport"
+msgstr ""
+
+#: main/templates/layout/base.html:38
+msgid "Se déconnecter"
+msgstr ""
+
+#: main/templates/layout/base.html:40
+msgid "S'identifier"
+msgstr ""
+
+#: main/templates/layout/base.html:48
+msgid "Acceuil"
+msgstr ""
+
+#: main/templates/layout/base.html:50
+msgid "Inscription"
+msgstr ""
+
+#: main/templates/layout/base.html:52 main/templates/layout/base.html:109
+#: main/templates/main/bonus.html:9
+msgid "Bonus"
+msgstr ""
+
+#: main/templates/layout/base.html:55
+msgid "Pronos"
+msgstr ""
+
+#: main/templates/layout/base.html:57
+msgid "Certification"
+msgstr ""
+
+#: main/templates/layout/base.html:58
+msgid "FAQ"
+msgstr ""
+
+#: main/templates/layout/base.html:59
+msgid "Réseaux"
+msgstr ""
+
+#: main/templates/layout/base.html:60 main/templates/layout/base.html:110
+#: main/templates/main/contact.html:5
+msgid "Contact"
+msgstr ""
+
+#: main/templates/layout/base.html:61 main/templates/main/news.html:6
+msgid "News"
+msgstr ""
+
+#: main/templates/layout/base.html:80
+msgid "NE LAISSEZ PASSER AUCUNES OFFRES!"
+msgstr ""
+
+#: main/templates/layout/base.html:81
+msgid "Tu veux profiter de bonus, promo et jeux concours?"
+msgstr ""
+
+#: main/templates/layout/base.html:82
+msgid "Inscris toi sans plus attendre"
+msgstr ""
+
+#: main/templates/layout/base.html:85
+msgid "Confirmation Email"
+msgstr ""
+
+#: main/templates/layout/base.html:86
+msgid "Suivant"
+msgstr ""
+
+#: main/templates/layout/base.html:91
+msgid "Suivez nous!"
+msgstr ""
+
+#: main/templates/layout/base.html:105
+msgid "Navigation"
+msgstr ""
+
+#: main/templates/layout/base.html:107
+msgid "Devenir VIP"
+msgstr ""
+
+#: main/templates/layout/base.html:114
+msgid "Préventions"
+msgstr ""
+
+#: main/templates/layout/base.html:115
+msgid "conditions: blabla"
+msgstr ""
+
+#: main/templates/layout/base.html:116
+msgid "blabla"
+msgstr ""
+
+#: main/templates/main/FAQ.html:4
+msgid "Foire Aux Questions"
+msgstr ""
+
+#: main/templates/main/bonus.html:5
+msgid "Belgique"
+msgstr ""
+
+#: main/templates/main/bonus.html:8
+msgid "Bookmaker"
+msgstr ""
+
+#: main/templates/main/bonus.html:10
+msgid "Conditions"
+msgstr ""
+
+#: main/templates/main/bonus.html:11
+msgid "Note"
+msgstr ""
+
+#: main/templates/main/contact.html:9
+msgid "Envoyer le message"
+msgstr ""
+
+#: main/templates/main/contact.html:12
+msgid ""
+"Demande professionelle? <br>Contacte nous via carlitosportprofessional@gmail."
+"com"
+msgstr ""
+
+#: main/templates/main/subscription.html:5
+msgid "Ton compte a bien été créé!"
+msgstr ""
+
+#: main/templates/main/subscription.html:7
+msgid "Il ne te reste plus qu'à choisir un <b>Abonnement<b>."
+msgstr ""

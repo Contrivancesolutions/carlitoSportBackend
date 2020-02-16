@@ -1,13 +1,14 @@
 {% extends "layout/base.html" %}
+{% load i18n %}
 {% block content %}
 <div class="textBlock" id="bonus">
-	<h1>Belgique</h1>
+	<h1>{% trans 'Belgique'%}</h1>
 	<table>
 		<tr>
-			<td class="title" id="firstLineRight">Bookmaker</td>
-			<td class="title" id="firstLineRight">Bonus</td>
-			<td class="title" id="firstLineRight">Conditions</td>
-			<td class="title" id="firstLineLeft">Note</td>
+			<td class="title" id="firstLineRight">{% trans 'Bookmaker'%}</td>
+			<td class="title" id="firstLineRight">{% trans 'Bonus'%}</td>
+			<td class="title" id="firstLineRight">{% trans 'Conditions'%}</td>
+			<td class="title" id="firstLineLeft">{% trans 'Note'%}</td>
 		</tr>
 		<tr class="toBonus">
 			<td>Bingoal</td>

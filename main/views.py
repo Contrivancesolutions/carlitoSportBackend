@@ -4,15 +4,18 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
 from django.http import HttpResponsePermanentRedirect
 from django.shortcuts import get_object_or_404, redirect, render
-from django.views.generic import DetailView, ListView, TemplateView
+from django.views.generic import DetailView, ListView, TemplateView, View
 from django.views.generic.edit import CreateView, FormView
 
 from main.forms import ContactForm, LoginForm, RegisterForm
 from main.models import Article, Package, Subscription
 
 
-class HomeView(TemplateView):
-    template_name = 'main/index.html'
+class HomeView(View):
+    def get(self, request, *args, **kwargs):
+        articles = Article.objects.all().order_by('-id')[:3]
+        context = {'packages': Package.objects.all(), 'articles': articles}
+        return render(request, 'main/index.html', context)
 
 
 class RegisterView(UserPassesTestMixin, FormView):

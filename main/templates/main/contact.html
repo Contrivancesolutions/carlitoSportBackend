@@ -1,13 +1,14 @@
 {% extends "layout/base.html" %}
+{% load i18n %}
 {% block content %}
 <div class="textBlock" id="contactBlock">
-	<h1>Contact</h1>
+	<h1>{% trans 'Contact' %}</h1>
 	<form id="contact" method="POST">
 		{% csrf_token  %}
 		{{ form }}
-		<input type="submit" value="Envoyer le message">
+		<input type="submit" value="{% trans 'Envoyer le message' %}">
 	</form>
 </div>
-<p class="proDemand">Demande professionelle? <br>Contacte nous via carlitosportprofessional@gmail.com</p>
+<p class="proDemand">{%trans 'Demande professionelle? <br>Contacte nous via carlitosportprofessional@gmail.com' %}</p>
 </div>
 {% endblock %}
