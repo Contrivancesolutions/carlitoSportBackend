@@ -3,7 +3,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
 from django.http import HttpResponsePermanentRedirect
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.views.generic import DetailView, ListView, TemplateView
 from django.views.generic.edit import FormView
 
@@ -13,6 +13,7 @@ from main.models import Abonnement, Article
 
 class HomeView(TemplateView):
     template_name = 'main/index.html'
+
 
 class RegisterView(UserPassesTestMixin, FormView):
     template_name = 'main/register.html'
