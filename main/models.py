@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 from django.shortcuts import reverse
+from django.utils import timezone
 
 
 class UserManager(BaseUserManager):
@@ -48,6 +49,14 @@ class User(AbstractBaseUser):
     def __str__(self):
         return self.email
 
+    @property
+    def is_subscribed(self):
+        subscriptions = Subscription.objects.filter(user=self)
+        for subscription in subscriptions:
+            if timezone.now() - subscription.started_at <= subscription.package.period:
+                return True
+        return False
+
     def get_full_name(self):
         return self.email
 
@@ -61,20 +70,23 @@ class User(AbstractBaseUser):
         return True
 
 
-class AbonnementType(models.IntegerChoices):
-    package1 = 1
-    package2 = 2
-    package3 = 3
-    package4 = 4
+class Package(models.Model):
+    price = models.FloatField()
+    period = models.DurationField()
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.name
 
 
-class Abonnement(models.Model):
-    package = models.IntegerField(choices=AbonnementType.choices, null=True)
-    timestamp = models.DateTimeField(null=True)
+class Subscription(models.Model):
+    package = models.ForeignKey(Package, on_delete=models.CASCADE)
+    started_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.package)
+        return f'{self.package.name} started at {self.started_at}'
 
 
 class Article(models.Model):

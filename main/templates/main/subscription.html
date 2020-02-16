@@ -6,22 +6,18 @@
 		<br>
 		Il ne te reste plus qu'à choisir un <b>Abonnement<b>.
 	</p>
-	<a href="">
-		<button class="package">
-			Package1
+	<form method="post">{% csrf_token %}
+		{% for package in packages %}
+		<div class="package">
+			{{package.name}}
 			<p>
-				Package description<br>
-				sur plusieurs lignes
+				{{package.description}}
 			</p>
-		</button>
-	</a>
-	<a href="">
-		<button class="package">
-			Package2
-			<p>
-				Package description
-			</p>
-		</button>
-	</a>
+
+			<input type="radio" name="package_id" value="{{package.id}}" />
+		</div>
+		{% endfor %}
+		<input type="submit" value="Save">
+	</form>
 </div>
 {% endblock %}

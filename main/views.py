@@ -3,12 +3,12 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
 from django.http import HttpResponsePermanentRedirect
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import DetailView, ListView, TemplateView
-from django.views.generic.edit import FormView
+from django.views.generic.edit import CreateView, FormView
 
 from main.forms import ContactForm, LoginForm, RegisterForm
-from main.models import Abonnement, Article
+from main.models import Article, Package, Subscription
 
 
 class HomeView(TemplateView):
@@ -73,14 +73,22 @@ class LogoutView(LoginRequiredMixin, auth_views.LogoutView):
     template_name = 'main/logged_out.html'
 
 
-class SubscriptionView(LoginRequiredMixin, FormView):
-    template_name = 'main/subscription.html'
+class SubscriptionView(LoginRequiredMixin, CreateView):
     login_url = 'login'
 
-    def form_valid(self, form):
-        abonnement = Abonnement(user=self.request.user)
-        abonnement.save()
-        return super().form_valid(form)
+    def get(self, request, *args, **kwargs):
+        context = {'packages': Package.objects.all()}
+        return render(request, 'main/subscription.html', context)
+
+    def post(self, request, *args, **kwargs):
+        context = {'packages': Package.objects.all()}
+
+        package_id = request.POST.get('package_id', 0)
+        package = get_object_or_404(Package.objects, id=package_id)
+        if package:
+            Subscription(user=self.request.user, package=package).save()
+            return redirect('pronos')
+        return render(request, 'main/subscription.html', context)
 
 
 class ContactView(FormView):
