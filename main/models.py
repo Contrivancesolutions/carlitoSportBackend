@@ -71,4 +71,20 @@ class Abonnement(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.pacakge
+        return str(self.package)
+
+
+class Article(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.CharField(max_length=200)
+    preview = models.TextField()
+    content = models.TextField()
+    image = models.ImageField()
+
+    @property
+    def image_url(self):
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
+
+    def __str__(self):
+        return self.title

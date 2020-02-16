@@ -1,5 +1,5 @@
 from django.contrib import admin
-from main.models import Abonnement, User
+from main.models import Abonnement, Article, User
 
 class UserAdmin(admin.ModelAdmin):
     search_fields = ['email']
@@ -8,6 +8,6 @@ class UserAdmin(admin.ModelAdmin):
         model = User
 
 
-admin.site.register(User, UserAdmin)
-
 admin.site.register(Abonnement)
+admin.site.register(Article)
+admin.site.register(User, UserAdmin)

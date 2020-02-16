@@ -1,0 +1,8 @@
+{% extends "main/header.html" %}
+{% block content %}
+<div class="textBlock" style="width: 79%;">
+	<img src="{{article.image_url}}" style="display: inline; width: 50%; float: left; margin-top: 2%; padding-right: 1%;">
+	<h1>{{article.title}}</h1>
+	<p style="font-size: 14px; text-align: justify;">{{article.content|safe}}</p>
+</div>
+{% endblock %}

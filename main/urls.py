@@ -13,18 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
+from django.conf import settings
 from django.contrib.auth import views as auth_views
 from django.urls import path
 from main import views
 
 app_name = 'main'
-
 urlpatterns = [
     path('', views.homepage, name='homepage'),
     path('inscription/', views.register, name='register'),
     path('logout/', views.logout_request, name='logout'),
     path('login/', views.login_request, name='login'),
-    path('inscription2/', views.register2, name='register2'),
+    path('subscription/', views.subscription, name='subscription'),
     path(
         'password-reset/',
         auth_views.PasswordResetView.as_view(template_name='main/resetPassword.html'),
@@ -51,14 +52,5 @@ urlpatterns = [
     path('faq/', views.faq, name='faq'),
     path('pronos', views.pronos, name='pronos'),
     path('news', views.news, name='news'),
-    path('article1/', views.article1, name='article1'),
-    path('article2/', views.article2, name='article2'),
-    path('article3/', views.article3, name='article3'),
-    path('article4/', views.article4, name='article4'),
-    path('article5/', views.article5, name='article5'),
-    path('article6/', views.article6, name='article6'),
-    path('article7/', views.article7, name='article7'),
-    path('article8/', views.article8, name='article8'),
-    path('article9/', views.article9, name='article9'),
-    path('article10/', views.article10, name='article10'),
-]
+    path('article/<int:article_id>-<str:article_slug>', views.article, name='article'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
