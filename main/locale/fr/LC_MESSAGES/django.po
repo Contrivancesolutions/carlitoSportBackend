@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-16 15:49+0100\n"
+"POT-Creation-Date: 2020-02-16 16:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: main/forms.py:11 main/forms.py:14 main/forms.py:85 main/forms.py:88
 #: main/forms.py:116 main/forms.py:119 main/templates/layout/base.html:84
 msgid "Email"
@@ -74,11 +75,11 @@ msgstr ""
 msgid "Ecrivez votre message"
 msgstr ""
 
-#: main/models.py:10
+#: main/models.py:11
 msgid "User must have an email"
 msgstr ""
 
-#: main/models.py:13
+#: main/models.py:14
 msgid "User must have a password"
 msgstr ""
 
@@ -127,6 +128,7 @@ msgid ""
 msgstr ""
 
 #: main/templates/layout/base.html:10 main/templates/layout/base.html:46
+#: main/templates/main/index.html:125
 msgid "CarlitoSport"
 msgstr ""
 
@@ -142,12 +144,13 @@ msgstr ""
 msgid "Acceuil"
 msgstr ""
 
-#: main/templates/layout/base.html:50
+#: main/templates/layout/base.html:50 main/templates/main/index.html:22
+#: main/templates/main/index.html:24
 msgid "Inscription"
 msgstr ""
 
 #: main/templates/layout/base.html:52 main/templates/layout/base.html:109
-#: main/templates/main/bonus.html:9
+#: main/templates/main/bonus.html:9 main/templates/main/index.html:49
 msgid "Bonus"
 msgstr ""
 
@@ -228,7 +231,7 @@ msgstr ""
 msgid "Belgique"
 msgstr ""
 
-#: main/templates/main/bonus.html:8
+#: main/templates/main/bonus.html:8 main/templates/main/index.html:48
 msgid "Bookmaker"
 msgstr ""
 
@@ -248,6 +251,88 @@ msgstr ""
 msgid ""
 "Demande professionelle? <br>Contacte nous via carlitosportprofessional@gmail."
 "com"
+msgstr ""
+
+#: main/templates/main/index.html:6
+msgid "Je confirme avoir plus de 16ans"
+msgstr ""
+
+#: main/templates/main/index.html:17
+msgid "SATISFAITS OU REMBOURSE"
+msgstr ""
+
+#: main/templates/main/index.html:20
+msgid ""
+"SOIT ON ENCAISSE SOIT ON TE REMBOURSE!!!<br><br>Toutes les infos par email "
+"ou lors de ton "
+msgstr ""
+
+#: main/templates/main/index.html:34
+msgid "CarlitoSport:"
+msgstr ""
+
+#: main/templates/main/index.html:35
+msgid "Comment ça marche?"
+msgstr ""
+
+#: main/templates/main/index.html:37
+msgid "TU VAS DANS INSCRIPTION ET TU CHOISIS LA DE TON ABONNEMENT"
+msgstr ""
+
+#: main/templates/main/index.html:38
+msgid ""
+"TU T'INSCRIS SUR LES SITES PARTENAIRES POUR PROFITER DES MEILLEURS BONUS "
+"(Jusqu'à 1000€ OFFERTS!!!)"
+msgstr ""
+
+#: main/templates/main/index.html:40
+msgid ""
+"TU SUIS NOS PRONOS TOUS LES JOURS VIA NOS METHODES QUANTITATIVES ET "
+"QUALITATIVES"
+msgstr ""
+
+#: main/templates/main/index.html:41
+msgid "TU COMMENCES A SOIT ON ENCAISSE SOIT ON TE REMBOURSE!!!"
+msgstr ""
+
+#: main/templates/main/index.html:45
+msgid "MEILLEURS SITES POUR PARIER"
+msgstr ""
+
+#: main/templates/main/index.html:66
+msgid "ABONNEMENTS"
+msgstr ""
+
+#: main/templates/main/index.html:82
+msgid "PRONOS"
+msgstr ""
+
+#: main/templates/main/index.html:86
+msgid "Match"
+msgstr ""
+
+#: main/templates/main/index.html:87
+msgid "Côte"
+msgstr ""
+
+#: main/templates/main/index.html:88
+msgid "Gain"
+msgstr ""
+
+#: main/templates/main/index.html:117
+msgid "Plus d'articles ici"
+msgstr ""
+
+#: main/templates/main/index.html:124
+msgid "Restez Connecté à"
+msgstr ""
+
+#: main/templates/main/index.html:151
+msgid "Tu vas adorer"
+msgstr ""
+
+#: main/templates/main/index.html:158
+msgid "INSCRIS TOI MAINTENANT!"
 msgstr ""
 
 #: main/templates/main/subscription.html:5
