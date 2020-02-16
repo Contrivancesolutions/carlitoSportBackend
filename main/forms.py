@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm as DjangoAuthenticatorForm
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
 from main.models import User
-
 
 class InscriptionForm(forms.Form):
     email = forms.EmailField(
@@ -48,6 +49,11 @@ class InscriptionForm(forms.Form):
         password = self.cleaned_data.get('password')
         password_confirmation = self.cleaned_data.get('password_confirmation')
 
+        try:
+            validate_email(email)
+        except ValidationError:
+            self._errors['email'] = 'Veuillez insérer un email valide'
+
         if email != email_confirmation:
             self._errors['email'] = 'Les emails ne correspondent pas'
         if password != password_confirmation:
@@ -93,6 +99,14 @@ class ContactForm(forms.Form):
             },
         ))
 
+    def clean(self):
+        super().clean()
+
+        email = self.cleaned_data.get('email')
+        try:
+            validate_email(email)
+        except ValidationError:
+            self._errors['email'] = 'Veuillez insérer un email valide'
 
 class AuthenticationForm(DjangoAuthenticatorForm):
     username = forms.EmailField(

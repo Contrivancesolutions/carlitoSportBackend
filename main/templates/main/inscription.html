@@ -5,13 +5,6 @@
 </div>
 <div class="loginFirstRight">
 	<h1>CREER UN COMPTE EN 10SEC</h1>
-	{% if messages %}
-	{% for msg in messages %}
-	<script>
-		alert('{{ msg }}');
-	</script>
-	{% endfor %}
-	{% endif %}
 	<form id="emailEntry2" method="POST">
 		{% csrf_token  %}
 		<div>

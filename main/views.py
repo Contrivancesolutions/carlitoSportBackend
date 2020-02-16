@@ -21,7 +21,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('main:subscription')
+            return redirect('subscription')
     else:
         form = InscriptionForm().as_p()
     return render(request, 'main/inscription.html', {'form': form})
@@ -30,7 +30,7 @@ def register(request):
 @login_required
 def logout_request(request):
     logout(request)
-    return redirect('main:homepage')
+    return redirect('homepage')
 
 
 @user_passes_test(lambda user: user.is_anonymous, login_url='/')
@@ -43,7 +43,7 @@ def login_request(request):
             user = authenticate(username=email, password=password)
             if user:
                 login(request, user)
-                return redirect('main:homepage')
+                return redirect('homepage')
             else:
                 messages.error(request, 'Les donnés entrées ne correspondent à aucun client')
         else:
@@ -57,7 +57,7 @@ def subscription(request):
     if request.method == 'POST':
         abonnement = Abonnement(user=request.user)
         abonnement.save()
-        return redirect('main:homepage')
+        return redirect('homepage')
     else:
         return render(request, 'main/subscription.html')
 
@@ -72,7 +72,7 @@ def certification(request):
 
 def contact(request):
     if request.method == 'POST':
-        form = ContactForm(request, request.POST)
+        form = ContactForm(request.POST)
         if form.is_valid():
             first_name = form.cleaned_data.get('first_name')
             last_name = form.cleaned_data.get('last_name')
@@ -84,9 +84,8 @@ def contact(request):
                 form.cleaned_data.get('subject'), content,
                 form.cleaned_data.get('email'), ['azimgivron@gmail.com'],
             )
-        else:
-            messages.error(request, 'Les données entrées ne correspondent pas aux formats attendus')
-    form = ContactForm().as_p()
+    else:
+        form = ContactForm().as_p()
     return render(request, 'main/contact.html', {'form': form})
 
 
@@ -100,7 +99,7 @@ def news(request):
 def article(request, article_id: int, article_slug: str):
     article = get_object_or_404(Article, id=article_id)
     if article.slug != article_slug:
-        return redirect('main:article', *(article_id, article.slug), permanent=True)
+        return redirect('article', *(article_id, article.slug), permanent=True)
 
     return render(request, 'main/article.html', {
         'article': article

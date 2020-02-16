@@ -2,13 +2,6 @@
 {% block content %}
 <div class="loginFirstRight">
 	<h1>Connecte toi</h1>
-	{% if messages %}
-	{% for msg in messages %}
-	<script>
-		alert('{{ msg }}');
-	</script>
-	{% endfor %}
-	{% endif %}
 	<form id="emailEntry2" method="POST">
 		{% csrf_token  %}
 		<div>

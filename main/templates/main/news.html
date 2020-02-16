@@ -7,7 +7,7 @@
 	<div class="articles">
 	{% for article in articles %}
 		<article>
-			<a href="{% url 'main:article' article_id=article.id article_slug=article.slug %}">
+			<a href="{% url 'article' article_id=article.id article_slug=article.slug %}">
 				<h2>{{ article.title }}</h2>
 				<p>
 					<img src="{{article.image_url}}">

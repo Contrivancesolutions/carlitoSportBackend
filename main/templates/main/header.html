@@ -59,6 +59,13 @@
 	</div>
 	<center>
 		<div class="back">
+			{% if messages %}
+			<div class="msg-error">
+				{% for message in messsages %}
+					{{message}}
+				{% endfor %}
+			</div>
+			{% endif %}
 			{% block content %}
 			{% endblock  %}
 		</div>

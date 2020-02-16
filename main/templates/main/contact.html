@@ -3,6 +3,7 @@
 <div class="textBlock" id="contactBlock">
 	<h1>Contact</h1>
 	<form id="contact" method="POST">
+		{% csrf_token  %}
 		{{ form }}
 		<input type="submit" value="Envoyer le message">
 	</form>
