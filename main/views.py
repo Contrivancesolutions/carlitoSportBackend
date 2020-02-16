@@ -1,23 +1,18 @@
-from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth.views import LogoutView as AuthLogoutView
 from django.core.mail import send_mail
+from django.http import HttpResponsePermanentRedirect
 from django.shortcuts import redirect, render
-from django.shortcuts import get_object_or_404
-from django.template import RequestContext
-from django.utils.decorators import method_decorator
-from django.views.generic import View, ListView
+from django.views.generic import DetailView, ListView, TemplateView
 from django.views.generic.edit import FormView
 
 from main.forms import ContactForm, LoginForm, RegisterForm
-from main.models import Abonnement, Article, User
+from main.models import Abonnement, Article
 
 
-def homepage(request):
-    return render(request, template_name='main/index.html')
-
+class HomeView(TemplateView):
+    template_name = 'main/index.html'
 
 class RegisterView(UserPassesTestMixin, FormView):
     template_name = 'main/register.html'
@@ -36,13 +31,8 @@ class RegisterView(UserPassesTestMixin, FormView):
         return super().form_valid(form)
 
 
-class LogoutView(LoginRequiredMixin, AuthLogoutView):
-    template_name = 'main/logged_out.html'
-
-
 class LoginView(UserPassesTestMixin, FormView):
     template_name = 'main/login.html'
-    raise_exception = False
     form_class = LoginForm
     success_url = 'homepage'
 
@@ -62,22 +52,34 @@ class LoginView(UserPassesTestMixin, FormView):
         return super().form_invalid(form)
 
 
-@login_required
-def subscription(request):
-    if request.method == 'POST':
-        abonnement = Abonnement(user=request.user)
+class PasswordResetView(auth_views.PasswordResetView):
+    template_name = 'main/resetPassword.html'
+
+
+class PasswordResetDoneView(auth_views.PasswordResetDoneView):
+    template_name = 'main/resetPasswordDone.html'
+
+
+class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
+    template_name = 'main/confirmResetPassword.html'
+
+
+class PasswordResetCompleteView(auth_views.PasswordResetCompleteView):
+    template_name = 'main/resetPasswordComplete.html'
+
+
+class LogoutView(LoginRequiredMixin, auth_views.LogoutView):
+    template_name = 'main/logged_out.html'
+
+
+class SubscriptionView(LoginRequiredMixin, FormView):
+    template_name = 'main/subscription.html'
+    login_url = 'login'
+
+    def form_valid(self, form):
+        abonnement = Abonnement(user=self.request.user)
         abonnement.save()
-        return redirect('homepage')
-    else:
-        return render(request, 'main/subscription.html')
-
-
-def bonus(request):
-    return render(request, 'main/bonus.html')
-
-
-def certification(request):
-    return render(request, 'main/certification.html')
+        return super().form_valid(form)
 
 
 class ContactView(FormView):
@@ -104,19 +106,29 @@ class NewsView(ListView):
     queryset = Article.objects.all().order_by('-id')
 
 
-def article(request, article_id: int, article_slug: str):
-    article = get_object_or_404(Article, id=article_id)
-    if article.slug != article_slug:
-        return redirect('article', *(article_id, article.slug), permanent=True)
+class ArticleView(DetailView):
+    template_name = 'main/article.html'
+    model = Article
 
-    return render(request, 'main/article.html', {
-        'article': article
-    })
-
-
-def faq(request):
-    return render(request, 'main/FAQ.html')
+    def get(self, *args, **kwargs):
+        self.entity = self.get_object()
+        obj_url = self.entity.absolute_url
+        if self.request.path != obj_url:
+            return HttpResponsePermanentRedirect(obj_url)
+        return super().get(*args, **kwargs)
 
 
-def pronos(request):
-    return render(request, 'main/pronos.html')
+class BonusView(TemplateView):
+    template_name = 'main/bonus.html'
+
+
+class CertificationView(TemplateView):
+    template_name = 'main/certification.html'
+
+
+class FaqView(TemplateView):
+    template_name = 'main/FAQ.html'
+
+
+class PronosView(TemplateView):
+    template_name = 'main/pronos.html'

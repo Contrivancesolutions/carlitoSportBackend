@@ -13,43 +13,30 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls.static import static
 from django.conf import settings
-from django.contrib.auth import views as auth_views
+from django.conf.urls.static import static
 from django.urls import path
 from main import views
 
 urlpatterns = [
-    path('', views.homepage, name='homepage'),
+    path('', views.HomeView.as_view(), name='homepage'),
     path('inscription/', views.RegisterView.as_view(), name='register'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
     path('login/', views.LoginView.as_view(), name='login'),
-    path('subscription/', views.subscription, name='subscription'),
-    path(
-        'password-reset/',
-        auth_views.PasswordResetView.as_view(template_name='main/resetPassword.html'),
-        name='password_reset',
-    ),
-    path(
-        'password-reset/done/',
-        auth_views.PasswordResetDoneView.as_view(template_name='main/resetPasswordDone.html'),
-        name='password_reset_done',
-    ),
+    path('subscription/', views.SubscriptionView.as_view(), name='subscription'),
+    path('password-reset/', views.PasswordResetView.as_view(), name='password_reset'),
+    path('password-reset/done/', views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path(
         'password-reset-confirm/<uidb64>/<token>/',
-        auth_views.PasswordResetConfirmView.as_view(template_name='main/confirmResetPassword.html'),
+        views.PasswordResetConfirmView.as_view(),
         name='password_reset_confirm',
     ),
-    path(
-        'password-reset-complete/',
-        auth_views.PasswordResetCompleteView.as_view(template_name='main/resetPasswordComplete.html'),
-        name='password_reset_complete',
-    ),
-    path('bonus/', views.bonus, name='bonus'),
-    path('certification/', views.certification, name='certification'),
+    path('password-reset-complete/', views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    path('bonus/', views.BonusView.as_view(), name='bonus'),
+    path('certification/', views.CertificationView.as_view(), name='certification'),
     path('contact/', views.ContactView.as_view(), name='contact'),
-    path('faq/', views.faq, name='faq'),
-    path('pronos', views.pronos, name='pronos'),
+    path('faq/', views.FaqView.as_view(), name='faq'),
+    path('pronos', views.PronosView.as_view(), name='pronos'),
     path('news', views.NewsView.as_view(), name='news'),
-    path('article/<int:article_id>-<str:article_slug>', views.article, name='article'),
+    path('article/<int:pk>-<str:slug>', views.ArticleView.as_view(), name='article'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

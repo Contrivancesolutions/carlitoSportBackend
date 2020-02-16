@@ -25,5 +25,5 @@ pipenv run tests
 
 Run linter tests
 ```
-pipenv run lint
+pipenv run flake8 ./main/*.py
 ```

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from main.models import Abonnement, Article, User
 
+
 class UserAdmin(admin.ModelAdmin):
     search_fields = ['email']
 

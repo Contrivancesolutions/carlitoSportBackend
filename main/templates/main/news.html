@@ -5,17 +5,17 @@
 		News
 	</h1>
 	<div class="articles">
-	{% for article in object_list %}
+		{% for article in object_list %}
 		<article>
-			<a href="{% url 'article' article_id=article.id article_slug=article.slug %}">
+			<a href="{{ article.absolute_url }}">
 				<h2>{{ article.title }}</h2>
 				<p>
-					<img src="{{article.image_url}}">
-					{{article.preview}}
+					<img src="{{ article.image_url }}">
+					{{ article.preview }}
 				</p>
 			</a>
 		</article>
-	{% endfor %}
+		{% endfor %}
 	</div>
 </div>
 </div>

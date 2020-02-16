@@ -16,6 +16,5 @@ pillow = "*"
 python_version = "3.7"
 
 [scripts]
-lint = "flake8 --config=setup.cfg ./main/*.py"
 tests = "python3 manage.py test"
 server = "python3 manage.py runserver"

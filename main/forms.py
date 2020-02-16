@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from main.models import User
 
+
 class RegisterForm(forms.Form):
     email = forms.EmailField(
         label='Email', required=True, widget=forms.TextInput(
@@ -52,7 +53,7 @@ class RegisterForm(forms.Form):
         try:
             validate_email(email)
         except ValidationError:
-            self._errors['email']= ['Veuillez insérer un email valide']
+            self._errors['email'] = ['Veuillez insérer un email valide']
 
         if email != email_confirmation:
             self._errors['email'] = ['Les emails ne correspondent pas']

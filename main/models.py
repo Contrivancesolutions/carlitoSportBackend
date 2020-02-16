@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
+from django.shortcuts import reverse
 
 
 class UserManager(BaseUserManager):
@@ -32,6 +33,9 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
     email = models.EmailField(max_length=255, unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -39,8 +43,6 @@ class User(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(auto_now=True)
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
     objects = UserManager()
 
     def __str__(self):
@@ -57,6 +59,7 @@ class User(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+
 
 class AbonnementType(models.IntegerChoices):
     package1 = 1
@@ -83,8 +86,11 @@ class Article(models.Model):
 
     @property
     def image_url(self):
-        if self.image and hasattr(self.image, 'url'):
-            return self.image.url
+        return self.image.url
+
+    @property
+    def absolute_url(self):
+        return reverse('article', kwargs={'pk': self.id, 'slug': self.slug})
 
     def __str__(self):
         return self.title
