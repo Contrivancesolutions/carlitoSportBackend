@@ -1,78 +1,93 @@
-label {
-  color: white;
-}
-
-.helptext {
-  color: white;
-  font-size: 12px;
-  display: block;
-  margin-top: -2%;
-  margin-bottom: 5%;
-}
 
 .inscriptionField {
-  width: 90%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-bottom: 20px;
+
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    font-size: 14px;
+    font-family: "Open Sans", sans-serif;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    color: #222;
+    border: 0;
+    border-bottom: 2px solid #222;
+    height: 3em;
+    outline: none;
 }
 
-input[type=email] {
-  width: 90%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-bottom: 20px;
+.contact-submit{
+    display: inline-block;
+    background-color: #222;
+    padding: 12px;
+    border: 2px solid #222;
+    color: #fff;
+    text-transform: uppercase;
+    -webkit-transition: .5s background-color ease;
+    -o-transition: .5s background-color ease;
+    transition: .5s background-color ease;
+    font-size: 100%;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
 }
 
-input[type=submit] {
-  font-size: 16px;
-  width: 50%;
-  background-color: black;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  margin-top: 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.contact-submit:hover{
+    color: #222;
+    background-color: #ffffff;
+    -webkit-transition: .5s background-color ease;
+    -o-transition: .5s background-color ease;
+    transition: .5s background-color ease;  
+}
+.contact-submit:active{
+    color: #222;
+    background-color: #ffffff;
+    -webkit-transition: .5s background-color ease;
+    -o-transition: .5s background-color ease;
+    transition: .5s background-color ease;  
 }
 
-input[type=submit]:hover {
-  background-color: #ffcc80;
-  color: black;
+.alreadySign{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
 }
 
-.inscription {
-  margin-top: 30px; 
-  margin-left: 30px; 
-  margin-top: 165px; 
-  width: 40%; 
-  display: inline-block; 
-  vertical-align: top; 
-  background-color: black; 
-  color: white; 
-  border-radius: 4px; 
-  overflow: hidden;
-  padding: 40px 20px;
-  font-size: 26px;
-  font-weight: bold;
+.alreadySign a {
+    background-color: #222;
+    padding: 30px 46px;
+    border: 2px solid #222;
+    color: #fff;
+    text-transform: uppercase;
+    -webkit-transition: .5s background-color ease;
+    -o-transition: .5s background-color ease;
+    transition: .5s background-color ease;
+    font-size: 100%;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
 }
-
-.inscription:hover {
-  border: solid 4px #ffcc80;
-  padding: 36px 16px;
-  cursor: pointer;
+.alreadySign a:hover {
+    color: #222;
+    background-color: #ffffff;
+    -webkit-transition: .5s background-color ease;
+    -o-transition: .5s background-color ease;
+    transition: .5s background-color ease; 
 }
-
-#emailEntry2 div {
-  text-align: left;
-  margin-left: 10%;
+.alreadySign a:active {
+    color: #222;
+    background-color: #ffffff;
+    -webkit-transition: .5s background-color ease;
+    -o-transition: .5s background-color ease;
+    transition: .5s background-color ease; 
+}
+.sign{
+    padding: 0 12%;
 }

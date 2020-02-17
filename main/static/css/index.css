@@ -1,0 +1,217 @@
+body{
+  font-family: 'Raleway', sans-serif;
+}
+ html{
+   scroll-behavior: smooth;
+ }
+
+/***UPPERBAR***/
+
+
+.upperBar{
+    height: 50px; 
+    background-color: #e6ecff; 
+    display: flex;
+    right: 0;
+    justify-content: flex-end;
+    align-items: center;
+  
+  }
+
+  .loginBlock{
+    display: flex;
+    align-items: center;
+  }
+  
+  .block{
+    display: flex;
+    align-items: center;
+  }
+  
+  .loginButton {
+      width: auto;
+      margin-right: 10px; 
+      padding: 5px 35px; 
+      background-color: black; 
+      color: white; 
+      border-radius: 16px; 
+      border-style: none; 
+      font-size: 20px;
+    
+  }
+  .loginButton a{
+    color: white;
+  
+  }
+  
+  .loginButton:hover {
+    background-color: #ffffff;
+    color: black;
+    text-decoration: none;
+  }
+  .loginButton:active {
+    background-color: #ffffff;
+    color: black;
+    text-decoration: none;
+  }
+  
+  .countrySelector img{
+    margin-top: 3%;
+    cursor: pointer;
+    width: 48px;
+    height: 32px;
+  }
+  
+  /******/
+  
+  /***NAVBAR***/
+  .navbar{
+    
+    background-color: black;
+    padding: 12px;
+    margin-bottom: 0px;
+   
+  }
+  .navbar-brand{
+    font-size: 240%;
+    font-weight: bold;
+    margin-left: 2%;
+    font-family: Raleway, sans-serif;
+
+    
+  }
+  
+  
+
+  .navbar-toggler:hover{
+    outline: none;
+  } 
+ 
+  
+  
+  .nav-link{
+    font-size: 120%;
+    margin: 0 8px;
+    
+  }
+  
+  .nav-link:hover{
+    background-color: #ffffff;
+    border-radius: 5px;
+    color: black !important
+  }
+  .nav-link:active{
+    background-color: #ffffff;
+    border-radius: 5px;
+    color: black !important
+  }
+  
+  a{
+    cursor: pointer !important;
+  }
+  
+  .sticky{
+    position: fixed;
+    top: 0;
+    width: 100% ;
+    transition: 1s;
+    z-index: 5;
+  }
+  
+  .endSticky{
+    position: relative;
+    
+    width: 100% ;
+    transition: 1s;
+  
+  }
+
+  @media screen and (min-width: 1200px) {
+    /* .navbar-brand {
+      font-size: 250%;
+    } */
+  }
+  
+  @media screen and (max-width: 1200px) {
+    /* .navbar-brand {
+      font-size: 280%;
+    } */
+
+    .mediaText {
+      font-size: 150%;
+    }
+    .mediaText2 {
+      font-size: 128%;
+    }
+    .mediaText3{
+      font-size: 250%;
+    }
+  }
+
+
+
+  /*********/
+
+.actuSport{
+  text-align: center;
+  margin: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(29, 29, 29);
+}
+
+.bg-sport{
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-image: url('../img/bg-foot.jpg');
+  
+
+}
+.opac{
+  opacity: 1;
+  background-color: #ffffff38;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 99999;
+  opacity:1;
+  pointer-events: auto;
+}
+
+.popup:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup > div {
+  width: 600px;
+  font-size: 24px;
+  position: relative;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  background: #e6ecff;
+}
+
+.popup img {
+    margin: 10px;
+    padding: 5px;
+    width: 54px;
+    height: 36px;
+}
+
+.popup img:hover {
+  background: #c6d9ec;
+  border-radius: 4px;
+  cursor: pointer;
+}
+

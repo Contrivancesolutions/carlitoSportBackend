@@ -1,0 +1,136 @@
+
+.box{
+    display: flex;
+    justify-content: center;
+    height: 320px;
+    margin: 15px 0;
+  }
+  
+  iframe {
+    height: 100%;
+  }
+  
+  .textBlock{
+    
+    text-align: center;
+    font-size: 14px;
+    height: 100%;
+    background-color: #00001a;
+    color: white;
+    overflow: hidden;
+    padding: 10px 5px;
+    border-style: none;
+    border-radius: 15px;
+    width: 100%;
+  }
+  
+  #appear{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #parier {
+      border: none;
+      background-color: #00001a;
+      color: white;
+      padding-left: 0;
+      padding-right: 0;
+  }
+  
+  .textBlock table {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .textBlock td.title {
+      font-size: 16px;
+      border-bottom: 1px solid;
+      border-top: 1px solid;
+      padding: 25px;
+  }
+  
+  #firstLineLeft {
+    border-left: 1px solid;
+  }
+  
+  .textBlock button.package {
+    width: 90%;
+   
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 20px;
+    border-style: solid;
+    border-color: #ffffff;
+    background-color: #00001a;
+    color: white;
+  }
+  
+  .textBlock button.package:hover {
+      background-color: #ffffff;
+      color: #00001a;
+  }
+  .textBlock button.package:active {
+      background-color: #ffffff;
+      color: #00001a;
+  }
+  
+  .textBlock button.package p {
+      font-size: 16px;
+      margin-top: 5px;
+      padding: 0;
+  }
+  
+  #bonus {
+    border: none;
+    background-color: #00001a;
+    color: white;
+    padding-left: 0;
+    padding-right: 0;
+    width: 80%;
+  }
+  
+  #bonus h1 {
+    text-align: justify; 
+    padding-left: 4%;
+  }
+  
+  .toBonus:hover {
+      background-color: #ffffff;
+      color: #00001a;
+        cursor: pointer;
+  }
+  .toBonus:active {
+      background-color: #ffffff;
+      color: #00001a;
+        cursor: pointer;
+  }
+  
+  table, th, td {
+    
+    padding: 10px;
+  }
+  
+  #firstLineRight {
+    border-right: 1px solid;
+  }
+  
+  .hrefInscription {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    border-bottom: 1px solid white;
+    
+  }
+  
+  .hrefInscription:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: #a0a0a0;
+  }
+  
+  .hrefInscription:active {
+    text-decoration: none;
+    font-weight: bold;
+    color: #a0a0a0;
+  }

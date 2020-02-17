@@ -1,13 +1,30 @@
 .videoCertif {
-  width: 80%;
-  height: 60%;
-  border-radius: 4px;
-}
+    width: 100%;
+    border-radius: 4px;
+  }
 
-.portraitCertif img {
-  width: 18%;
-  display: inline-block;
-  margin-top: 50px;
-  margin: 30px;
-  border-radius: 50%;
-}
+  .portraitCertif {
+      display: flex;
+      justify-content: center;
+  }
+
+  .portraitCertif img {
+   
+    border-radius: 50%;
+  }
+
+  .bg-certif{
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../img/pronos.jpg');
+  }
+
+  .certifImg{
+   
+ 
+    margin-top: 50px;
+    margin: 30px;
+    
+    
+  }
