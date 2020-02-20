@@ -1,5 +1,8 @@
-.contact-form {
+input {
+    margin-bottom: 15%;
+}
 
+.contact-form {
     display: block;
     width: 100%;
     padding: 0.75rem;

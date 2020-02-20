@@ -1,22 +1,31 @@
 {% extends "layout/base.html" %}
 {% load i18n %}
 {% block content %}
-<div class="textBlock" id="bonus">
-	<h1>{% trans 'Belgique'%}</h1>
-	<table>
-		<tr>
-			<td class="title" id="firstLineRight">{% trans 'Bookmaker'%}</td>
-			<td class="title" id="firstLineRight">{% trans 'Bonus'%}</td>
-			<td class="title" id="firstLineRight">{% trans 'Conditions'%}</td>
-			<td class="title" id="firstLineLeft">{% trans 'Note'%}</td>
-		</tr>
-		<tr class="toBonus">
-			<td>Bingoal</td>
-			<td>100€</td>
-			<td>A remiser 3fois sur paris simple avec une cote supérieur à 2.0</td>
-			<td>5/10</td>
-		</tr>
-	</table>
+<div class="actuSport">
+    <h2>Bonus</h2>
+  </div>
+
+  <section class="bonusLink pt-4 pb-5 mb-5">
+    <div class="back container d-flex justify-content-center ">
+			<div class="textBlock" id="bonus">
+				<h1>{% trans 'Belgique'%}</h1>
+				<table>
+					<tr>
+						<td class="title" id="firstLineRight">{% trans 'Bookmaker'%}</td>
+						<td class="title" id="firstLineRight">{% trans 'Bonus'%}</td>
+						<td class="title" id="firstLineRight">{% trans 'Conditions'%}</td>
+						<td class="title" id="firstLineLeft">{% trans 'Note'%}</td>
+					</tr>
+					<tr class="toBonus">
+						<td>Bingoal</td>
+						<td>100€</td>
+						<td>{% trans 'A remiser 3fois sur paris simple avec une cote supérieur à 2.0' %}</td>
+						<td>5/10</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+  </section>
 </div>
 </div>
 {% endblock %}

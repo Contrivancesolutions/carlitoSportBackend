@@ -2,7 +2,6 @@
     background-color: #181818;
 }
 
-
 .article {
     
     color: white;
@@ -81,4 +80,18 @@
     background-position: center;
     background-size: cover;
     background-image: url('../img/stadium.jpg');
+}
+
+@media screen and (max-width: 960px) {
+  .img-fluid {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 60%;
+  }
+
+  .article-main-page h2{
+    text-align: center;
+    margin-top: 1%;
+  }
 }

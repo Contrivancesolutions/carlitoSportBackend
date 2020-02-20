@@ -11,17 +11,20 @@
   }
   
   .textBlock{
-    
     text-align: center;
     font-size: 14px;
     height: 100%;
     background-color: #00001a;
     color: white;
     overflow: hidden;
-    padding: 10px 5px;
+    padding: 20px;
     border-style: none;
     border-radius: 15px;
     width: 100%;
+  }
+
+  #prono {
+    padding: 20px 0px;
   }
   
   #appear{

@@ -10,9 +10,9 @@
 }
 
 .loveIt{
-    
     border-bottom: 1px solid #6b6b6b;
 }
+
 .loveImg{
    width: 50%;
    height: 50%;
@@ -40,5 +40,15 @@
     color:#181818 ;
     background-color: white;
     transition: 1s;
+}
+
+.w-75:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 960px) {
+    .w-75{
+        width: 60%!important;
+    }
 }
 

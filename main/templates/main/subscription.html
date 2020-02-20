@@ -6,14 +6,14 @@
 		<br>
 		{% trans "Il ne te reste plus qu'à choisir un <b>Abonnement<b>." %}
 	</p>
-	<form method="post">{% csrf_token %}
+	<form method="post">
+		{% csrf_token %}
 		{% for package in packages %}
 		<div class="package">
 			{{package.name}}
 			<p>
 				{{package.description}}
 			</p>
-
 			<input type="radio" name="package_id" value="{{package.id}}" />
 		</div>
 		{% endfor %}

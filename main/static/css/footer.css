@@ -1,5 +1,3 @@
-
-  
 .firstFooter{
     background-color: #262626;
 }
@@ -37,18 +35,15 @@
   padding: 10px 15px;
   color: #262626;
   border-radius: 10px;
+  -webkit-appearance: none;
+ 
 }
 
 .suivant:hover{
   color: white;
-  background-color: #262626;
-  
+  background-color: #262626; 
 }
-.suivant:active{
-  color: white;
-  background-color: #262626;
-  
-}
+
 
  .part1{
   display: flex;
@@ -148,6 +143,13 @@
   text-decoration: none;
   color: #262626;
 }
+
+@media screen and (max-width: 960px) {
+    #risk{
+        font-size: 70%;
+    }
+}
+
 @media screen and (min-width: 300px) {
   .secondFooter {
     transform: translateY(-4px);
@@ -163,4 +165,9 @@
   width: 25% !important;
   height: 120% !important;
   
+}
+
+.lad{
+  width: 35%;
+  height: 25%;
 }

@@ -156,3 +156,9 @@
             transform: translate(-50%, 100%);
     color: white;
   }
+
+  @media screen and (max-width: 960px) {
+  .social-icon {
+    width: 60px;
+    height: 60px;
+}

@@ -3,20 +3,22 @@
 <html>
 
 <head>
+	<meta name="ga-site-verification" content="Sf13C3uY9dJxeXl21j7-pnsC" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description"
 		content="{% trans 'Site d’actualité sportives faisant la promotion de bookmakers français et belge et proposant des pronostiques payants sous forme d’abonnements' %}" />
 	<meta name="author" content="Givron Azim" />
 	<title>{% trans 'CarlitoSport' %}</title>
 	{% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/board.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/belowArticles.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/socialMedia.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
-	<link href="https://fonts.googleapis.com/css?family=Martel&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static './css/index.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './css/board.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './css/belowArticles.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './css/news.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './css/socialMedia.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './css/footer.css' %}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
 	</script>
@@ -110,43 +112,44 @@
 		{% block content %}
 		{% endblock  %}
   <footer>
-    <div class="firstFooter py-4">
+    <div class="firstFooter">
       <div class="row no-gutters ">
-        
-        <div class="col-lg-4 col-xs-12 mt-3">
+
+        <div class="col-lg-4 col-sm-6 mt-3 container">
           <h3 class="text-center text-uppercase text-white ">{% trans 'Suis-nous' %}</h3>
 
           <ul class="my-5">
             <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <!-- <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> -->
             <li><a href="#"><i class="fa fa-snapchat" aria-hidden="true"></i></a></li>
             <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
             <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
           </ul>
 
         </div>
-        <div class="col-lg-4 col-xs-12 mt-3 px-3 part1 mb-5">
-          <h3 class="text-uppercase text-white">{% trans 'ne laisse passer aucune offre' %}</h3>
-          <p class="text-white mediaText">{% trans 'Tu veux profiter de bonus, promo et jeux concours?' %}</p>
-          <p class="text-white mediaText">{% trans 'Inscris toi sans plus attendre' %}</p>
+       
+        <div class="col-lg-4 col-sm-6 mt-3 text-center VIP ">
+			{% if user.is_anonymous %}
+				<a href="{% url 'register' %}">
+			{% elif user.is_subscibed %}
+				<a href="{% url 'pronos' %}">
+			{% else %}
+				<a href="">
+			{% endif %}
+			<h3 class="mb-5">{% trans 'Devenir'%} VIP</h3>
+      		</a>
+        </div>
+        <div class="col-lg-4 col-xs-12 mt-3 px-3 part1 text-center">
+          <h4 class="text-uppercase text-white">{% trans 'ne laisse passer aucune offre' %}</h4>
+          <p class="text-white mediaText">{% trans 'Tu eux profiter de bonus, promo et jeux concours?' %}</p>
+          <p class="text-white mediaText">{% trans 'Inscris-toi sans plus attendre' %}</p>
+
           <form id="emailEntry ">
             <input class="w-100 mx-auto pl-2 mb-3 " type="email" name="email" placeholder="Email">
             <input class="w-100 mx-auto pl-2 mb-3 " type="email" name="emailConf" placeholder="Confirmation Email">
-            <div class=" d-flex justify-content-center suivant">
-            	<input class="suivant" type="submit" value="Suivant">
+            <div class=" d-flex justify-content-center suivant"><input class="suivant" type="submit" value="Suivant">
             </div>
           </form>
-        </div>
-        <div class="col-lg-4 col-xs-12 my-3  VIP ">
-          {% if user.is_anonymous %}
-          <a href="{% url 'register' %}">
-          {% else %}
-          <a href="">
-          {% endif %}
-            <h3 class="mb-5">{% trans 'Devenir'%} VIP</h3>
-          </a>
-
-          <a class="lad img-fluid mt-5" href="https://sports.ladbrokes.be/fr" target="_blank"><img src="{% static ./img/ladbrokes.png %}" alt=""></a> 
         </div>
       </div>
     </div>
@@ -155,24 +158,29 @@
       <polygon class="p-curve" points="0,0 700,300 1400,0 1400,310 0,300 "></polygon>
     </svg>
     <div class="secondFooter">
+
+
+
       <div class="conrainer d-flex justify-content-around conditions" >
-        <p class="sous-conditions" style="text-align: left;">{% trans "JOUER COMPORTE DES RISQUES : ENDETTEMENT, ISOLEMENT, DÉPENDANCE.
+        <p class="sous-conditions" style="text-align: left;">
+        	{% trans "JOUER COMPORTE DES RISQUES : ENDETTEMENT, ISOLEMENT, DÉPENDANCE.
           POUR ÊTRE AIDÉ, APPELEZ LE 09 74 75 13 13 ( France) où 0800 35 777 ( Belgique)
-          Les jeux d'argent en ligne sont strictement interdits aux mineurs." %}</p>
+          Les jeux d'argent en ligne sont strictement interdits aux mineurs." %}
+      </p>
         <div class="sous-conditions" >
           <p>Copyright © 2020 CARLITOSPORT. {% trans 'Tous droits réservés' %}.</p>
         </div>
         <div class="sous-conditions" >
-          <p><a href="{% static /mentionsLegales %}">{% trans 'Mentions légales' %} - CGU/CGV</a></p>
-          <div><img src="{% static ./img/18.png %}" class=" mb-3 img18 " alt=""></div>
+		<p><a href="">{% trans 'Mentions légales' %} - CGU/CGV</a></p>
+        <div><img src="{% static './img/18.png' %}" class=" mb-3 img18 " alt=""></div>
           
         
         </div>
         <div class="sous-conditions" >
           {% trans 'Payements 100% sécurisés' %}
           <div>
-            <img src="./img/visa.png" style="width:64px;height:64px;margin-right: 10px;">
-            <img src="./img/mastercard.png" style="width:64px;height:64px;">
+            <img src="{% static './img/visa.png' %}" style="width:64px;height:64px;margin-right: 10px;">
+            <img src="{% static './img/mastercard.png' %}" style="width:64px;height:64px;">
           </div>
         </div>
       </div>
@@ -180,7 +188,6 @@
     </div>
 
     </div>
-  </footer>
 	
 </body>
 
