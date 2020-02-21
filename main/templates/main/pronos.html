@@ -2,12 +2,12 @@
 {% load i18n %}
 {% block content %}
 <div class="actuSport">
-    <h2>Pronos</h2>
+	<h2>{% trans 'Pronos' %}</h2>
 </div>
 
-  <section class="pronosLink mb-5">
-    <div class="opac  ">
-    <div class="back container d-flex justify-content-center ">
+<section class="pronosLink mb-5">
+	<div class="opac">
+		<div class="back container d-flex justify-content-center ">
 			<div class="textBlock my-5" id="bonus">
 				<h1 class="text-center">
 					{% trans 'PRONOS' %}
@@ -30,7 +30,7 @@
 					</tr>
 				</table>
 			</div>
-    </div>
-  </div>
-  </section>
+		</div>
+	</div>
+</section>
 {% endblock %}

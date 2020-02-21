@@ -2,133 +2,134 @@
 {% load i18n %}
 {% block content %}
 <div id="popupID" class="popup">
-	<div>
-		<h2>{% trans 'Je confirme avoir plus de 16ans' %}</h2>
-		{% load static %}
-		<a href=""><img src="{% static 'img/belgium.png' %}" id="country"></a>
-		<a href=""><img src="{% static 'img/france.png' %}" id="country"></a>
-		<a href=""><img src="{% static 'img/germany.png' %}" id="country"></a>
-	</div>
+  <div>
+    <h2>{% trans 'Je confirme avoir plus de 16ans' %}</h2>
+    {% load static %}
+    <a href=""><img src="{% static 'img/belgium.png' %}" id="country"></a>
+    <a href=""><img src="{% static 'img/france.png' %}" id="country"></a>
+    <a href=""><img src="{% static 'img/germany.png' %}" id="country"></a>
+  </div>
 </div>
 <div class="actuSport bg-white">
-    <h2>Acceuil</h2>
-  </div>
-  <section class="board ">
-    <div class="bg-sport">
-      <div class="fixed">
-        <div class="opac">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-12 col-lg-6 box align-items-center">
-                <div class="textBlock">
-                  <div class="text-center">
-                    <h1 id="logo ">CarlitoSport : </h1>
-                  </div>
-                  <h2 id="title py-3">Comment ça marche?</h2>
-                  <ol class="text-left text-uppercase pt-3 mediaText2">
-                    <li>{% trans "TU VAS DANS INSCRIPTION ET TU CHOISIS Là DE TON ABONNEMENT" %}</li>
-                    <li>{% trans "TU T'INSCRIS SUR LES SITES PARTENAIRES POUR PROFITER DES MEILLEURS BONUS (Jusqu'à 1000€
+  <h2>{% trans "Acceuil" %}</h2>
+</div>
+<section class="board ">
+  <div class="bg-sport">
+    <div class="fixed">
+      <div class="opac">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-lg-6 box align-items-center">
+              <div class="textBlock">
+                <div class="text-center">
+                  <h1 id="logo ">CarlitoSport : </h1>
+                </div>
+                <h2 id="title py-3">Comment ça marche?</h2>
+                <ol class="text-left text-uppercase pt-3 mediaText2">
+                  <li>{% trans "TU VAS DANS INSCRIPTION ET TU CHOISIS Là DE TON ABONNEMENT" %}</li>
+                  <li>{% trans "TU T'INSCRIS SUR LES SITES PARTENAIRES POUR PROFITER DES MEILLEURS BONUS (Jusqu'à 1000€
                       OFFERTS!!!)" %}
-                    </li>
-                    <li>{% trans "TU SUIS NOS PRONOS TOUS LES JOURS VIA NOS MéTHODES QUANTITATIVES ET QUALITATIVES" %}</li>
-                    <li>{% trans "TU COMMENCES à SOIT ON ENCAISSE SOIT ON TE REMBOURSE!!!" %}</li>
-                  </ol>
-                </div>
+                  </li>
+                  <li>{% trans "TU SUIS NOS PRONOS TOUS LES JOURS VIA NOS MéTHODES QUANTITATIVES ET QUALITATIVES" %}
+                  </li>
+                  <li>{% trans "TU COMMENCES à SOIT ON ENCAISSE SOIT ON TE REMBOURSE!!!" %}</li>
+                </ol>
               </div>
-              <div class="col-sm-12 col-lg-6 box">
-                <div class="textBlock" id="prono">
-                  <h2 class="py-3">
-                    {% trans "PRONOS" %}
+            </div>
+            <div class="col-sm-12 col-lg-6 box">
+              <div class="textBlock" id="prono">
+                <h2 class="py-3">
+                  {% trans "PRONOS" %}
+                </h2>
+                <table>
+                  <tr>
+                    <td class="title mediaText" id="firstLineRight">{% trans "Match" %}</td>
+                    <td class="title mediaText" id="firstLine">{% trans "Côte" %}</td>
+                    <td class="title mediaText" id="firstLineLeft">{% trans "Gain" %}</td>
+                  </tr>
+                  <tr class="mediaText">
+                    <td>Chealsea<br>vs<br>Manchester United</td>
+                    <td>Chelsea 2-0<br>4.0</td>
+                    <td>470€</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-lg-6 box">
+              <div id="appear" class="textBlock">
+                <div class="specialEntry">
+                  <h2 class="text-uppercase py-3">
+                    {% trans 'SATISFAITS OU REMBOURSE' %}
                   </h2>
-                  <table>
-                    <tr>
-                      <td class="title mediaText" id="firstLineRight">{% trans "Match" %}</td>
-                      <td class="title mediaText" id="firstLine">{% trans "Côte" %}</td>
-                      <td class="title mediaText" id="firstLineLeft">{% trans "Gain" %}</td>
-                    </tr>
-                    <tr class="mediaText">
-                      <td>Chealsea<br>vs<br>Manchester United</td>
-                      <td>Chelsea 2-0<br>4.0</td>
-                      <td>470€</td>
-                    </tr>
-                  </table>
-                </div>
-            </div>
-          </div>
-            <div class="row">
-              <div class="col-sm-12 col-lg-6 box">
-                <div id="appear" class="textBlock">
-                  <div class="specialEntry">
-                  	<h2 class="text-uppercase py-3">
-						{% trans 'SATISFAITS OU REMBOURSE' %}
-					</h2>
-					<p class="text-center mediaText">
-						{% trans 'SOIT ON ENCAISSE SOIT ON TE REMBOURSE!!!' %}
-					</p>
-					<p class="text-center mediaText">
-						{% trans 'Toutes les infos par email ou lors de ton' %}
-						{% if user.is_authenticated %}
-						{% trans 'Inscription' %}
-						{% else %}
-						<a href="{% url 'register' %}" class="hrefInscription">{% trans 'Inscription' %}</a>
-						{% endif %}
-					</p>
-                  </div>
+                  <p class="text-center mediaText">
+                    {% trans 'SOIT ON ENCAISSE SOIT ON TE REMBOURSE!!!' %}
+                  </p>
+                  <p class="text-center mediaText">
+                    {% trans 'Toutes les infos par email ou lors de ton' %}
+                    {% if user.is_authenticated %}
+                    {% trans 'Inscription' %}
+                    {% else %}
+                    <a href="{% url 'register' %}" class="hrefInscription">{% trans 'Inscription' %}</a>
+                    {% endif %}
+                  </p>
                 </div>
               </div>
-              <div class="col-sm-12 col-lg-6 box">
-                <div class="textBlock" id="parier">
-                  <h2 class="py-3">{% trans "MEILLEURS SITES POUR PARIER" %}</h2>
-                  <table>
-                    <tr>
-                      <td class="title mediaText" id="firstLineRight">{% trans "Bookmaker" %}</td>
-                      <td class="title mediaText" id="firstLineLeft">{% trans "Bonus" %}</td>
-                    </tr>
-                    <tr class="toBonus">
-                      <td class="mediaText"> bingoal </td>
-                      <td class="mediaText"> 200€ </td>
-                    </tr>
-                    <tr class="toBonus">
-                      <td class="mediaText"> ladbrokes </td>
-                      <td class="mediaText"> 50€ </td>
-                    </tr>
-                  </table>
-                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6 box">
+              <div class="textBlock" id="parier">
+                <h2 class="py-3">{% trans "MEILLEURS SITES POUR PARIER" %}</h2>
+                <table>
+                  <tr>
+                    <td class="title mediaText" id="firstLineRight">{% trans "Bookmaker" %}</td>
+                    <td class="title mediaText" id="firstLineLeft">{% trans "Bonus" %}</td>
+                  </tr>
+                  <tr class="toBonus">
+                    <td class="mediaText"> bingoal </td>
+                    <td class="mediaText"> 200€ </td>
+                  </tr>
+                  <tr class="toBonus">
+                    <td class="mediaText"> ladbrokes </td>
+                    <td class="mediaText"> 50€ </td>
+                  </tr>
+                </table>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="bg-white">
-      <div class="container ">
-        <div class="row ">
-          <div class="col-sm-12 col-lg-6 box">
-            <div class="textBlock" id="abonnements">
-              <h2 class="py-3">
-                {% trans "ABONNEMENTS" %}
-              </h2>
-              {% for package in packages %}
-                <a href="{% url 'subscription' %}">
-                  <button class="package">
-                    {{package.name}}
-                    <p>
-                      {{package.description}}
-                    </p>
-                  </button>
-              </a>
-              {% endfor %}
-            </div>
+  </div>
+  <div class="bg-white">
+    <div class="container ">
+      <div class="row ">
+        <div class="col-sm-12 col-lg-6 box">
+          <div class="textBlock" id="abonnements">
+            <h2 class="py-3">
+              {% trans "ABONNEMENTS" %}
+            </h2>
+            {% for package in packages %}
+            <a href="{% url 'subscription' %}">
+              <button class="package">
+                {{package.name}}
+                <p>
+                  {{package.description}}
+                </p>
+              </button>
+            </a>
+            {% endfor %}
           </div>
-          <div class="inscription py-5 col-lg-6 box" style="margin-top: 11%;">
-            <div>
-              <a class="text-uppercase" href="{% url 'register' %}">{% trans "Inscris-toi maintenant!" %}</a>
-            </div>
+        </div>
+        <div class="inscription py-5 col-lg-6 box" style="margin-top: 11%;">
+          <div>
+            <a class="text-uppercase" href="{% url 'register' %}">{% trans "Inscris-toi maintenant!" %}</a>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 <div class="bg-white">
   <svg id="svg-top-right" viewBox="0 0 200 30" preserveAspectRatio="none">
     <polygon points="200 30, 0 30, 200 0"></polygon>
@@ -172,61 +173,62 @@
     <polygon points="200 0, 0 30, 0 0"></polygon>
   </svg>
 </div>
-  <section class="belowArticles bg-white pb-5">
-    <div class="container">
-      <div class="stayConnected text-center">
-        <h2 class="pb-3 ">{% trans "Restez connecté à " %}<span>CarlitoSport</span></h2>
-        <div class="social-icons ">
-          <a class="social-icon social-icon--snapchat">
-            <i class="fa fa-snapchat"></i>
-            <div class="tooltip">Snapchat</div>
-          </a>
+<section class="belowArticles bg-white pb-5">
+  <div class="container">
+    <div class="stayConnected text-center">
+      <h2 class="pb-3 ">{% trans "Restez connecté à " %}<span>CarlitoSport</span></h2>
+      <div class="social-icons ">
+        <a class="social-icon social-icon--snapchat">
+          <i class="fa fa-snapchat"></i>
+          <div class="tooltip">Snapchat</div>
+        </a>
 
-          <a class="social-icon social-icon--twitter">
-            <i class="fa fa-twitter"></i>
-            <div class="tooltip">Twitter</div>
-          </a>
+        <a class="social-icon social-icon--twitter">
+          <i class="fa fa-twitter"></i>
+          <div class="tooltip">Twitter</div>
+        </a>
 
-          <a class="social-icon social-icon--instagram">
-            <i class="fa fa-instagram"></i>
-            <div class="tooltip">Instagram</div>
-          </a>
-          <a class="social-icon social-icon--youtube">
-            <i class="fa fa-youtube"></i>
-            <div class="tooltip">Youtube</div>
-          </a>
-          <a class="social-icon social-icon--facebook">
-            <i class="fa fa-facebook"></i>
-            <div class="tooltip">Facebook</div>
-          </a>
-        </div>
+        <a class="social-icon social-icon--instagram">
+          <i class="fa fa-instagram"></i>
+          <div class="tooltip">Instagram</div>
+        </a>
+        <a class="social-icon social-icon--youtube">
+          <i class="fa fa-youtube"></i>
+          <div class="tooltip">Youtube</div>
+        </a>
+        <a class="social-icon social-icon--facebook">
+          <i class="fa fa-facebook"></i>
+          <div class="tooltip">Facebook</div>
+        </a>
       </div>
-      <div class="loveIt py-5 my-5">
-        <div class="row ">
-          <div class="col-lg-6 pb-4 col-sm-12  d-flex justify-content-center loveImg" onclick="window.location.href = {};">
-            <img class="w-75" src="{% static 'img/skerk.jpg' %}" alt="">
-          </div>
-          <div class="col-lg-6  col-sm-12">
-            <h2 class="text-center pb-4">{% trans "Tu vas adore!" %}</h2>
-            <p class="mediaText">{% trans "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic voluptate saepe
+    </div>
+    <div class="loveIt py-5 my-5">
+      <div class="row ">
+        <div class="col-lg-6 pb-4 col-sm-12  d-flex justify-content-center loveImg"
+          onclick="window.location.href = {};">
+          <img class="w-75" src="{% static 'img/skerk.jpg' %}" alt="">
+        </div>
+        <div class="col-lg-6  col-sm-12">
+          <h2 class="text-center pb-4">{% trans "Tu vas adore!" %}</h2>
+          <p class="mediaText">{% trans "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic voluptate saepe
               consequatur corporis soluta natus possimus, sapiente fuga in et nulla modi? Explicabo quia ea expedita
               magnam, non accusamus velit?" %}</p>
-            <p class="mediaText">{% trans "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic voluptate saepe
+          <p class="mediaText">{% trans "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic voluptate saepe
               consequatur corporis soluta natus possimus, sapiente fuga in et nulla modi? Explicabo quia ea expedita
               magnam, non accusamus velit?" %}</p>
-            <p class="mediaText">{% trans Lorem "ipsum dolor sit amet consectetur adipisicing elit. Hic voluptate saepe
+          <p class="mediaText">{% trans Lorem "ipsum dolor sit amet consectetur adipisicing elit. Hic voluptate saepe
               consequatur corporis soluta natus possimus, sapiente fuga in et nulla modi? Explicabo quia ea expedita
               magnam, non accusamus velit?" %}</p>
-          </div>
         </div>
       </div>
-      <div class="inscription d-flex justify-content-center mt-5 py-5">
-        <div>
-          <a class="text-uppercase" href="{% url 'register' %}">{% trans "Inscris-toi maintenant!" %}</a>
-        </div>
+    </div>
+    <div class="inscription d-flex justify-content-center mt-5 py-5">
+      <div>
+        <a class="text-uppercase" href="{% url 'register' %}">{% trans "Inscris-toi maintenant!" %}</a>
       </div>
-
     </div>
 
-  </section>
+  </div>
+
+</section>
 {% endblock %}

@@ -1,57 +1,35 @@
 {% extends "layout/base.html" %}
 {% load i18n %}
 {% block content %}
-<div class="News">
-	
-	<div class="articles">
-		{% for article in object_list %}
-		<article>
-			<a href="{{ article.absolute_url }}">
-				<h2>{{ article.title }}</h2>
-				<p>
-					<img src="{{ article.image_url }}">
-					{{ article.preview }}
-				</p>
-			</a>
-		</article>
-		{% endfor %}
-	</div>
-</div>
-</div>
 <div class="actuSport">
-    <h2>Actualité sportive</h2>
-  </div>
-
-  <div class="newsbg py-5 mb-5">
-
-  
-  <section class="news py-3 px-5 container mb-5 ">
-
-
-    <div class="text-center mx-5 tilteNews mb-5 pb-3">
-      <h2 class="text-white">{% trans 'Actualité' %}</h2>
-    </div>
-    <div class="container">
-      <div class="row ">
-      	{% for article in object_list %}
-      	<!-- add <div class="row"> if articleNumber%2=0 -->
-        <div class="col-sm-12 col-lg-6 articleLink my-3 ">
-	          <a href="{{ article.absolute_url }}">
-	          <div class="row">
-	            <div class="col-lg-6 col-xs-12">
-	              <img class="img-fluid " src="{{ article.image_url }}" alt="">
-	            </div>
-	            <div class="col-lg-6 col-xs-12">
-	              <h2>{{ article.title }}</h2>
-	              <p class="mediaText">{{ article.preview }}</p>
-	            </div>
-	          </div>
-        	</a>
-        </div>
-        <!-- close </div> if articleNumber%2=0 -->
-        {% endfor %}
-      </div>
-    </div>
-  </section>
+	<h2>{% trans 'Actualité sportive' %}</h2>
+</div>
+<div class="newsbg py-5 mb-5">
+	<section class="news py-3 px-5 container mb-5 ">
+		<div class="text-center mx-5 tilteNews mb-5 pb-3">
+			<h2 class="text-white">{% trans 'Actualité' %}</h2>
+		</div>
+		<div class="container">
+			<div class="row ">
+				{% for article in object_list %}
+				<!-- add <div class="row"> if articleNumber%2=0 -->
+				<div class="col-sm-12 col-lg-6 articleLink my-3 ">
+					<a href="{{ article.absolute_url }}">
+						<div class="row">
+							<div class="col-lg-6 col-xs-12">
+								<img class="img-fluid " src="{{ article.image_url }}" alt="">
+							</div>
+							<div class="col-lg-6 col-xs-12">
+								<h2>{{ article.title }}</h2>
+								<p class="mediaText">{{ article.preview }}</p>
+							</div>
+						</div>
+					</a>
+				</div>
+				<!-- close </div> if articleNumber%2=0 -->
+				{% endfor %}
+			</div>
+		</div>
+	</section>
 </div>
 {% endblock %}
