@@ -3,118 +3,192 @@
 <html>
 
 <head>
+	<meta name="ga-site-verification" content="Sf13C3uY9dJxeXl21j7-pnsC" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description"
 		content="{% trans 'Site d’actualité sportives faisant la promotion de bookmakers français et belge et proposant des pronostiques payants sous forme d’abonnements' %}" />
 	<meta name="author" content="Givron Azim" />
 	<title>{% trans 'CarlitoSport' %}</title>
 	{% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/bonus.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/certification.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/inscription.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
-	<link href="https://fonts.googleapis.com/css?family=Martel&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+	<link rel="stylesheet" type="text/css" href="{% static './css/index.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './css/board.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './css/belowArticles.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './css/news.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './css/socialMedia.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './css/footer.css' %}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+	</script>
 	<script src="{% static 'js/jsFile.js' %}"></script>
 </head>
 
 <body>
-	<div class="upperBar">
-		<div class="countryBlock">
-			<div class="countrySelector">
-				<a href=""><img src="{% static 'img/belgium.png' %}" id="belgium" class="country"></a>
-				<a href=""><img src="{% static 'img/france.png' %}" id="france" class="country"></a>
-				<a href=""><img src="{% static 'img/germany.png' %}" id="germany" class="country"></a>
-			</div>
-		</div>
-		<div class="loginBlock">
-			{% if user.is_authenticated %}
-			<div style="font-size: 12px; margin-top: 10px; display: inline-block;">{{ user.email }}</div>
-			<a class="loginButton" href="{% url 'logout' %}">{% trans 'Se déconnecter' %}</a>
-			{% else %}
-			<a class="loginButton" href="{% url 'login' %}">{% trans "S'identifier" %}</a>
-			<a class="loginButton" href="{% url 'register' %}">{% trans "S'inscrire" %}</a>
-			{% endif %}
-		</div>
+	<div id="popupID" class="popup">
+	    <div>
+	        <h2>Je confirme avoir plus de 16ans</h2>
+	        <a href=""><img src="./img/belgium.png"></a>
+	        <a href=""><img src="./img/france.png"></a>
+	        <a href=""><img src="./img/germany.png"></a>
+	    </div>
 	</div>
-	<div class="navbar">
-		<div class="logo" onclick="window.location.href = '/';">{% trans 'CarlitoSport' %}</div>
-		<div class="navbar-right">
-			<a class="active" href="{% url 'homepage' %}">{% trans 'Acceuil' %}</a>
-			{% if user.is_anonymous %}
-			<a class="non-active" href="{% url 'register' %}">{% trans 'Inscription' %}</a>
-			{% endif %}
-			<a class="non-active" href="{% url 'bonus' %}">{% trans 'Bonus' %}</a>
-			{% if user.is_authenticated and user.is_subscribed %}
 
-			<a class="non-active" href="{% url 'pronos' %}">{% trans 'Pronos' %}</a>
-			{% endif %}
-			<a class="non-active" href="{% url 'certification' %}">{% trans 'Certification' %}</a>
-			<a class="non-active" href="{% url 'faq' %}">{% trans 'FAQ' %}</a>
-			<a class="non-active" href="#fb">{% trans 'Réseaux' %}</a>
-			<a class="non-active" href="{% url 'contact' %}">{% trans 'Contact' %}</a>
-			<a class="non-active" href="{% url 'news' %}">{% trans 'News' %}</a>
+	<div class="upperBar py-3">
+		<div class="d-flex mx-4">
+			<div class="countryBlock mr-3">
+				<div class="countrySelector">
+		  			<a href=""><img src="{% static 'img/belgium.png' %}" ></a>
+		  			<a href=""><img src="{% static 'img/france.png' %}"></a>
+		  			<a href=""><img src="{% static 'img/germany.png' %}"></a>
+				</div>
+			</div>
+			<div class="loginBlock ml-3">
+				{% if user.is_authenticated %}
+				<div style="font-size: 12px; margin-top: 10px; display: inline-block;">{{ user.email }}</div>
+				<a class="loginButton" href="{% url 'logout' %}">{% trans 'Se déconnecter' %}</a>
+				{% else %}
+				<a class="loginButton" href="{% url 'login' %}">{% trans "S'identifier" %}</a>
+				<a class="loginButton" href="{% url 'register' %}">{% trans "S'inscrire" %}</a>
+				{% endif %}
+			</div>
 		</div>
 	</div>
-	<center>
-		<div class="back">
-			{% if messages %}
-			<div class="msg-error">
-				{% for message in messsages %}
-				{{message}}
-				{% endfor %}
-			</div>
-			{% endif %}
-			{% block content %}
-			{% endblock  %}
-		</div>
-	</center>
-	<div class="preFooter">
-		{% if user.is_anonymous %}
-		<div class="mailNext">
-			<h1>{% trans 'NE LAISSEZ PASSER AUCUNES OFFRES!' %}</h1>
-			<p>{% trans 'Tu veux profiter de bonus, promo et jeux concours?' %}<br>
-				{% trans 'Inscris toi sans plus attendre' %}</p>
-			<form id="emailEntry">
-				<input type="email" name="email" placeholder="{% trans 'Email' %}"><br>
-				<input type="email" name="emailConf" placeholder="{% trans 'Confirmation Email' %}"><br>
-				<input type="submit" value="{% trans 'Suivant' %}">
-			</form>
+
+	</div>
+	<nav class="navbar navbar-expand-xl navbar-dark d-flex">
+	<a class="navbar-brand text-white mediaText3" href="{% url 'homepage' %}">{% trans 'CarlitoSport' %}</a>
+	<button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav"
+	  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	  <span class="navbar-toggler-icon  "></span>
+	</button>
+	<div class="collapse navbar-collapse justify-content-end  " id="navbarNav">
+	  <ul class="navbar-nav mediaText ">
+	    <li class="nav-item ">
+	      <a class="nav-link text-white " href="{% url 'homepage' %}">{% trans 'Acceuil' %}</a>
+	    </li>
+	    {% if user.is_anonymous %}
+	    <li class="nav-item">
+	      <a class="nav-link text-white" href="{% url 'register' %}">{% trans 'Inscription' %}</a>
+	    </li>
+	    {% endif %}
+	    <li class="nav-item">
+	      <a class="nav-link text-white" href="{% url 'bonus' %}">{% trans 'Bonus' %}</a>
+	    </li>
+	    {% if user.is_authenticated and user.is_subscribed %}
+	    <li class="nav-item">
+	      <a class="nav-link text-white " href="{% url 'pronos' %}">{% trans 'Pronos' %}</a>
+	    </li>
+	    {% endif %}
+	    <li class="nav-item">
+	      <a class="nav-link text-white " href="{% url 'certification' %}">{% trans 'Certification' %}</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link text-white " href="{% url 'faq' %}">{% trans 'FAQ' %}</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link text-white " href="{% url 'contact' %}">{% trans 'Contact' %}</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link text-white " href="{% url 'news' %}">{% trans 'News' %}</a>
+	    </li>
+	  </ul>
+	</div>
+	</nav>
+		{% if messages %}
+		<div class="msg-error">
+			{% for message in messsages %}
+			{{message}}
+			{% endfor %}
 		</div>
 		{% endif %}
-		<div class="socialNet">
-			<h1>{% trans 'Suivez nous!' %}</h1>
-			<center>
-				<div>
-					<img id="fb" src="{% static 'img/facebook.png' %}">
-				</div>
-				<div>
-					<img id="snp" src="{% static 'img/snapchat.png' %}">
-				</div>
-				<div>
-					<img id="insta" src="{% static 'img/instagram.png' %}">
-				</div>
-			</center>
-		</div>
-		<div class="multiRef">
-			<a href="{% url 'homepage' %}">{% trans 'Navigation' %}</a>
+		{% block content %}
+		{% endblock  %}
+  <footer>
+    <div class="firstFooter">
+      <div class="row no-gutters ">
+
+        <div class="col-lg-4 col-sm-6 mt-3 container">
+          <h3 class="text-center text-uppercase text-white ">{% trans 'Suis-nous' %}</h3>
+
+          <ul class="my-5">
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <!-- <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> -->
+            <li><a href="#"><i class="fa fa-snapchat" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+          </ul>
+
+        </div>
+       
+        <div class="col-lg-4 col-sm-6 mt-3 text-center VIP ">
 			{% if user.is_anonymous %}
-			<a href="{% url 'register' %}">{% trans 'Devenir VIP' %}</a>
+				<a href="{% url 'register' %}">
+			{% elif user.is_subscibed %}
+				<a href="{% url 'pronos' %}">
+			{% else %}
+				<a href="">
 			{% endif %}
-			<a href="{% url 'bonus' %}">{% trans 'Bonus' %}</a>
-			<a href="{% url 'contact' %}">{% trans 'Contact' %}</a>
-		</div>
-	</div>
-	<footer>
-		<div>{% trans 'Préventions' %}</div>
-		<div>{% trans 'conditions: blabla' %}<br>
-			{% trans 'blabla' %}</div>
-	</footer>
+			<h3 class="mb-5">{% trans 'Devenir'%} VIP</h3>
+      		</a>
+        </div>
+        <div class="col-lg-4 col-xs-12 mt-3 px-3 part1 text-center">
+          <h4 class="text-uppercase text-white">{% trans 'ne laisse passer aucune offre' %}</h4>
+          <p class="text-white mediaText">{% trans 'Tu eux profiter de bonus, promo et jeux concours?' %}</p>
+          <p class="text-white mediaText">{% trans 'Inscris-toi sans plus attendre' %}</p>
+
+          <form id="emailEntry ">
+            <input class="w-100 mx-auto pl-2 mb-3 " type="email" name="email" placeholder="Email">
+            <input class="w-100 mx-auto pl-2 mb-3 " type="email" name="emailConf" placeholder="Confirmation Email">
+            <div class=" d-flex justify-content-center suivant"><input class="suivant" type="submit" value="Suivant">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <svg id="home-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      viewBox="0 0 1400 300" preserveAspectRatio="none">
+      <polygon class="p-curve" points="0,0 700,300 1400,0 1400,310 0,300 "></polygon>
+    </svg>
+    <div class="secondFooter">
+
+
+
+      <div class="conrainer d-flex justify-content-around conditions" >
+        <p class="sous-conditions" style="text-align: left;">
+        	{% trans "JOUER COMPORTE DES RISQUES : ENDETTEMENT, ISOLEMENT, DÉPENDANCE.
+          POUR ÊTRE AIDÉ, APPELEZ LE 09 74 75 13 13 ( France) où 0800 35 777 ( Belgique)
+          Les jeux d'argent en ligne sont strictement interdits aux mineurs." %}
+      </p>
+        <div class="sous-conditions" >
+          <p>Copyright © 2020 CARLITOSPORT. {% trans 'Tous droits réservés' %}.</p>
+        </div>
+        <div class="sous-conditions" >
+		<p><a href="">{% trans 'Mentions légales' %} - CGU/CGV</a></p>
+        <div><img src="{% static './img/18.png' %}" class=" mb-3 img18 " alt=""></div>
+          
+        
+        </div>
+        <div class="sous-conditions" >
+          {% trans 'Payements 100% sécurisés' %}
+          <div>
+            <img src="{% static './img/visa.png' %}" style="width:64px;height:64px;margin-right: 10px;">
+            <img src="{% static './img/mastercard.png' %}" style="width:64px;height:64px;">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    </div>
+	
 </body>
 
 </html>

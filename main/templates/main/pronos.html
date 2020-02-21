@@ -1,27 +1,36 @@
 {% extends "layout/base.html" %}
 {% load i18n %}
 {% block content %}
-<div class="textBlock" id="bonus">
-	<h1>
-		{% tarns 'PRONOS' %}
-	</h1>
-	<table>
-		<tr>
-			<td class="title" id="firstLineRight">{% tarns 'Match' %}</td>
-			<td class="title" id="firstLine">{% tarns 'Côte' %}</td>
-			<td class="title" id="firstLineLeft">{% tarns 'Gain' %}</td>
-		</tr>
-		<tr>
-			<td>Real<br>vs<br>Barca</td>
-			<td>Real gagnant<br>2.3</td>
-			<td>200€</td>
-		</tr>
-		<tr>
-			<td>Chealsea<br>vs<br>Manchester United</td>
-			<td>Chelsea 2-0<br>4.0</td>
-			<td>470€</td>
-		</tr>
-	</table>
+<div class="actuSport">
+    <h2>Pronos</h2>
 </div>
-</div>
+
+  <section class="pronosLink mb-5">
+    <div class="opac  ">
+    <div class="back container d-flex justify-content-center ">
+			<div class="textBlock my-5" id="bonus">
+				<h1 class="text-center">
+					{% trans 'PRONOS' %}
+				</h1>
+				<table>
+					<tr>
+						<td class="title" id="firstLineRight">{% trans 'Match' %}</td>
+						<td class="title" id="firstLine">{% trans 'Côte' %}</td>
+						<td class="title" id="firstLineLeft">{% trans 'Gain' %}</td>
+					</tr>
+					<tr>
+						<td>Real<br>vs<br>Barca</td>
+						<td>Real gagnant<br>2.3</td>
+						<td>200€</td>
+					</tr>
+					<tr>
+						<td>Chealsea<br>vs<br>Manchester United</td>
+						<td>Chelsea 2-0<br>4.0</td>
+						<td>470€</td>
+					</tr>
+				</table>
+			</div>
+    </div>
+  </div>
+  </section>
 {% endblock %}

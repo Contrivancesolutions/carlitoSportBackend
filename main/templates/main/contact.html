@@ -1,14 +1,16 @@
 {% extends "layout/base.html" %}
 {% load i18n %}
 {% block content %}
-<div class="textBlock" id="contactBlock">
-	<h1>{% trans 'Contact' %}</h1>
-	<form id="contact" method="POST">
-		{% csrf_token  %}
+<div class="actuSport">
+    <h2>{%trans 'Nous contacter'%}</h2>
+  </div>
+  <section class="contact container d-flex justify-content-center my-5">
+    <form action="POST" class="form-cont">
+    	{% csrf_token  %}
 		{{ form }}
-		<input type="submit" value="{% trans 'Envoyer le message' %}">
-	</form>
-</div>
-<p class="proDemand">{%trans 'Demande professionelle? <br>Contacte nous via carlitosportprofessional@gmail.com' %}</p>
-</div>
+      	<div class="text-center">
+        	<button class="submit-cont"><i class="fa fa-paper-plane"></i></button>
+      	</div>
+    </form>
+  </section>
 {% endblock %}

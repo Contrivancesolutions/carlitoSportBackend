@@ -1,10 +1,49 @@
 {% extends "layout/base.html" %}
 {% load i18n %}
 {% block content %}
-<h1>{% trans 'Foire Aux Questions' %}</h1>
-<div style="text-align: justify; padding: 20px;">
-	<p class="titleFAQ" style="font-weight: bold; font-size: 20px;">Question1</p>
-	<p class="contentFAQ" style="font-size: 16px;">Answer1</p>
+<div class="actuSport">
+    <h2>FAQ</h2>
 </div>
-</div>
+
+  <section class="faq">
+
+    <div class="container">
+
+      <h2>{% trans Frequently Asked Questions %}</h2>
+    
+      <div class="accordion">
+        <div class="accordion-item">
+          <a>{% trans Why is the moon sometimes out during the day? %}</a>
+          <div class="content">
+            <p>{% trans Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti. %}</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <a>{% trans Why is the sky blue? %}</a>
+          <div class="content">
+            <p>{% trans Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti. %}</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <a>{% trans Will we ever discover aliens? %}</a>
+          <div class="content">
+            <p>{% trans Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti. %}</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <a>{% trans How much does the Earth weigh? %}</a>
+          <div class="content">
+            <p>{% trans Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti. %}</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <a>{% trans How do airplanes stay up? %}</a>
+          <div class="content">
+            <p>{% trans Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti. %}</p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
 {% endblock %}

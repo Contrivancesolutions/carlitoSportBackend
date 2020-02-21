@@ -2,17 +2,31 @@
 {% load i18n %}
 {% block content %}
 
-<div class="loginFirstLeft">
-	<a href="{% url 'login' %}"><button>{% trans 'Déjà un compte? Connecte toi' %}</button></a>
-</div>
-<div class="loginFirstRight">
-	<h1>{% trans 'CREER UN COMPTE EN 10SEC' %}</h1>
-	<form id="emailEntry2" method="POST">
-		{% csrf_token  %}
-		<div>
-			{{ form }}
-		</div>
-		<input type="submit" value='{% trans "S'inscrire" %}'><br>
-	</form>
-</div>
+<div class="actuSport">
+    <h2>{% trans 'Inscription' %}</h2>
+  </div>
+
+
+  <section class="inscription ">
+    <div class=" my-5 py-5">
+      <div class="row ">
+	      <div class="col-md-6 col-sm-12  py-3 alreadySign">
+	          <h3 class="my-3" >{% trans 'Déja inscris ?' %}</h3>
+	          <a  class="my-3" href="{% url 'login' %}">{% trans 'Connecte-toi' %}</a>
+	      </div>
+	    
+	      <div class="col-md-6 col-sm-12 sign py-3 ">
+	        <h2 class="text-center">{% trans "S'incrire" %}</h2>
+	        <form class="mt-5" action="POST">
+	        	{% csrf_token  %}
+				{{ form }}
+	          <div class="text-center">
+	            <button class="contact-submit">{% trans "S'inscrire" %}</button>
+	          </div>
+	        </form>
+
+	      </div>
+    	</div>
+    </div>
+  </section>
 {% endblock %}
