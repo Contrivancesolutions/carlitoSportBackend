@@ -1,14 +1,19 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.core.mail import send_mail
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage, send_mail
 from django.http import HttpResponsePermanentRedirect
 from django.shortcuts import get_object_or_404, redirect, render
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.views.generic import DetailView, ListView, TemplateView, View
 from django.views.generic.edit import CreateView, FormView
 
 from main.forms import ContactForm, LoginForm, RegisterForm
-from main.models import Article, Package, Subscription
+from main.models import Article, Package, Subscription, User
+from main.tokens import account_activation_token
 
 
 class HomeView(View):
@@ -16,6 +21,23 @@ class HomeView(View):
         articles = Article.objects.all().order_by('-id')[:3]
         context = {'packages': Package.objects.all(), 'articles': articles}
         return render(request, 'main/index.html', context)
+
+
+class ActivateAccountView(View):
+    def get(self, request, uid64, token):
+        uid = force_bytes(urlsafe_base64_decode(uid64))
+        try:
+            user = User.objects.get(id=uid)
+        except Exception:
+            user = None
+
+        if user and account_activation_token.check_token(user, token):
+            user.is_active = True
+            user.save()
+            login(request, user)
+
+        # TODO: handle the case when the token is wrong, display some kind of 404 error page?
+        return redirect('homepage')
 
 
 class RegisterView(UserPassesTestMixin, FormView):
@@ -31,7 +53,19 @@ class RegisterView(UserPassesTestMixin, FormView):
 
     def form_valid(self, form):
         user = form.save()
-        login(self.request, user)
+
+        message = render_to_string('mails/activate_account.html', {
+            'user': user,
+            'domain': get_current_site(self.request).domaion,
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+            'token': account_activation_token.make_token(user),
+        })
+
+        email = EmailMessage('Activate Your Account', message, to=[user.email])
+        email.send()
+
+        # Don't log in automatically anymore, the user needs to validate
+        # their account first
         return super().form_valid(form)
 
 

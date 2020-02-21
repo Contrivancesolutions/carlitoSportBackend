@@ -15,7 +15,7 @@ class UserManager(BaseUserManager):
         user_obj = self.model(email=self.normalize_email(email))
         user_obj.set_password(password)
 
-        user_obj.is_active = kwargs.get('active', True)
+        user_obj.is_active = kwargs.get('active', False)
         user_obj.is_staff = kwargs.get('staff', False)
         user_obj.is_admin = kwargs.get('admin', False)
         user_obj.is_superuser = kwargs.get('superuser', False)
@@ -39,7 +39,7 @@ class User(AbstractBaseUser):
     REQUIRED_FIELDS = []
 
     email = models.EmailField(max_length=255, unique=True)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
