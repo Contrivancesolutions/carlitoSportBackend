@@ -4,7 +4,6 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.utils.translation import gettext as _
 from main.models import User
-from django.utils.safestring import mark_safe
 
 class RegisterForm(forms.Form):
     email = forms.EmailField(
