@@ -6,12 +6,13 @@ from django.utils.translation import gettext as _
 from main.models import User
 
 class RegisterForm(forms.Form):
+
     email = forms.EmailField(
         label=_('Email'), required=True, widget=forms.TextInput(
             attrs={
                 'type': 'email',
                 'placeholder': _('Email'),
-                'class': 'inscriptionField',
+                'class': _('inscriptionField'),
             },
         ))
     email_confirmation = forms.EmailField(
@@ -19,7 +20,7 @@ class RegisterForm(forms.Form):
             attrs={
                 'type': 'email',
                 'placeholder': _("Confirmation de l'email"),
-                'class': 'inscriptionField',
+                'class': _('inscriptionField'),
             },
         ))
     password = forms.CharField(
@@ -29,7 +30,7 @@ class RegisterForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'placeholder': _('Mot de passe'),
-                'class': 'inscriptionField',
+                'class': _('inscriptionField'),
             },
         ))
     password_confirmation = forms.CharField(
@@ -38,7 +39,7 @@ class RegisterForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'placeholder': _('Confirmation du mot de passe'),
-                'class': 'inscriptionField',
+                'class': _('inscriptionField'),
             },
         ))
 
@@ -68,6 +69,7 @@ class RegisterForm(forms.Form):
 
 
 class ContactForm(forms.Form):
+
     last_name = forms.CharField(
         max_length=255, label=_('Nom'), widget=forms.TextInput(
             attrs={
@@ -116,12 +118,13 @@ class ContactForm(forms.Form):
 
 
 class LoginForm(AuthenticationForm):
+    
     username = forms.EmailField(
         label=_('Email'), required=True, widget=forms.TextInput(
             attrs={
                 'type': 'email',
                 'placeholder': _('Email'),
-                'class': 'inscriptionField',
+                'class': _('inscriptionField'),
             },
         ))
     password = forms.CharField(
@@ -129,6 +132,6 @@ class LoginForm(AuthenticationForm):
         widget=forms.PasswordInput(
             attrs={
                 'placeholder': _('Mot de passe'),
-                'class': 'inscriptionField',
+                'class': _('inscriptionField'),
             },
         ))
