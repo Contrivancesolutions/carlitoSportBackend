@@ -5,8 +5,8 @@ from django.core.validators import validate_email
 from django.utils.translation import gettext as _
 from main.models import User
 
-class RegisterForm(forms.Form):
 
+class RegisterForm(forms.Form):
     email = forms.EmailField(
         label=_('Email'), required=True, widget=forms.TextInput(
             attrs={
@@ -64,12 +64,12 @@ class RegisterForm(forms.Form):
             self._errors['email'] = [_('Cet email est déjà utilisé')]
         return self.cleaned_data
 
+
     def save(self, commit=True):
         return User.objects.create_user(self.cleaned_data['email'], password=self.cleaned_data['password'])
 
 
 class ContactForm(forms.Form):
-
     last_name = forms.CharField(
         max_length=255, label=_('Nom'), widget=forms.TextInput(
             attrs={
@@ -118,7 +118,6 @@ class ContactForm(forms.Form):
 
 
 class LoginForm(AuthenticationForm):
-    
     username = forms.EmailField(
         label=_('Email'), required=True, widget=forms.TextInput(
             attrs={
