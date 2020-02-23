@@ -64,7 +64,6 @@ class RegisterForm(forms.Form):
             self._errors['email'] = [_('Cet email est déjà utilisé')]
         return self.cleaned_data
 
-
     def save(self, commit=True):
         return User.objects.create_user(self.cleaned_data['email'], password=self.cleaned_data['password'])
 
