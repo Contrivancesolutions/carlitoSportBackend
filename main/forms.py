@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.utils.translation import gettext as _
 from main.models import User
-
+from django.utils.safestring import mark_safe
 
 class RegisterForm(forms.Form):
     email = forms.EmailField(
@@ -73,12 +73,14 @@ class ContactForm(forms.Form):
         max_length=255, label=_('Nom'), widget=forms.TextInput(
             attrs={
                 'placeholder': _('Nom'),
+                'class': _('contact-form'),
             },
         ))
     first_name = forms.CharField(
         max_length=255, label=_('Prénom'), widget=forms.TextInput(
             attrs={
                 'placeholder': _('Prénom'),
+                'class': _('contact-form'),
             },
         ))
     email = forms.EmailField(
@@ -86,18 +88,21 @@ class ContactForm(forms.Form):
             attrs={
                 'type': 'email',
                 'placeholder': _('Email'),
+                'class': _('contact-form'),
             },
         ))
     subject = forms.CharField(
         max_length=255, label=_('Objet'), widget=forms.TextInput(
             attrs={
                 'placeholder': _('Objet'),
+                'class': _('contact-form'),
             },
         ))
     message = forms.CharField(
         label=_('Entrez votre message'), widget=forms.Textarea(
             attrs={
                 'placeholder': _('Ecrivez votre message'),
+                'class': _('contact-form'),
             },
         ))
 
@@ -122,7 +127,6 @@ class LoginForm(AuthenticationForm):
         ))
     password = forms.CharField(
         min_length=6, max_length=32, label=_('Mot de passe'),
-        help_text=_('Le mot de passe doit contenir entre 6 et 32 caractères'),
         widget=forms.PasswordInput(
             attrs={
                 'placeholder': _('Mot de passe'),

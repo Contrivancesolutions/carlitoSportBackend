@@ -2,7 +2,7 @@ input {
     margin-bottom: 15%;
 }
 
-input[name=password1] {
+input[name=password] {
     margin-bottom: 0;
 }
 
@@ -10,6 +10,23 @@ input[name=password1] {
     display: inline-block;
     margin-bottom: 15%;
 }
+
+.resetPwd {
+    margin-top: 20px; 
+    text-align: center;
+}
+
+.resetPwd a {
+    color: black;
+    background: none; 
+    font-weight: normal; 
+    border: none;
+} 
+
+.resetPwd a:hover {
+    text-decoration: underline;
+    background: none;
+} 
 
 .inscriptionField {
     display: block;
@@ -74,6 +91,7 @@ input[name=password1] {
     background-color: #222;
     padding: 30px 46px;
     border: 2px solid #222;
+    border-radius: 0;
     color: #fff;
     text-transform: uppercase;
     -webkit-transition: .5s background-color ease;
@@ -85,6 +103,7 @@ input[name=password1] {
     outline: none;
     text-decoration: none;
 }
+
 .alreadySign a:hover {
     color: #222;
     background-color: #ffffff;
@@ -92,6 +111,7 @@ input[name=password1] {
     -o-transition: .5s background-color ease;
     transition: .5s background-color ease; 
 }
+
 .alreadySign a:active {
     color: #222;
     background-color: #ffffff;

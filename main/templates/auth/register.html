@@ -11,15 +11,24 @@
     <div class=" my-5 py-5">
       <div class="row ">
 	      <div class="col-md-6 col-sm-12  py-3 alreadySign">
-	          <h3 class="my-3" >{% trans 'Déja inscris ?' %}</h3>
+	          <h3 class="my-3" >{% trans 'Utilisateur' %}</h3>
+	          {% load static %}
+	          <img src="{% static 'img/signin.png' %}" style="margin-top: 5%; margin-bottom: 10%; width: 25%;">
 	          <a  class="my-3" href="{% url 'login' %}">{% trans 'Connecte-toi' %}</a>
 	      </div>
 	    
 	      <div class="col-md-6 col-sm-12 sign py-3 ">
-	        <h2 class="text-center">{% trans "S'incrire" %}</h2>
+	        <h2 class="text-center" style="margin-top: 1rem;">{% trans "S'incrire" %}</h2>
 	        <form class="mt-5" action="POST">
 	        	{% csrf_token  %}
-				{{ form.as_p }}
+	        	{% for field in form %}
+					<p>
+						{{ field.label_tag }} {{ field }}
+					</p>
+					{% if field.help_text %}
+			        <span class="helptext text-danger font-italic">*{{ field.help_text|safe }}</span>
+			        {% endif %}
+			    {%endfor%}
 	          <div class="text-center">
 	            <button class="contact-submit">{% trans "S'inscrire" %}</button>
 	          </div>

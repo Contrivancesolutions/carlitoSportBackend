@@ -1,6 +1,7 @@
 {% extends "layout/base.html" %}
 {% block content %}
 {% load i18n %}
+
   <div class="actuSport">
     <h2>Connexion</h2>
   </div>
@@ -13,11 +14,12 @@
         <h2 class="text-center">Se connecter</h2>
         <form class="mt-5" action="POST">
         	{% csrf_token  %}
-          	{{ form }}
+          	{{ form.as_p }}
           	<div class="text-center">
             	<button class="contact-submit">Se connecter</button>
           	</div>
         </form>
+        <div class="resetPwd">
         <a href="{% url 'password_reset' %}">{% trans 'Mot de passe oublié?' %}</a>
       </div>
     </div>
