@@ -10,6 +10,9 @@
     height: 100%;
   }
   
+  .board .bg-white{
+    transform: translateY(2px)
+  }
   .textBlock{
     text-align: center;
     font-size: 14px;

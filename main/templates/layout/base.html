@@ -10,34 +10,22 @@
 	<meta name="author" content="Givron Azim" />
 	<title>{% trans 'CarlitoSport' %}</title>
 	{% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static './css/index.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static './css/board.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static './css/belowArticles.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static './css/news.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static './css/socialMedia.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static './css/footer.css' %}">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-		</script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-		</script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-		</script>
-	<script src="{% static 'js/jsFile.js' %}"></script>
-</head>
-
+	<link rel="stylesheet" type="text/css" href="{% static './css/index.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './css/board.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './css/news.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './css/belowArticles.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './css/socialMedia.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './css/footer.css' %}">
 <body>
 	<div id="popupID" class="popup">
 		<div>
 			<h2>Je confirme avoir plus de 16ans</h2>
-			<a href=""><img src="./img/belgium.png"></a>
-			<a href=""><img src="./img/france.png"></a>
-			<a href=""><img src="./img/germany.png"></a>
+			<a href=""><img src="{% static 'img/belgium.png' %}"></a>
+			<a href=""><img src="{% static 'img/france.png' %}"></a>
+			<a href=""><img src="{% static 'img/germany.png' %}"></a>
 		</div>
 	</div>
 
@@ -61,17 +49,15 @@
 			</div>
 		</div>
 	</div>
-
-	</div>
 	<nav class="navbar navbar-expand-xl navbar-dark d-flex">
-		<a class="navbar-brand text-white mediaText3" href="{% url 'homepage' %}">{% trans 'CarlitoSport' %}</a>
-		<button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav"
-			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon  "></span>
-		</button>
-		<div class="collapse navbar-collapse justify-content-end  " id="navbarNav">
-			<ul class="navbar-nav mediaText ">
-				<li class="nav-item ">
+	    <a class="navbar-brand text-white mediaText3" href="{% url 'homepage' %}">CarlitoSport</a>
+	    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav"
+	      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon  "></span>
+	    </button>
+	    <div class="collapse navbar-collapse justify-content-end  " id="navbarNav">
+	      <ul class="navbar-nav mediaText ">
+	        	<li class="nav-item ">
 					<a class="nav-link text-white " href="{% url 'homepage' %}">{% trans 'Acceuil' %}</a>
 				</li>
 				{% if user.is_anonymous %}
@@ -99,9 +85,9 @@
 				<li class="nav-item">
 					<a class="nav-link text-white " href="{% url 'news' %}">{% trans 'News' %}</a>
 				</li>
-			</ul>
-		</div>
-	</nav>
+	      </ul>
+	    </div>
+  	</nav>
 	{% if messages %}
 	<div class="msg-error">
 		{% for message in messsages %}
@@ -131,13 +117,13 @@
 				<div class="col-lg-4 col-sm-6 mt-3 text-center VIP ">
 					{% if user.is_anonymous %}
 					<a href="{% url 'register' %}">
-						{% elif user.is_subscibed %}
-						<a href="{% url 'pronos' %}">
-							{% else %}
-							<a href="">
-								{% endif %}
-								<h3 class="mb-5">{% trans 'Devenir'%} VIP</h3>
-							</a>
+					{% elif user.is_subscibed %}
+					<a href="{% url 'pronos' %}">
+						{% else %}
+					<a href="">
+						{% endif %}
+						<h3 class="mb-5">{% trans 'Devenir'%} VIP</h3>
+					</a>
 				</div>
 				<div class="col-lg-4 col-xs-12 mt-3 px-3 part1 text-center">
 					<h4 class="text-uppercase text-white">{% trans 'ne laisse passer aucune offre' %}</h4>
@@ -146,11 +132,10 @@
 
 					<form id="emailEntry ">
 						<input class="w-100 mx-auto pl-2 mb-3 " type="email" name="email" placeholder="Email">
-						<input class="w-100 mx-auto pl-2 mb-3 " type="email" name="emailConf"
-							placeholder="Confirmation Email">
-						<div class=" d-flex justify-content-center suivant"><input class="suivant" type="submit"
-								value="Suivant">
-						</div>
+			            <input class="w-100 mx-auto pl-2 mb-3 " type="email" name="emailConf" placeholder="Confirmation Email">
+			            <div class="d-flex justify-content-center">
+			              <button class="suivant" >Suivant</button>
+			            </div>
 					</form>
 				</div>
 			</div>
@@ -187,7 +172,21 @@
 		</div>
 
 		</div>
-
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
+  </script>
+	<script src="{% static 'js/script.js' %}">
+	</script>
+</head>
+<script type="text/javascript"></script>
 
 </html>

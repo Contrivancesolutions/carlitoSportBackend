@@ -33,15 +33,18 @@
 
 .suivant{
   padding: 10px 15px;
-  color: #262626;
+  border-style: solid;
   border-radius: 10px;
+  border-width: 2px;
   -webkit-appearance: none;
- 
+  color: white;
+  background-color: #262626; 
+  margin-bottom: 10px;
 }
 
 .suivant:hover{
-  color: white;
-  background-color: #262626; 
+  color: #262626;
+  background-color: white; 
 }
 
 

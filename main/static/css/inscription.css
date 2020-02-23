@@ -2,6 +2,15 @@ input {
     margin-bottom: 15%;
 }
 
+input[name=password1] {
+    margin-bottom: 0;
+}
+
+.helptext {
+    display: inline-block;
+    margin-bottom: 15%;
+}
+
 .inscriptionField {
     display: block;
     width: 100%;

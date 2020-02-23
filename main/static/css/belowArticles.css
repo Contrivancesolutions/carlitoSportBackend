@@ -1,3 +1,7 @@
+.belowArticles{
+    transform: translateY(-2px)
+}
+
 .stayConnected h2{
     border-bottom: 1px solid #6b6b6b;
 }
@@ -46,7 +50,7 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 992px) {
     .w-75{
         width: 60%!important;
     }

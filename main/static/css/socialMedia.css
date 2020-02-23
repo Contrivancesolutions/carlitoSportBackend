@@ -157,7 +157,7 @@
     color: white;
   }
 
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 992px) {
   .social-icon {
     width: 60px;
     height: 60px;

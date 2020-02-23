@@ -67,7 +67,6 @@ body{
   
   /***NAVBAR***/
   .navbar{
-    
     background-color: black;
     padding: 12px;
     margin-bottom: 0px;
@@ -78,8 +77,6 @@ body{
     font-weight: bold;
     margin-left: 2%;
     font-family: Raleway, sans-serif;
-
-    
   }
   
 
@@ -159,11 +156,6 @@ body{
   border-bottom: 1px solid rgb(29, 29, 29);
 }
 
-.bg-sport{ 
-  
-}
-
-
 
 
 .fixed:before {
@@ -182,6 +174,7 @@ body{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+   background-position: center;
 }
 
 .fixed{

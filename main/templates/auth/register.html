@@ -19,7 +19,7 @@
 	        <h2 class="text-center">{% trans "S'incrire" %}</h2>
 	        <form class="mt-5" action="POST">
 	        	{% csrf_token  %}
-				{{ form }}
+				{{ form.as_p }}
 	          <div class="text-center">
 	            <button class="contact-submit">{% trans "S'inscrire" %}</button>
 	          </div>
