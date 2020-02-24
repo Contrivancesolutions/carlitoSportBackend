@@ -255,7 +255,7 @@ msgstr ""
 
 #: main/templates/main/index.html:6
 msgid "Je confirme avoir plus de 16ans"
-msgstr ""
+msgstr "I confirm i'm old"
 
 #: main/templates/main/index.html:17
 msgid "SATISFAITS OU REMBOURSE"

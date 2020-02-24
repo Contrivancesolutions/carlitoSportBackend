@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -6,6 +7,7 @@ from django.core.mail import EmailMessage, send_mail
 from django.http import HttpResponsePermanentRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
+from django.utils import translation
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.views.generic import DetailView, ListView, TemplateView, View
@@ -21,6 +23,14 @@ class HomeView(View):
         articles = Article.objects.all().order_by('-id')[:3]
         context = {'packages': Package.objects.all(), 'articles': articles}
         return render(request, 'main/index.html', context)
+
+class LangView(View):
+
+    def get(self, request, lang):
+        if lang in settings.AVAILABLE_LANGUAGES:
+            translation.activate(lang)
+            request.session[translation.LANGUAGE_SESSION_KEY] = lang
+        return redirect('homepage')
 
 
 class ActivateAccountView(View):

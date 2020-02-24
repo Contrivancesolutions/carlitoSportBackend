@@ -32,9 +32,9 @@
 	<div id="popupID" class="popup">
 		<div>
 			<h2>Je confirme avoir plus de 16ans</h2>
-			<a href=""><img src="{% static 'img/belgium.png' %}"></a>
-			<a href=""><img src="{% static 'img/france.png' %}"></a>
-			<a href=""><img src="{% static 'img/germany.png' %}"></a>
+			<a href="{% url 'i18n' lang='nl' %}"><img src="{% static 'img/belgium.png' %}"></a>
+			<a href="{% url 'i18n' lang='fr' %}"><img src="{% static 'img/france.png' %}"></a>
+			<a href="{% url 'i18n' lang='en' %}"><img src="{% static 'img/germany.png' %}"></a>
 		</div>
 	</div>
 
@@ -42,9 +42,9 @@
 		<div class="d-flex mx-4">
 			<div class="countryBlock mr-3">
 				<div class="countrySelector">
-					<a href=""><img src="{% static 'img/belgium.png' %}"></a>
-					<a href=""><img src="{% static 'img/france.png' %}"></a>
-					<a href=""><img src="{% static 'img/germany.png' %}"></a>
+					<a href="{% url 'i18n' lang='nl' %}"><img src="{% static 'img/belgium.png' %}"></a>
+					<a href="{% url 'i18n' lang='fr' %}"><img src="{% static 'img/france.png' %}"></a>
+					<a href="{% url 'i18n' lang='en' %}"><img src="{% static 'img/germany.png' %}"></a>
 				</div>
 			</div>
 			<div class="loginBlock ml-3">
