@@ -16,10 +16,14 @@
 				{% for article in object_list %}
 				<!-- add <div class="row"> if articleNumber%2=0 -->
 				<div class="col-sm-12 col-lg-6 articleLink my-3 ">
-					<a href="{{ article.absolute_url }}">
+					{% if user.is_authenticated %}
+						<a href="{{ article.absolute_url }}">
+					{% else %}
+						<a href="{% url 'register' %}">
+					{% endif %}
 						<div class="row">
 							<div class="col-lg-6 col-xs-12">
-								<img class="img-fluid " src="{{ article.image_url }}" alt="">
+								<img class="img-fluid " src="{{ article.image_url }}">
 							</div>
 							<div class="col-lg-6 col-xs-12">
 								<h2>{{ article.title }}</h2>

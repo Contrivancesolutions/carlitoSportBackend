@@ -82,6 +82,7 @@
     background-image: url('../img/stadium.jpg');
 }
 
+
 @media screen and (max-width: 992px) {
   .img-fluid {
     margin-left: auto;
@@ -90,7 +91,7 @@
     width: 60%;
   }
 
-  .article-main-page h2{
+  .article-main-page h3{
     text-align: center;
     margin-top: 1%;
   }
