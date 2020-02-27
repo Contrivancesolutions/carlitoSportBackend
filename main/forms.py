@@ -12,7 +12,7 @@ class RegisterForm(forms.Form):
             attrs={
                 'type': 'email',
                 'placeholder': _('Email'),
-                'class': _('inscriptionField'),
+                'class': 'inscriptionField',
             },
         ))
     email_confirmation = forms.EmailField(
@@ -20,7 +20,7 @@ class RegisterForm(forms.Form):
             attrs={
                 'type': 'email',
                 'placeholder': _("Confirmation de l'email"),
-                'class': _('inscriptionField'),
+                'class': 'inscriptionField',
             },
         ))
     password = forms.CharField(
@@ -30,7 +30,7 @@ class RegisterForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'placeholder': _('Mot de passe'),
-                'class': _('inscriptionField'),
+                'class': 'inscriptionField',
             },
         ))
     password_confirmation = forms.CharField(
@@ -39,7 +39,7 @@ class RegisterForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'placeholder': _('Confirmation du mot de passe'),
-                'class': _('inscriptionField'),
+                'class': 'inscriptionField',
             },
         ))
 
@@ -73,14 +73,14 @@ class ContactForm(forms.Form):
         max_length=255, label=_('Nom'), widget=forms.TextInput(
             attrs={
                 'placeholder': _('Nom'),
-                'class': _('contact-form'),
+                'class': 'contact-form',
             },
         ))
     first_name = forms.CharField(
         max_length=255, label=_('Prénom'), widget=forms.TextInput(
             attrs={
                 'placeholder': _('Prénom'),
-                'class': _('contact-form'),
+                'class': 'contact-form',
             },
         ))
     email = forms.EmailField(
@@ -88,21 +88,21 @@ class ContactForm(forms.Form):
             attrs={
                 'type': 'email',
                 'placeholder': _('Email'),
-                'class': _('contact-form'),
+                'class': 'contact-form',
             },
         ))
     subject = forms.CharField(
         max_length=255, label=_('Objet'), widget=forms.TextInput(
             attrs={
                 'placeholder': _('Objet'),
-                'class': _('contact-form'),
+                'class': 'contact-form',
             },
         ))
     message = forms.CharField(
         label=_('Entrez votre message'), widget=forms.Textarea(
             attrs={
                 'placeholder': _('Ecrivez votre message'),
-                'class': _('contact-form'),
+                'class': 'contact-form',
             },
         ))
 
@@ -122,7 +122,7 @@ class LoginForm(AuthenticationForm):
             attrs={
                 'type': 'email',
                 'placeholder': _('Email'),
-                'class': _('inscriptionField'),
+                'class': 'inscriptionField',
             },
         ))
     password = forms.CharField(
@@ -130,6 +130,6 @@ class LoginForm(AuthenticationForm):
         widget=forms.PasswordInput(
             attrs={
                 'placeholder': _('Mot de passe'),
-                'class': _('inscriptionField'),
+                'class': 'inscriptionField',
             },
         ))

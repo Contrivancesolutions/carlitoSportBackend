@@ -12,7 +12,7 @@
     <div class=" my-5 py-5">
       <div class="col-lg-6 col-sm-12 container py-3 ">
         <h2 class="text-center">Se connecter</h2>
-        <form class="mt-5" action="POST">
+        <form class="mt-5" method="POST">
         	{% csrf_token  %}
           	{{ form.as_p }}
           	<div class="text-center">

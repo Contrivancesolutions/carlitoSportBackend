@@ -24,6 +24,7 @@ class HomeView(View):
         context = {'packages': Package.objects.all(), 'articles': articles}
         return render(request, 'main/index.html', context)
 
+
 class LangView(View):
 
     def get(self, request, lang):
@@ -66,7 +67,7 @@ class RegisterView(UserPassesTestMixin, FormView):
 
         message = render_to_string('mails/activate_account.html', {
             'user': user,
-            'domain': get_current_site(self.request).domaion,
+            'domain': get_current_site(self.request).domain,
             'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
             'token': account_activation_token.make_token(user),
         })

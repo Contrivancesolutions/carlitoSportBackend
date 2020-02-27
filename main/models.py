@@ -31,7 +31,7 @@ class UserManager(BaseUserManager):
         return self.create_user(email, password=password, staff=True, admin=True)
 
     def create_superuser(self, email, password):
-        return self.create_user(email, password=password, staff=True, admin=True, superuser=True)
+        return self.create_user(email, password=password, active=True, staff=True, admin=True, superuser=True)
 
 
 class User(AbstractBaseUser):

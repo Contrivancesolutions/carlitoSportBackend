@@ -16,10 +16,10 @@
 	          <img src="{% static 'img/signin.png' %}" style="margin-top: 5%; margin-bottom: 10%; width: 25%;">
 	          <a  class="my-3" href="{% url 'login' %}">{% trans 'Connecte-toi' %}</a>
 	      </div>
-	    
+
 	      <div class="col-md-6 col-sm-12 sign py-3 ">
 	        <h2 class="text-center" style="margin-top: 1rem;">{% trans "S'incrire" %}</h2>
-	        <form class="mt-5" action="POST">
+	        <form class="mt-5" method="POST">
 	        	{% csrf_token  %}
 	        	{% for field in form %}
 					<p>

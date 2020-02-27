@@ -6,7 +6,7 @@
     <h2>{%trans 'Nous contacter'%}</h2>
   </div>
   <section class="contact container d-flex justify-content-center my-5">
-    <form action="POST" class="form-cont">
+    <form method="POST" class="form-cont">
     	{% csrf_token  %}
 		  {{ form.as_p }}
       	<div class="text-center">
