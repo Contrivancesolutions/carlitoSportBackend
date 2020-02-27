@@ -69,7 +69,7 @@
                   <p class="text-center mediaText">
                     {% trans 'Toutes les infos par email ou lors de ton' %}
                     {% if user.is_authenticated %}
-                    {% trans 'Inscription' %}
+                      {% trans 'Inscription' %}
                     {% else %}
                     <a href="{% url 'register' %}" class="hrefInscription">{% trans 'Inscription' %}</a>
                     {% endif %}
@@ -123,7 +123,13 @@
         </div>
         <div class="inscription py-5 col-lg-6 box" style="margin-top: 11%;">
           <div>
-            <a class="text-uppercase" href="{% url 'register' %}">{% trans "Inscris-toi maintenant!" %}</a>
+            {% if user.is_anonymous %}
+              <a class="text-uppercase" href="{% url 'register' %}">{% trans "Inscris-toi maintenant!" %}</a>
+            {% elif user.is_authenticated and not user.is_subscribed %}
+              <a class="text-uppercase" href="{% url 'subscription' %}">{% trans "Abonne-toi maintenant!" %}</a>
+            {% elif user.is_authenticated and user.is_subscribed %}
+              <a class="text-uppercase" href="{% url 'bonus' %}">{% trans "Jette un oeil sur les bonus!" %}</a>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -150,7 +156,11 @@
             <div class="col-lg-6 col-xs-12 article-main-page">
               <h2>{{ article.title }}</h2>
               <p class="mediaText">{{ article.preview }}</p>
-              <a class="mediaText" href="{{ article.absolute_url }}">{% trans "En savoir plus" %}</a>
+              {% if user.is_authenticated %}
+                <a class="mediaText" href="{{ article.absolute_url }}">{% trans "En savoir plus" %}</a>
+              {% else %}
+                <a class="mediaText" href="{{ register }}">{% trans "En savoir plus" %}</a>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -204,10 +214,15 @@
     </div>
     <div class="loveIt py-5 my-5">
       <div class="row ">
-        <div class="col-lg-6 pb-4 col-sm-12  d-flex justify-content-center loveImg"
-          onclick="window.location.href = {};">
-          <img class="w-75" src="{% static 'img/skerk.jpg' %}" alt="">
-        </div>
+        {% if user.is_anonymous %}
+          <div class="col-lg-6 pb-4 col-sm-12  d-flex justify-content-center loveImg" onclick="window.location.href = {% url 'register' %};">
+        {% elif user.is_authenticated and not user.is_subscribed %}
+          <div class="col-lg-6 pb-4 col-sm-12  d-flex justify-content-center loveImg" onclick="window.location.href = {% url 'subscription' %};">
+        {% elif user.is_authenticated and not user.is_subscribed %}
+          <div class="col-lg-6 pb-4 col-sm-12  d-flex justify-content-center loveImg" onclick="window.location.href = {% url 'bonus' %};">
+        {% endif %}
+            <img class="w-75" src="{% static 'img/skerk.jpg' %}" alt="">
+          </div>
         <div class="col-lg-6  col-sm-12">
           <h2 class="text-center pb-4">{% trans "Tu vas adore!" %}</h2>
           <p class="mediaText">{% trans "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic voluptate saepe             consequatur corporis soluta natus possimus, sapiente fuga in et nulla modi? Explicabo quia ea expedita magnam, non accusamus velit?" %}</p>
@@ -218,7 +233,13 @@
     </div>
     <div class="inscription d-flex justify-content-center mt-5 py-5">
       <div>
-        <a class="text-uppercase" href="{% url 'register' %}">{% trans "Inscris-toi maintenant!" %}</a>
+        {% if user.is_anonymous %}
+          <a class="text-uppercase" href="{% url 'register' %}">{% trans "Inscris-toi maintenant!" %}</a>
+        {% elif user.is_authenticated and not user.is_subscribed %}
+          <a class="text-uppercase" href="{% url 'subscription' %}">{% trans "Abonne-toi maintenant!" %}</a>
+        {% elif user.is_authenticated and user.is_subscribed %}
+          <a class="text-uppercase" href="{% url 'bonus' %}">{% trans "Jette un oeil sur les bonus!" %}</a>
+        {% endif %}
       </div>
     </div>
 

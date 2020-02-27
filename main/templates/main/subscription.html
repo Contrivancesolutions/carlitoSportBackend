@@ -1,24 +1,27 @@
 {% extends "layout/base.html" %}
 {% block content %}
 {% load i18n %}
-<div class="textBlock" id="abonnements">
-	<p style="margin-bottom: 10px;">
-		{% trans 'Ton compte a bien été créé!' %}
-		<br>
-		{% trans "Il ne te reste plus qu'à choisir un <b>Abonnement<b>." %}
-	</p>
-	<form method="post">
-		{% csrf_token %}
-		{% for package in packages %}
-		<div class="package">
-			{{package.name}}
-			<p>
-				{{package.description}}
-			</p>
-			<input type="radio" name="package_id" value="{{package.id}}" />
+<div class="actuSport">
+    <h2>{% trans "Abonnements" %}</h2>
+  </div>
+
+  <section class="bonusLink pt-4 pb-5 mb-5">
+    <div class="back container d-flex justify-content-center ">
+		<div class="textBlock" id="abonnements">
+			<h2 class="py-3">
+				{% trans "ABONNEMENTS" %}
+			</h2>
+			{% for package in packages %}
+				<a href="{% url 'subscription' %}">
+					<button class="package" style="padding: 20px; width: 70%;">
+					{{package.name}}
+					<p style="margin-top: 20px;">
+				 		{{package.description}}
+					</p>
+					</button>
+				</a>
+			{% endfor %}
 		</div>
-		{% endfor %}
-		<input type="submit" value="Save">
-	</form>
-</div>
+	</div>
+  </section>
 {% endblock %}

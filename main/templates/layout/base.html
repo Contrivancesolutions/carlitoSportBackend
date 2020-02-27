@@ -95,10 +95,20 @@
 				<li class="nav-item">
 					<a class="nav-link text-white " href="{% url 'pronos' %}">{% trans 'Pronos' %}</a>
 				</li>
+				{% elif user.is_authenticated and not user.is_subscribed %}
+				<li class="nav-item">
+					<a class="nav-link text-white " href="{% url 'subscription' %}">{% trans 'Pronos' %}</a>
+				</li>
+				{% elif user.is_anonymous %}
+				<li class="nav-item">
+					<a class="nav-link text-white " href="{% url 'register' %}">{% trans 'Pronos' %}</a>
+				</li>
 				{% endif %}
+				<!--
 				<li class="nav-item">
 					<a class="nav-link text-white " href="{% url 'certification' %}">{% trans 'Certification' %}</a>
 				</li>
+				--->
 				<li class="nav-item">
 					<a class="nav-link text-white " href="{% url 'faq' %}">{% trans 'FAQ' %}</a>
 				</li>
@@ -111,12 +121,20 @@
 	      </ul>
 	    </div>
   	</nav>
-
 	{% if messages %}
 		{% for message in messages %}
-			<div style='color: white; background-color: red;'>
-			    {{message}}
-			</div>
+			{% if message.tags == 'error' %}
+				<div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-bottom: 0; border-radius: 0;">
+			{% elif message.tags == 'success' %}
+				<div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 0; border-radius: 0;">
+			{% else %}
+				<div class="alert alert-primary alert-dismissible fade show" role="alert" style="margin-bottom: 0; border-radius: 0;">
+			{% endif %}
+					<strong>{{message}}</strong>
+				  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
 		{% endfor %}
 	{% endif %}
 
@@ -130,10 +148,8 @@
 
 				<div class="col-lg-4 col-sm-6 mt-3 container">
 					<h3 class="text-center text-uppercase text-white ">{% trans 'Suis-nous' %}</h3>
-
 					<ul class="my-5">
 						<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<!-- <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> -->
 						<li><a href="#"><i class="fa fa-snapchat" aria-hidden="true"></i></a></li>
 						<li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
 						<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
@@ -146,10 +162,10 @@
 					<a href="{% url 'register' %}">
 					{% elif user.is_subscibed %}
 					<a href="{% url 'pronos' %}">
-						{% else %}
-					<a href="">
-						{% endif %}
-						<h3 class="mb-5">{% trans 'Devenir'%} VIP</h3>
+					{% else %}
+					<a href="{% url 'homepage' %}">
+					{% endif %}
+					<h3 class="mb-5">{% trans 'Devenir'%} VIP</h3>
 					</a>
 				</div>
 				<div class="col-lg-4 col-xs-12 mt-3 px-3 part1 text-center">
