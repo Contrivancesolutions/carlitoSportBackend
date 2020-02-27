@@ -28,10 +28,18 @@ body{
     align-items: center;
   }
   
+  #left {
+    margin-right: 10px;
+  }
+
+  .loginButtonContainer{
+      height: 90%;
+  }
+
   .loginButton {
       width: auto;
-      margin-right: 10px; 
-      padding: 5px 35px; 
+      margin-right: 0; 
+      padding: 8px 35px; 
       background-color: black; 
       color: white; 
       border-radius: 16px; 
@@ -56,11 +64,29 @@ body{
   }
   
   .countrySelector img{
-    margin-top: 3%;
     cursor: pointer;
     width: 48px;
-    height: 32px;
+    height: 34px;
     margin-right: 3px;
+  }
+
+  .userImg {
+    width: 30px;
+  }
+
+  .userNameContainer {
+    display: inline-block;
+    margin-right: 30px;
+  }
+
+  .userImgContainer {
+    display: inline-block;
+    height: 100%;
+  }
+
+  #userName {
+    font-size: 14px;
+    font-weight: bold;
   }
   
   /******/

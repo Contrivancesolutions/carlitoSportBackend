@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -12,6 +13,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.views.generic import DetailView, ListView, TemplateView, View
 from django.views.generic.edit import CreateView, FormView
+from django.utils.translation import gettext as _
 
 from main.forms import ContactForm, LoginForm, RegisterForm
 from main.models import Article, Package, Subscription, User
@@ -26,7 +28,6 @@ class HomeView(View):
 
 
 class LangView(View):
-
     def get(self, request, lang):
         if lang in settings.AVAILABLE_LANGUAGES:
             translation.activate(lang)
@@ -106,7 +107,9 @@ class PasswordResetView(auth_views.PasswordResetView):
 
 
 class PasswordResetDoneView(auth_views.PasswordResetDoneView):
-    template_name = 'auth/reset_password_done.html'
+    def get(self, request):
+        messages.info(request, _("Un email contenant les instructions pour réinitialiser votre mot de passe vous a été envoyé"))
+        return redirect('password_reset')
 
 
 class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
@@ -114,12 +117,15 @@ class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
 
 
 class PasswordResetCompleteView(auth_views.PasswordResetCompleteView):
-    template_name = 'auth/reset_password_complete.html'
+    def get(self, request):
+        messages.info(request, _("Votre mot de passe a bien été mis à jour"))
+        return redirect('login')
 
 
 class LogoutView(LoginRequiredMixin, auth_views.LogoutView):
-    template_name = 'auth/logged_out.html'
-
+    def get(self, request):
+        messages.info(request, _("Vous avez bien été deconnecté"))
+        return redirect('homepage')
 
 class SubscriptionView(LoginRequiredMixin, CreateView):
     login_url = 'login'

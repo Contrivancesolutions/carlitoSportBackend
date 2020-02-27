@@ -49,11 +49,25 @@
 			</div>
 			<div class="loginBlock ml-3">
 				{% if user.is_authenticated %}
-				<div style="font-size: 12px; margin-top: 10px; display: inline-block;">{{ user.email }}</div>
-				<a class="loginButton" href="{% url 'logout' %}">{% trans 'Se déconnecter' %}</a>
+				{% load static %}
+					<div class="loginButtonContainer" id="userName">
+						<div class="userImgContainer">
+						   	<img src="{% static 'img/user.png' %}" class="userImg"> 
+						</div>
+						<div class="userNameContainer">
+			      			{{ user.email }}
+			      		</div>
+		      		</div>
+		      		<div class="loginButtonContainer">
+						<a class="loginButton" id="right" href="{% url 'logout' %}">{% trans 'Déconnexion' %}</a>
+					</div>
 				{% else %}
-				<a class="loginButton" href="{% url 'login' %}">{% trans "S'identifier" %}</a>
-				<a class="loginButton" href="{% url 'register' %}">{% trans "S'inscrire" %}</a>
+					<div class="loginButtonContainer">
+						<a class="loginButton" id="left" href="{% url 'login' %}">{% trans "S'identifier" %}</a>
+					</div>
+					<div class="loginButtonContainer">
+						<a class="loginButton" id="right" href="{% url 'register' %}">{% trans "S'inscrire" %}</a>
+					</div>
 				{% endif %}
 			</div>
 		</div>
@@ -97,15 +111,19 @@
 	      </ul>
 	    </div>
   	</nav>
+
 	{% if messages %}
-	<div class="msg-error">
 		{% for message in messsages %}
-		{{message}}
+			<script>
+			    alert('{{ message }}');
+			</script>
 		{% endfor %}
-	</div>
 	{% endif %}
+
+
 	{% block content %}
 	{% endblock  %}
+
 	<footer>
 		<div class="firstFooter">
 			<div class="row no-gutters ">
