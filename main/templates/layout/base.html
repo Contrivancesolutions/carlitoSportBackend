@@ -52,7 +52,7 @@
 				{% load static %}
 					<div class="loginButtonContainer" id="userName">
 						<div class="userImgContainer">
-						   	<img src="{% static 'img/user.png' %}" class="userImg"> 
+						   	<img src="{% static 'img/user.png' %}" class="userImg">
 						</div>
 						<div class="userNameContainer">
 			      			{{ user.email }}
@@ -113,10 +113,10 @@
   	</nav>
 
 	{% if messages %}
-		{% for message in messsages %}
-			<script>
-			    alert('{{ message }}');
-			</script>
+		{% for message in messages %}
+			<div style='color: white; background-color: red;'>
+			    {{message}}
+			</div>
 		{% endfor %}
 	{% endif %}
 
