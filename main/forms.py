@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth import authenticate
+from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
@@ -54,14 +56,15 @@ class RegisterForm(forms.Form):
         try:
             validate_email(email)
         except ValidationError:
-            self._errors['email'] = [_('Veuillez insérer un email valide')]
+            self.add_error('email', _('Veuillez insérer un email valide'))
 
         if email != email_confirmation:
-            self._errors['email'] = [_('Les emails ne correspondent pas')]
+            self.add_error('email', _('Les emails ne correspondent pas'))
         if password != password_confirmation:
-            self._errors['password'] = [_('Les mots de passe ne correspondent pas')]
+            self.add_error('password', _('Les mots de passe ne correspondent pas'))
         if User.objects.filter(email=email):
-            self._errors['email'] = [_('Cet email est déjà utilisé')]
+            self.add_error('email', _('Cet email est déjà utilisé'))
+
         return self.cleaned_data
 
     def save(self, commit=True):
@@ -113,7 +116,7 @@ class ContactForm(forms.Form):
         try:
             validate_email(email)
         except ValidationError:
-            self._errors['email'] = [_('Veuillez insérer un email valide')]
+            self.add_error('email', _('Veuillez insérer un email valide'))
 
 
 class LoginForm(AuthenticationForm):
@@ -133,3 +136,15 @@ class LoginForm(AuthenticationForm):
                 'class': 'inscriptionField',
             },
         ))
+
+    def clean(self):
+        super().clean()
+
+        email = self.cleaned_data.get('email')
+        password = self.cleaned_data.get('password')
+
+        try:
+            validate_email(email)
+        except ValidationError:
+            self.add_error('email', _('Veuillez insérer un email valide'))
+        return self.cleaned_data

@@ -2,26 +2,37 @@
 {% block content %}
 {% load i18n %}
 
-  <div class="actuSport">
-    <h2>{% trans 'Connexion'%}</h2>
-  </div>
+<div class="actuSport">
+	<h2>{% trans 'Connexion'%}</h2>
+</div>
 
 
-  <section class="inscription container">
+<section class="inscription container">
 
-    <div class=" my-5 py-5">
-      <div class="col-lg-6 col-sm-12 container py-3 ">
-        <h2 class="text-center">{% trans 'Se connecter'%}</h2>
-        <form class="mt-5" method="POST">
-        	{% csrf_token  %}
-          	{{ form.as_p }}
-          	<div class="text-center">
-            	<button class="contact-submit" style="margin-top: 50px;">{% trans 'Se connecter'%}</button>
-          	</div>
-        </form>
-        <div class="resetPwd">
-          <a href="{% url 'password_reset' %}">{% trans 'Mot de passe oublié?' %}</a>
-        </div>
-      </div>
-  </section>
+	<div class=" my-5 py-5">
+		<div class="col-lg-6 col-sm-12 container py-3 ">
+			<h2 class="text-center">{% trans 'Se connecter'%}</h2>
+			<form class="mt-5" method="POST">
+				{% csrf_token  %}
+				{% for field in form %}
+				<p>
+					{{ field.label_tag }} {{ field }}
+				</p>
+
+				{% if field.errors %}
+				<span class="helptext text-danger font-italic">{{ field.errors }}</span>
+				{% endif %}
+				{% if field.help_text %}
+				<span class="helptext font-italic">*{{ field.help_text|safe }}</span>
+				{% endif %}
+				{%endfor%}
+				<div class="text-center">
+					<button class="contact-submit" style="margin-top: 50px;">{% trans 'Se connecter'%}</button>
+				</div>
+			</form>
+			<div class="resetPwd">
+				<a href="{% url 'password_reset' %}">{% trans 'Mot de passe oublié?' %}</a>
+			</div>
+		</div>
+</section>
 {% endblock %}

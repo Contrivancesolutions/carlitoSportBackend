@@ -12,12 +12,13 @@ from django.utils import translation
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.views.generic import DetailView, ListView, TemplateView, View
-from django.views.generic.edit import CreateView, FormView
+from django.views.generic.edit import CreateView
 from django.utils.translation import gettext as _
 
 from main.forms import ContactForm, LoginForm, RegisterForm
 from main.models import Article, Package, Subscription, User
 from main.tokens import account_activation_token
+from main.utils import FormErrorsView
 
 
 class HomeView(View):
@@ -52,7 +53,7 @@ class ActivateAccountView(View):
         return redirect('homepage')
 
 
-class RegisterView(UserPassesTestMixin, FormView):
+class RegisterView(UserPassesTestMixin, FormErrorsView):
     template_name = 'auth/register.html'
     form_class = RegisterForm
 
@@ -75,12 +76,13 @@ class RegisterView(UserPassesTestMixin, FormView):
         email = EmailMessage('Activate Your Account', message, to=[user.email])
         email.send()
 
+        messages.info(self.request, _("Test"))
         # Don't log in automatically anymore, the user needs to validate
         # their account first
         return redirect('subscription')
 
 
-class LoginView(UserPassesTestMixin, FormView):
+class LoginView(UserPassesTestMixin, FormErrorsView):
     template_name = 'auth/login.html'
     form_class = LoginForm
 
@@ -125,6 +127,7 @@ class LogoutView(LoginRequiredMixin, auth_views.LogoutView):
         messages.info(request, _("Vous avez bien été deconnecté"))
         return redirect('homepage')
 
+
 class SubscriptionView(LoginRequiredMixin, CreateView):
     login_url = 'login'
 
@@ -143,7 +146,7 @@ class SubscriptionView(LoginRequiredMixin, CreateView):
         return render(request, 'main/subscription.html', context)
 
 
-class ContactView(FormView):
+class ContactView(FormErrorsView):
     template_name = 'main/contact.html'
     form_class = ContactForm
 
