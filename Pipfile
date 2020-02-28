@@ -12,6 +12,7 @@ wemake-python-styleguide = "*"
 django = "*"
 pillow = "*"
 six = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"

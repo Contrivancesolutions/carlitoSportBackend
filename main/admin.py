@@ -4,9 +4,15 @@ from main.models import Article, Package, Subscription, User
 
 class UserAdmin(admin.ModelAdmin):
     search_fields = ['email']
+    model = User
+    list_display = ['email', 'is_active', 'is_staff', 'is_admin', 'is_superuser']
 
-    class Meta:
-        model = User
+    fieldsets = (
+        (None, {'fields': ('email', )}),
+        ('Personal info', {'fields': ['first_name', 'last_name', 'country'
+                                      ]}),
+        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser')}),
+    )
 
 
 admin.site.register(Article)

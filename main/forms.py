@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.utils.translation import gettext as _
 from main.models import User
+from main import conf
 
 
 class RegisterForm(forms.Form):
@@ -115,6 +116,27 @@ class ContactForm(forms.Form):
             validate_email(email)
         except ValidationError:
             self.add_error('email', _('Veuillez insérer un email valide'))
+
+
+class PaymentForm(forms.Form):
+    class Meta:
+        model = User
+
+    last_name = forms.CharField(
+        max_length=255, label=_('Nom'), widget=forms.TextInput(
+            attrs={
+                'placeholder': _('Nom'),
+                'class': 'inscriptionField',
+            },
+        ))
+    first_name = forms.CharField(
+        max_length=255, label=_('Prénom'), widget=forms.TextInput(
+            attrs={
+                'placeholder': _('Prénom'),
+                'class': 'inscriptionField',
+            },
+        ))
+    country = forms.ChoiceField(choices=conf.COUNTRIES, label=_('Pays'))
 
 
 class LoginForm(AuthenticationForm):

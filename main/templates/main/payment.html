@@ -1,0 +1,55 @@
+{% extends "layout/base.html" %}
+{% load i18n %}
+{% block content %}
+
+<div class="actuSport">
+	<h2>{% trans 'Payment' %}</h2>
+</div>
+
+
+<section class="inscription ">
+	<div class=" my-5 py-5">
+		<div class="row ">
+			<div class="col-md-6 col-sm-12  py-3 alreadySign">
+				<div class="textBlock" id="abonnements">
+					<h2 class="py-3">
+						{% trans "ABONNEMENT" %}
+					</h2>
+					<button class="package">
+						{{package.name}}
+						<p>
+							{{package.description}}
+						</p>
+					</button>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-12 sign py-3 ">
+				<h2 class="text-center" style="margin-top: 1rem;">{% trans "S'incrire" %}</h2>
+
+				{% if not user.first_name or not user.last_name or not user.country %}
+
+				<form class="mt-5" method="POST">
+					{% csrf_token  %}
+					{% for field in form %}
+					<p>
+						{{ field.label_tag }} {{ field }}
+					</p>
+					{% if field.errors %}
+					<span class="helptext text-danger font-italic">{{ field.errors }}</span>
+					{% endif %}
+					{% if field.help_text %}
+					<span class="helptext font-italic">*{{ field.help_text|safe }}</span>
+					{% endif %}
+					{%endfor%}
+					<input type="hidden" name="package_id" value="{{package.id}}" />
+					<div class="text-center">
+						<button class="contact-submit">{% trans "S'inscrire" %}</button>
+					</div>
+				</form>
+				{% endif %}
+
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

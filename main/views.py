@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import views as auth_views
@@ -15,8 +14,10 @@ from django.utils.translation import gettext as _
 from django.views.generic import DetailView, ListView, TemplateView, View
 from django.views.generic.edit import CreateView
 
-from main.forms import ContactForm, LoginForm, RegisterForm
+from main import conf
+from main.forms import ContactForm, LoginForm, PaymentForm, RegisterForm
 from main.models import Article, Package, Subscription, User
+from main.payement import make_payement
 from main.tokens import account_activation_token
 from main.utils import FormErrorsView
 
@@ -30,7 +31,7 @@ class HomeView(View):
 
 class LangView(View):
     def get(self, request, lang):
-        if lang in settings.AVAILABLE_LANGUAGES:
+        if lang in conf.AVAILABLE_LANGUAGES:
             translation.activate(lang)
             request.session[translation.LANGUAGE_SESSION_KEY] = lang
         return redirect('homepage')
@@ -59,6 +60,12 @@ class RegisterView(UserPassesTestMixin, FormErrorsView):
 
     def handle_no_permission(self):
         return redirect('homepage')
+
+    def get_initial(self):
+        return {
+            'email': self.request.GET.get('email', ''),
+            'email_confirmation': self.request.GET.get('email_confirmation', '')
+        }
 
     def test_func(self):
         return self.request.user.is_anonymous
@@ -151,15 +158,50 @@ class SubscriptionView(LoginRequiredMixin, CreateView):
         context = {'packages': Package.objects.all()}
         return render(request, 'main/subscription.html', context)
 
+
+class PaymentView(LoginRequiredMixin, FormErrorsView):
+    login_url = 'login'
+    form_class = PaymentForm
+
+    def get_initial(self):
+        user = self.request.user
+        return {
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'country': user.country,
+        }
+
+    def get(self, request, *args, **kwargs):
+        try:
+            package_id = request.GET.get('package_id', 0)
+            package = get_object_or_404(Package.objects, id=package_id)
+        except Exception as e:
+            return redirect('subscription')
+
+        context = {'package': package, 'form': self.get_form()}
+        return render(request, 'main/payment.html', context)
+
     def post(self, request, *args, **kwargs):
         context = {'packages': Package.objects.all()}
 
-        package_id = request.POST.get('package_id', 0)
-        package = get_object_or_404(Package.objects, id=package_id)
-        if package:
-            Subscription(user=self.request.user, package=package).save()
-            return redirect('pronos')
-        return render(request, 'main/subscription.html', context)
+        user = self.request.user
+        if not user.first_name or not user.last_name or not user.country:
+            user.first_name = request.POST.get('first_name', user.first_name)
+
+            user.last_name = request.POST.get('last_name', user.last_name)
+            user.country = request.POST.get('country', user.country)
+            user.save()
+
+        try:
+            package_id = request.POST.get('package_id', 0)
+            package = get_object_or_404(Package.objects, id=package_id)
+            if package and make_payement(self.request.user, package):
+                Subscription(user=self.request.user, package=package).save()
+                return redirect('pronos')
+        except Exception as e:
+            pass
+
+        return render(request, 'main/payment.html', context)
 
 
 class ContactView(FormErrorsView):

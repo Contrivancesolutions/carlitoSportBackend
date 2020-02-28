@@ -12,7 +12,7 @@
 				{% trans "ABONNEMENTS" %}
 			</h2>
 			{% for package in packages %}
-				<a href="{% url 'subscription' %}">
+				<a href="{% url 'payment' %}?package_id={{package.id}}">
 					<button class="package" style="padding: 20px; width: 70%;">
 					{{package.name}}
 					<p style="margin-top: 20px;">

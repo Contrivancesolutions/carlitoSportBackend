@@ -4,6 +4,7 @@ from django.shortcuts import reverse
 from django.utils import timezone
 from django.utils.translation import gettext as _
 
+from main import conf
 
 class UserManager(BaseUserManager):
     def create_user(self, email, **kwargs):
@@ -37,6 +38,11 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+
+    first_name = models.CharField(max_length=200, null=True)
+    last_name = models.CharField(max_length=200, null=True)
+
+    country = models.CharField(max_length=2, choices=conf.COUNTRIES, null=True)
 
     email = models.EmailField(max_length=255, unique=True)
     is_active = models.BooleanField(default=False)
