@@ -11,9 +11,9 @@ from django.template.loader import render_to_string
 from django.utils import translation
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.utils.translation import gettext as _
 from django.views.generic import DetailView, ListView, TemplateView, View
 from django.views.generic.edit import CreateView
-from django.utils.translation import gettext as _
 
 from main.forms import ContactForm, LoginForm, RegisterForm
 from main.models import Article, Package, Subscription, User
@@ -76,7 +76,7 @@ class RegisterView(UserPassesTestMixin, FormErrorsView):
         email = EmailMessage('Activate Your Account', message, to=[user.email])
         email.send()
 
-        messages.info(self.request, _("Test"))
+        messages.info(self.request, _('Test'))
         # Don't log in automatically anymore, the user needs to validate
         # their account first
         redirect_to = self.request.GET.get('to', 'subscription')
@@ -117,7 +117,7 @@ class PasswordResetView(auth_views.PasswordResetView):
 
     def form_valid(self, form):
         messages.info(self.request, _(
-            "Un email contenant les instructions pour réinitialiser votre mot de passe vous a été envoyé"))
+            'Un email contenant les instructions pour réinitialiser votre mot de passe vous a été envoyé'))
         return super().form_valid(form)
 
 
@@ -134,13 +134,13 @@ class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
         })
 
     def form_valid(self, form):
-        messages.info(self.request, _("Votre mot de passe a bien été mis à jour"))
+        messages.info(self.request, _('Votre mot de passe a bien été mis à jour'))
         return redirect('login')
 
 
 class LogoutView(LoginRequiredMixin, auth_views.LogoutView):
     def get(self, request):
-        messages.info(request, _("Vous avez bien été deconnecté"))
+        messages.info(request, _('Vous avez bien été deconnecté'))
         return redirect('homepage')
 
 

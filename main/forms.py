@@ -1,6 +1,4 @@
 from django import forms
-from django.contrib.auth import authenticate
-from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
