@@ -156,11 +156,7 @@
             <div class="col-lg-6 col-xs-12 article-main-page">
               <h3>{{ article.title }}</h3>
               <p class="mediaText">{{ article.preview }}</p>
-              {% if user.is_authenticated %}
-                <a class="mediaText" href="{{ article.absolute_url }}">{% trans "En savoir plus" %}</a>
-              {% else %}
-                <a class="mediaText" href="{% url 'register' %}?to={{article.absolute_url}}">{% trans "En savoir plus" %}</a>
-              {% endif %}
+              <a class="mediaText" href="{{ article.absolute_url }}">{% trans "En savoir plus" %}</a>
             </div>
           </div>
         </div>

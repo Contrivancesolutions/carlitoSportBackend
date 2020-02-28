@@ -50,7 +50,7 @@ class ActivateAccountView(View):
             user.save()
             login(request, user)
 
-        # TODO: handle the case when the token is wrong, display some kind of 404 error page?
+        messages.success(self.request, _('Votre compte a bien été créé'))
         return redirect('homepage')
 
 
@@ -80,13 +80,13 @@ class RegisterView(UserPassesTestMixin, FormErrorsView):
             'token': account_activation_token.make_token(user),
         })
 
-        email = EmailMessage('Activate Your Account', message, to=[user.email])
+        email = EmailMessage(_(
+            'Un email contenant le lien d\'activation de votre compte vous a été envoyé'), message, to=[user.email])
         email.send()
-
-        messages.info(self.request, _('Test'))
         # Don't log in automatically anymore, the user needs to validate
         # their account first
         redirect_to = self.request.GET.get('to', 'subscription')
+        messages.success(self.request, _('Votre compte est presque créé, consultez vos emails pour finaliser votre inscription'))
         return redirect(redirect_to)
 
 
@@ -260,8 +260,10 @@ class PronosView(TemplateView):
         if user.is_authenticated and user.is_subscribed:
             return super().get(request)
         elif user.is_authenticated and not user.is_subscribed:
+            messages.info(self.request, _('Abonne toi pour consulter les pronos!'))
             redirect_to = self.request.GET.get('to', 'subscription')
             return redirect(redirect_to)
         else:
+            messages.info(self.request, _('Pour accéder aux pronos, crée un compte et abonne toi!'))
             redirect_to = self.request.GET.get('to', 'register')
             return redirect(redirect_to)
