@@ -79,7 +79,8 @@ class RegisterView(UserPassesTestMixin, FormErrorsView):
         messages.info(self.request, _("Test"))
         # Don't log in automatically anymore, the user needs to validate
         # their account first
-        return redirect('subscription')
+        redirect_to = self.request.GET.get('to', 'subscription')
+        return redirect(redirect_to)
 
 
 class LoginView(UserPassesTestMixin, FormErrorsView):
@@ -105,20 +106,35 @@ class LoginView(UserPassesTestMixin, FormErrorsView):
 class PasswordResetView(auth_views.PasswordResetView):
     template_name = 'auth/reset_password.html'
 
-
-class PasswordResetDoneView(auth_views.PasswordResetDoneView):
     def get(self, request):
-        messages.info(request, _("Un email contenant les instructions pour réinitialiser votre mot de passe vous a été envoyé"))
-        return redirect('password_reset')
+        form = self.get_form()
+        for field in form.fields.values():
+            field.widget.attrs['class'] = 'inscriptionField'
+
+        return render(request, self.template_name, context={
+            'form': form
+        })
+
+    def form_valid(self, form):
+        messages.info(self.request, _(
+            "Un email contenant les instructions pour réinitialiser votre mot de passe vous a été envoyé"))
+        return super().form_valid(form)
 
 
 class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
     template_name = 'auth/confirm_reset_password.html'
 
-
-class PasswordResetCompleteView(auth_views.PasswordResetCompleteView):
     def get(self, request):
-        messages.info(request, _("Votre mot de passe a bien été mis à jour"))
+        form = self.get_form()
+        for field in form.fields.values():
+            field.widget.attrs['class'] = 'inscriptionField'
+
+        return render(request, self.template_name, context={
+            'form': form
+        })
+
+    def form_valid(self, form):
+        messages.info(self.request, _("Votre mot de passe a bien été mis à jour"))
         return redirect('login')
 
 
@@ -195,3 +211,15 @@ class FaqView(TemplateView):
 
 class PronosView(TemplateView):
     template_name = 'main/pronos.html'
+
+    def get(self, request):
+        user = self.request.user
+
+        if user.is_authenticated and user.is_subscribed:
+            return super().get(request)
+        elif user.is_authenticated and not user.is_subscribed:
+            redirect_to = self.request.GET.get('to', 'subscription')
+            return redirect(redirect_to)
+        else:
+            redirect_to = self.request.GET.get('to', 'register')
+            return redirect(redirect_to)

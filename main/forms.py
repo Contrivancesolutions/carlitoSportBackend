@@ -139,10 +139,7 @@ class LoginForm(AuthenticationForm):
 
     def clean(self):
         super().clean()
-
-        email = self.cleaned_data.get('email')
-        password = self.cleaned_data.get('password')
-
+        email = self.cleaned_data.get('username')
         try:
             validate_email(email)
         except ValidationError:

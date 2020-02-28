@@ -27,13 +27,11 @@ urlpatterns = [
     path('subscription/', views.SubscriptionView.as_view(), name='subscription'),
     path('activate/<uidb64>/<token>', views.ActivateAccountView.as_view(), name='activate'),
     path('password-reset/', views.PasswordResetView.as_view(), name='password_reset'),
-    path('password-reset/done/', views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path(
         'password-reset-confirm/<uidb64>/<token>/',
         views.PasswordResetConfirmView.as_view(),
         name='password_reset_confirm',
     ),
-    path('password-reset-complete/', views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('bonus/', views.BonusView.as_view(), name='bonus'),
     path('certification/', views.CertificationView.as_view(), name='certification'),
     path('contact/', views.ContactView.as_view(), name='contact'),
