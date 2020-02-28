@@ -55,7 +55,6 @@ class ActivateAccountView(View):
 class RegisterView(UserPassesTestMixin, FormView):
     template_name = 'auth/register.html'
     form_class = RegisterForm
-    success_url = 'subscription'
 
     def handle_no_permission(self):
         return redirect('homepage')
@@ -69,7 +68,7 @@ class RegisterView(UserPassesTestMixin, FormView):
         message = render_to_string('mails/activate_account.html', {
             'user': user,
             'domain': get_current_site(self.request).domain,
-            'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
             'token': account_activation_token.make_token(user),
         })
 
@@ -78,13 +77,12 @@ class RegisterView(UserPassesTestMixin, FormView):
 
         # Don't log in automatically anymore, the user needs to validate
         # their account first
-        return super().form_valid(form)
+        return redirect('subscription')
 
 
 class LoginView(UserPassesTestMixin, FormView):
     template_name = 'auth/login.html'
     form_class = LoginForm
-    success_url = 'homepage'
 
     def handle_no_permission(self):
         return redirect('homepage')
@@ -98,7 +96,7 @@ class LoginView(UserPassesTestMixin, FormView):
         user = authenticate(username=email, password=password)
         if user:
             login(self.request, user)
-            return super().form_valid(form)
+            return redirect('homepage')
         return super().form_invalid(form)
 
 
@@ -148,7 +146,6 @@ class SubscriptionView(LoginRequiredMixin, CreateView):
 class ContactView(FormView):
     template_name = 'main/contact.html'
     form_class = ContactForm
-    success_url = 'homepage'
 
     def form_valid(self, form):
         first_name = form.cleaned_data.get('first_name')
@@ -161,7 +158,7 @@ class ContactView(FormView):
             form.cleaned_data.get('subject'), content,
             form.cleaned_data.get('email'), ['azimgivron@gmail.com'],
         )
-        return super().form_valid(form)
+        return redirect('contact')
 
 
 class NewsView(ListView):
