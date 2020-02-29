@@ -86,7 +86,7 @@ class RegisterView(UserPassesTestMixin, FormErrorsView):
         # Don't log in automatically anymore, the user needs to validate
         # their account first
         redirect_to = self.request.GET.get('to', 'subscription')
-        messages.success(self.request, _('Votre compte est presque créé, consultez vos emails pour finaliser votre inscription'))
+        messages.success(self.request, _('Finalise la création de ton compte via l\'emails que nous t\'avons envoyé.'))
         return redirect(redirect_to)
 
 
@@ -141,13 +141,13 @@ class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
         })
 
     def form_valid(self, form):
-        messages.info(self.request, _('Votre mot de passe a bien été mis à jour'))
+        messages.info(self.request, _('Votre mot de passe a bien été mis à jour.'))
         return redirect('login')
 
 
 class LogoutView(LoginRequiredMixin, auth_views.LogoutView):
     def get(self, request):
-        messages.info(request, _('Vous avez bien été deconnecté'))
+        messages.info(request, _('Vous avez bien été deconnecté.'))
         return redirect('homepage')
 
 
@@ -234,9 +234,17 @@ class ArticleView(DetailView):
     def get(self, *args, **kwargs):
         self.entity = self.get_object()
         obj_url = self.entity.absolute_url
-        if self.request.path != obj_url:
-            return HttpResponsePermanentRedirect(obj_url)
-        return super().get(*args, **kwargs)
+        
+        user = self.request.user
+
+        if user.is_authenticated:
+            if self.request.path != obj_url:
+                return HttpResponsePermanentRedirect(obj_url)
+            return super().get(*args, **kwargs)
+        else:
+            messages.info(self.request, _('Connecte toi et accède à l\'entièreté de nos articles de presse!'))
+            redirect_to = self.request.GET.get('to', 'login')
+            return redirect(redirect_to)
 
 
 class BonusView(TemplateView):
@@ -264,6 +272,6 @@ class PronosView(TemplateView):
             redirect_to = self.request.GET.get('to', 'subscription')
             return redirect(redirect_to)
         else:
-            messages.info(self.request, _('Pour accéder aux pronos, crée un compte et abonne toi!'))
+            messages.info(self.request, _('Accéde aux pronos en créant un compte!'))
             redirect_to = self.request.GET.get('to', 'register')
             return redirect(redirect_to)

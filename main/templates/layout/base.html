@@ -91,19 +91,9 @@
 				<li class="nav-item">
 					<a class="nav-link text-white" href="{% url 'bonus' %}">{% trans 'Bonus' %}</a>
 				</li>
-				{% if user.is_authenticated and user.is_subscribed %}
 				<li class="nav-item">
 					<a class="nav-link text-white " href="{% url 'pronos' %}">{% trans 'Pronos' %}</a>
 				</li>
-				{% elif user.is_authenticated and not user.is_subscribed %}
-				<li class="nav-item">
-					<a class="nav-link text-white " href="{% url 'subscription' %}">{% trans 'Pronos' %}</a>
-				</li>
-				{% elif user.is_anonymous %}
-				<li class="nav-item">
-					<a class="nav-link text-white " href="{% url 'register' %}?to=subscription">{% trans 'Pronos' %}</a>
-				</li>
-				{% endif %}
 				<!--
 				<li class="nav-item">
 					<a class="nav-link text-white " href="{% url 'certification' %}">{% trans 'Certification' %}</a>
