@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import path
+from django.urls import path, re_path
 from main import views
 
 urlpatterns = [
@@ -23,7 +23,7 @@ urlpatterns = [
     path('i18n/<lang>', views.LangView.as_view(), name='i18n'),
     path('inscription/', views.RegisterView.as_view(), name='register'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
-    path('login/', views.LoginView.as_view(), name='login'),
+    re_path(r'^login(?:/(?P<slug>[a-zA-Z0-9_-]+))?/$', views.LoginView.as_view(), name='login'),
     path('subscription/', views.SubscriptionView.as_view(), name='subscription'),
     path('payment/', views.PaymentView.as_view(), name='payment'),
 

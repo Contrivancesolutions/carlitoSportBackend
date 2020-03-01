@@ -94,6 +94,10 @@ class LoginView(UserPassesTestMixin, FormErrorsView):
     template_name = 'auth/login.html'
     form_class = LoginForm
 
+    def get(self, request, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        return render(request, 'auth/login.html', ctx)
+
     def handle_no_permission(self):
         return redirect('homepage')
 
@@ -101,12 +105,23 @@ class LoginView(UserPassesTestMixin, FormErrorsView):
         return self.request.user.is_anonymous
 
     def form_valid(self, form):
+        slug = self.request.POST.get('slug', '')
+
         email = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
         user = authenticate(username=email, password=password)
+
         if user:
             login(self.request, user)
-            return redirect('homepage')
+            if slug=='':    
+                return redirect('homepage')
+            else:
+                try:
+                    article = get_object_or_404(Article.objects, slug=slug)
+                    obj_url = article.absolute_url
+                    return redirect(obj_url)
+                except Exception as e:
+                    pass
         return super().form_invalid(form)
 
 
@@ -234,7 +249,6 @@ class ArticleView(DetailView):
     def get(self, *args, **kwargs):
         self.entity = self.get_object()
         obj_url = self.entity.absolute_url
-        
         user = self.request.user
 
         if user.is_authenticated:
@@ -244,7 +258,7 @@ class ArticleView(DetailView):
         else:
             messages.info(self.request, _('Connecte toi et accède à l\'entièreté de nos articles de presse!'))
             redirect_to = self.request.GET.get('to', 'login')
-            return redirect(redirect_to)
+            return redirect(redirect_to, slug=self.entity.slug)
 
 
 class BonusView(TemplateView):

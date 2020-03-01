@@ -26,6 +26,7 @@
 				<span class="helptext font-italic">*{{ field.help_text|safe }}</span>
 				{% endif %}
 				{%endfor%}
+				<input type="hidden" name="slug" value="{{slug}}"/>
 				<div class="text-center">
 					<button class="contact-submit" style="margin-top: 50px;">{% trans 'Se connecter'%}</button>
 				</div>
