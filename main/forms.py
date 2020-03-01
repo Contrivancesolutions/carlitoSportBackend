@@ -136,7 +136,10 @@ class PaymentForm(forms.Form):
                 'class': 'inscriptionField',
             },
         ))
-    country = forms.ChoiceField(choices=conf.COUNTRIES, label=_('Pays'))
+    country = forms.ChoiceField(choices=conf.COUNTRIES, label=_('Pays'), widget=forms.Select(
+        attrs={
+            'class': 'custom-select',
+        }))
 
 
 class LoginForm(AuthenticationForm):

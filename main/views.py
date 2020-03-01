@@ -171,7 +171,7 @@ class SubscriptionView(LoginRequiredMixin, CreateView):
 
     def get(self, request, *args, **kwargs):
         context = {'packages': Package.objects.all()}
-        return render(request, 'main/subscription.html', context)
+        return redirect('homepage') if request.user.is_subscribed else render(request, 'main/subscription.html', context)
 
 
 class PaymentView(LoginRequiredMixin, FormErrorsView):
@@ -191,21 +191,18 @@ class PaymentView(LoginRequiredMixin, FormErrorsView):
             package_id = request.GET.get('package_id', 0)
             package = get_object_or_404(Package.objects, id=package_id)
         except Exception as e:
-            return redirect('subscription')
+            return redirect('homepage') if request.user.is_subscribed else redirect('subscription')
 
         context = {'package': package, 'form': self.get_form()}
         return render(request, 'main/payment.html', context)
 
-    def post(self, request, *args, **kwargs):
+    def form_valid(self, form):
         context = {'packages': Package.objects.all()}
 
-        user = self.request.user
-        if not user.first_name or not user.last_name or not user.country:
-            user.first_name = request.POST.get('first_name', user.first_name)
-
-            user.last_name = request.POST.get('last_name', user.last_name)
-            user.country = request.POST.get('country', user.country)
-            user.save()
+        user.first_name = form.cleaned_data.get('first_name')
+        user.last_name = form.cleaned_data.get('last_name')
+        user.country = form.cleaned_data.get('country')
+        user.save()
 
         try:
             package_id = request.POST.get('package_id', 0)
@@ -222,6 +219,14 @@ class PaymentView(LoginRequiredMixin, FormErrorsView):
 class ContactView(FormErrorsView):
     template_name = 'main/contact.html'
     form_class = ContactForm
+
+    def get_initial(self):
+        user = self.request.user
+        return {
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'email': user.email,
+        }
 
     def form_valid(self, form):
         first_name = form.cleaned_data.get('first_name')

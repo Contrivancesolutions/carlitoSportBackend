@@ -7,19 +7,20 @@
 </div>
 
 
-<section class="inscription ">
+<section class="container ">
 	<div class=" my-5 py-5">
 		<div class="row ">
 			<div class="col-md-6 col-sm-12  py-3 alreadySign">
 				<div class="textBlock" id="abonnements">
-					<h2 class="py-3">
-						{% trans "ABONNEMENT" %}
+					<h2 class="py-3" style="text-transform: uppercase; margin-bottom: 5%;">
+						{% trans "ABONNEMENT SELECTIONé" %}
 					</h2>
-					<button class="package">
+					<h4 style="margin-bottom: 5%; font-size: 26px;">
 						{{package.name}}
-						<p>
-							{{package.description}}
-						</p>
+					</h4>
+					<p style="line-height: 1.5; font-size: 20px;">
+						{{package.description}}
+					</p>
 					</button>
 				</div>
 			</div>
@@ -42,7 +43,7 @@
 					{% endif %}
 					{%endfor%}
 					<input type="hidden" name="package_id" value="{{package.id}}" />
-					<div class="text-center">
+					<div class="text-center" style="margin-top: 50px;">
 						<button class="contact-submit">{% trans "S'inscrire" %}</button>
 					</div>
 				</form>

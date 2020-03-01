@@ -148,30 +148,31 @@
 				</div>
 
 				<div class="col-lg-4 col-sm-6 mt-3 text-center VIP ">
-					{% if user.is_anonymous %}
-					<a href="{% url 'register' %}">
-					{% elif user.is_subscibed %}
 					<a href="{% url 'pronos' %}">
-					{% else %}
-					<a href="{% url 'homepage' %}">
-					{% endif %}
 					<h3 class="mb-5">{% trans 'Devenir'%} VIP</h3>
 					</a>
 				</div>
-				<div class="col-lg-4 col-xs-12 mt-3 px-3 part1 text-center">
-					<h4 class="text-uppercase text-white">{% trans 'ne laisse passer aucune offre' %}</h4>
-					<p class="text-white mediaText">{% trans 'Tu veux profiter de bonus, promo et jeux concours?' %}</p>
-					<p class="text-white mediaText">{% trans 'Inscris-toi sans plus attendre' %}</p>
-					{% if user.is_anonymous %}
-					<form id="emailEntry" action="{% url 'register' %}">
-						<input class="w-100 mx-auto pl-2 mb-3" type="email" name="email" placeholder="Email">
-			            <input class="w-100 mx-auto pl-2 mb-3" type="email" name="email_confirmation" placeholder="Confirmation Email">
-			            <div class="d-flex justify-content-center">
-			              <button class="suivant">Suivant</button>
-			            </div>
-					</form>
-					{% endif %}
-				</div>
+				{% if user.is_anonymous %}
+					<div class="col-lg-4 col-xs-12 mt-3 px-3 part1 text-center">
+						<h4 class="text-uppercase text-white">{% trans 'ne laisse passer aucune offre' %}</h4>
+						<p class="text-white mediaText">{% trans 'Tu veux profiter de bonus, promo et jeux concours?' %}</p>
+						<p class="text-white mediaText">{% trans 'Inscris-toi sans plus attendre' %}</p>
+						<form id="emailEntry" action="{% url 'register' %}">
+							<input class="w-100 mx-auto pl-2 mb-3" type="email" name="email" placeholder="Email">
+				            <input class="w-100 mx-auto pl-2 mb-3" type="email" name="email_confirmation" placeholder="Confirmation Email">
+				            <div class="d-flex justify-content-center">
+				              <button class="suivant">Suivant</button>
+				            </div>
+						</form>					
+					</div>
+				{% else %}
+					<div class="col-lg-4 col-sm-6 mt-3 text-center text-white">
+					<h3 class="mb-5" style="margin-bottom: 1rem!important;">{% trans 'Some other text'%}</h3>
+					<p>
+						blablabla
+					</p>
+					</div>
+				{% endif %}	
 			</div>
 		</div>
 		<svg id="home-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
