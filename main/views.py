@@ -16,7 +16,7 @@ from django.views.generic.edit import CreateView
 
 from main import conf
 from main.forms import ContactForm, LoginForm, PaymentForm, RegisterForm
-from main.models import Article, Package, Subscription, User
+from main.models import Article, Package, NewsLetterUser, Subscription, User
 from main.payement import make_payement
 from main.tokens import account_activation_token
 from main.utils import FormErrorsView
@@ -73,12 +73,16 @@ class RegisterView(UserPassesTestMixin, FormErrorsView):
     def form_valid(self, form):
         user = form.save()
 
+        if form.cleaned_data['subscribed_newsletter']:
+            NewsLetterUser(email=user.email).save()
+
         message = render_to_string('mails/activate_account.html', {
             'user': user,
             'domain': get_current_site(self.request).domain,
             'uid': urlsafe_base64_encode(force_bytes(user.pk)),
             'token': account_activation_token.make_token(user),
         })
+
 
         email = EmailMessage(_(
             'Un email contenant le lien d\'activation de votre compte vous a été envoyé'), message, to=[user.email])
@@ -113,7 +117,7 @@ class LoginView(UserPassesTestMixin, FormErrorsView):
 
         if user:
             login(self.request, user)
-            if slug=='':    
+            if slug=='':
                 return redirect('homepage')
             else:
                 try:

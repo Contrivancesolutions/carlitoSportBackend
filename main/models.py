@@ -6,6 +6,7 @@ from django.utils.translation import gettext as _
 
 from main import conf
 
+
 class UserManager(BaseUserManager):
     def create_user(self, email, **kwargs):
         if not email:
@@ -33,6 +34,15 @@ class UserManager(BaseUserManager):
 
     def create_superuser(self, email, password):
         return self.create_user(email, password=password, active=True, staff=True, admin=True, superuser=True)
+
+
+class NewsLetterUser(models.Model):
+    email = models.EmailField(max_length=255, unique=True)
+    status = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
 
 
 class User(AbstractBaseUser):

@@ -3,8 +3,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.utils.translation import gettext as _
-from main.models import User
+
 from main import conf
+from main.models import User
 
 
 class RegisterForm(forms.Form):
@@ -43,6 +44,10 @@ class RegisterForm(forms.Form):
                 'class': 'inscriptionField',
             },
         ))
+    subscribed_newsletter = forms.BooleanField(
+        label=_('Voulez-vous vous inscrire à la newsletter?'),
+        required=False,
+        )
 
     def clean(self):
         super().clean()
