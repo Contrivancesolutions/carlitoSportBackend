@@ -41,4 +41,5 @@ urlpatterns = [
     path('pronos', views.PronosView.as_view(), name='pronos'),
     path('news', views.NewsView.as_view(), name='news'),
     path('article/<int:pk>-<str:slug>', views.ArticleView.as_view(), name='article'),
+    #static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

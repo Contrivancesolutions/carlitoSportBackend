@@ -24,7 +24,7 @@ SECRET_KEY = '%78r)u1)-)ba&u%c^d116rkvzd8590olfn3re&@6rhtt)sadrj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ec2-35-180-55-60.eu-west-3.compute.amazonaws.com', 'localhost', '35.180.55.60']
 
 
 # Application definition
@@ -134,5 +134,6 @@ LOCALE_PATHS = (
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/ubuntu/carlitoSportBackend/main/static'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
