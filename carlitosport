@@ -1,0 +1,17 @@
+server {
+       listen 80;    
+       server_name 35.180.55.60;
+       location = /favicon.ico {access_log off;log_not_found off;} 
+       
+       location /static {
+         alias /home/ubuntu/carlitoSportBackend/static/;    
+	}
+	location /media {
+         alias /home/ubuntu/carlitoSportBackend/main/media/;
+       }
+       
+       location / {
+         include proxy_params;
+         proxy_pass http://unix:/run/gunicorn.sock;
+       }
+     }
