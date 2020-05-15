@@ -2,26 +2,26 @@
 {% block content %}
 {% load i18n %}
 <div class="actuSport">
-    <h2>{% trans "Abonnements" %}</h2>
-  </div>
+	<h2>{% trans "Abonnements" %}</h2>
+</div>
 
-  <section class="bonusLink pt-4 pb-5 mb-5">
-    <div class="back container d-flex justify-content-center ">
+<section class="bonusLink pt-4 pb-5 mb-5">
+	<div class="back container d-flex justify-content-center ">
 		<div class="textBlock" id="abonnements">
 			<h2 class="py-3">
 				{% trans "ABONNEMENTS" %}
 			</h2>
 			{% for package in packages %}
-				<a href="{% url 'payment' %}?package_id={{package.id}}">
-					<button class="package" style="padding: 20px; width: 70%;">
+			<a href="{% url 'payment' %}?package_id={{package.id}}">
+				<button class="package" style="padding: 20px; width: 70%;">
 					{{package.name}}
 					<p style="margin-top: 20px;">
-				 		{{package.description}}
+						{{package.description}}
 					</p>
-					</button>
-				</a>
+				</button>
+			</a>
 			{% endfor %}
 		</div>
 	</div>
-  </section>
+</section>
 {% endblock %}

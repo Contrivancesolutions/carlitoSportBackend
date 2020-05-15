@@ -14,9 +14,11 @@ class UserAdmin(admin.ModelAdmin):
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser')}),
     )
 
+
 class NewsLetterAdmin(admin.ModelAdmin):
     model = NewsLetterUser
     list_display = ['email', 'created_at', 'status']
+
 
 admin.site.register(Article)
 admin.site.register(Package)

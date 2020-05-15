@@ -1,58 +1,57 @@
-.belowArticles{
-    transform: translateY(-2px)
+.belowArticles {
+  transform: translateY(-2px);
 }
 
-.stayConnected h2{
-    border-bottom: 1px solid #6b6b6b;
+.stayConnected h2 {
+  border-bottom: 1px solid #6b6b6b;
 }
-.stayConnected span{
-    font-weight: bold;
+.stayConnected span {
+  font-weight: bold;
 }
-.stayConnected{
-    padding-bottom: 45px;
-    border-bottom: 1px solid #6b6b6b;
-}
-
-.loveIt{
-    border-bottom: 1px solid #6b6b6b;
+.stayConnected {
+  padding-bottom: 45px;
+  border-bottom: 1px solid #6b6b6b;
 }
 
-.loveImg{
-   width: 50%;
-   height: 50%;
-   align-items: center;
-   align-self: center;
+.loveIt {
+  border-bottom: 1px solid #6b6b6b;
+}
+
+.loveImg {
+  width: 50%;
+  height: 50%;
+  align-items: center;
+  align-self: center;
 }
 
 .inscription a {
-    text-decoration: none ;
-    padding: 40px 20px;
-    background-color:#181818 ;
-    color: white;
-    border-radius: 20px;
-    transition: 1s;
-    font-weight: bold;
-    border: 3px solid #181818 ;
+  text-decoration: none;
+  padding: 40px 20px;
+  background-color: #181818;
+  color: white;
+  border-radius: 20px;
+  transition: 1s;
+  font-weight: bold;
+  border: 3px solid #181818;
 }
 
-.inscription a:hover{
-    color:#181818 ;
-    background-color: white;
-    transition: 1s;
+.inscription a:hover {
+  color: #181818;
+  background-color: white;
+  transition: 1s;
 }
-.inscription a:active{
-    color:#181818 ;
-    background-color: white;
-    transition: 1s;
+.inscription a:active {
+  color: #181818;
+  background-color: white;
+  transition: 1s;
 }
 
 .w-75:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 992px) {
-    .w-75{
-        width: 60%!important;
-    }
+  .w-75 {
+    width: 60% !important;
+  }
 }
-

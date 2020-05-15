@@ -3,31 +3,31 @@
 {% block content %}
 
 <div class="actuSport">
-    <h2>{% trans "Certification" %}</h2>
+	<h2>{% trans "Certification" %}</h2>
 </div>
 
- <div class="bg-certif">
-    <section class="certif container d-flex justify-content-center mb-5">
-      <div class="pt-5 container">
-        <video controls class="videoCertif ">
-        	{% load static %}
-        	<source class="" src="{% static 'video/chopsticks.mp4' %}" type="video/mp4">
-        </video>
-        <div class="portraitCertif ">
-          <div class="certifImg">
-            <img class="img-fluid" src="{% static 'img/imagePortrait.jpg' %}">
-          </div>
-          <div class="certifImg">
-            <img class="img-fluid" src="{% static 'img/imagePortrait.jpg' %}">
-          </div>
-          <div class="certifImg">
-            <img class="img-fluid" src="{% static 'img/imagePortrait.jpg' %}">
-          </div>
-          <div class="certifImg">
-            <img class="img-fluid" src="{% static 'img/imagePortrait.jpg' %}">
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="bg-certif">
+	<section class="certif container d-flex justify-content-center mb-5">
+		<div class="pt-5 container">
+			<video controls class="videoCertif ">
+				{% load static %}
+				<source class="" src="{% static 'video/chopsticks.mp4' %}" type="video/mp4">
+			</video>
+			<div class="portraitCertif ">
+				<div class="certifImg">
+					<img class="img-fluid" src="{% static 'img/imagePortrait.jpg' %}">
+				</div>
+				<div class="certifImg">
+					<img class="img-fluid" src="{% static 'img/imagePortrait.jpg' %}">
+				</div>
+				<div class="certifImg">
+					<img class="img-fluid" src="{% static 'img/imagePortrait.jpg' %}">
+				</div>
+				<div class="certifImg">
+					<img class="img-fluid" src="{% static 'img/imagePortrait.jpg' %}">
+				</div>
+			</div>
+		</div>
+	</section>
 </div>
 {% endblock %}

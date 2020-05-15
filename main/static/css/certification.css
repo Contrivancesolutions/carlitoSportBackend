@@ -1,30 +1,25 @@
 .videoCertif {
-    width: 100%;
-    border-radius: 4px;
-  }
+  width: 100%;
+  border-radius: 4px;
+}
 
-  .portraitCertif {
-      display: flex;
-      justify-content: center;
-  }
+.portraitCertif {
+  display: flex;
+  justify-content: center;
+}
 
-  .portraitCertif img {
-   
-    border-radius: 50%;
-  }
+.portraitCertif img {
+  border-radius: 50%;
+}
 
-  .bg-certif{
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    background-image: url('../img/pronos.jpg');
-  }
+.bg-certif {
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-image: url("../img/pronos.jpg");
+}
 
-  .certifImg{
-   
- 
-    margin-top: 50px;
-    margin: 30px;
-    
-    
-  }
+.certifImg {
+  margin-top: 50px;
+  margin: 30px;
+}

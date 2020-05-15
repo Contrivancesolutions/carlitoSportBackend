@@ -28,6 +28,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static './css/news.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static './css/pronos.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static './css/socialMedia.css' %}">
+
 <body>
 	<div id="popupID" class="popup">
 		<div>
@@ -50,37 +51,37 @@
 			<div class="loginBlock ml-3">
 				{% if user.is_authenticated %}
 				{% load static %}
-					<div class="loginButtonContainer" id="userName">
-						<div class="userImgContainer">
-						   	<img src="{% static 'img/user.png' %}" class="userImg">
-						</div>
-						<div class="userNameContainer">
-			      			{{ user.email }}
-			      		</div>
-		      		</div>
-		      		<div class="loginButtonContainer">
-						<a class="loginButton" id="right" href="{% url 'logout' %}">{% trans 'Déconnexion' %}</a>
+				<div class="loginButtonContainer" id="userName">
+					<div class="userImgContainer">
+						<img src="{% static 'img/user.png' %}" class="userImg">
 					</div>
+					<div class="userNameContainer">
+						{{ user.email }}
+					</div>
+				</div>
+				<div class="loginButtonContainer">
+					<a class="loginButton" id="right" href="{% url 'logout' %}">{% trans 'Déconnexion' %}</a>
+				</div>
 				{% else %}
-					<div class="loginButtonContainer">
-						<a class="loginButton" id="left" href="{% url 'login' %}">{% trans "S'identifier" %}</a>
-					</div>
-					<div class="loginButtonContainer">
-						<a class="loginButton" id="right" href="{% url 'register' %}">{% trans "S'inscrire" %}</a>
-					</div>
+				<div class="loginButtonContainer">
+					<a class="loginButton" id="left" href="{% url 'login' %}">{% trans "S'identifier" %}</a>
+				</div>
+				<div class="loginButtonContainer">
+					<a class="loginButton" id="right" href="{% url 'register' %}">{% trans "S'inscrire" %}</a>
+				</div>
 				{% endif %}
 			</div>
 		</div>
 	</div>
 	<nav class="navbar navbar-expand-xl navbar-dark d-flex">
-	    <a class="navbar-brand text-white mediaText3" href="{% url 'homepage' %}">CarlitoSport</a>
-	    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav"
-	      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon  "></span>
-	    </button>
-	    <div class="collapse navbar-collapse justify-content-end  " id="navbarNav">
-	      <ul class="navbar-nav mediaText ">
-	        	<li class="nav-item ">
+		<a class="navbar-brand text-white mediaText3" href="{% url 'homepage' %}">CarlitoSport</a>
+		<button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon  "></span>
+		</button>
+		<div class="collapse navbar-collapse justify-content-end  " id="navbarNav">
+			<ul class="navbar-nav mediaText ">
+				<li class="nav-item ">
 					<a class="nav-link text-white " href="{% url 'homepage' %}">{% trans 'Acceuil' %}</a>
 				</li>
 				{% if user.is_anonymous %}
@@ -108,119 +109,125 @@
 				<li class="nav-item">
 					<a class="nav-link text-white " href="{% url 'news' %}">{% trans 'News' %}</a>
 				</li>
-	      </ul>
-	    </div>
-  	</nav>
+			</ul>
+		</div>
+	</nav>
 	{% if messages %}
-		{% for message in messages %}
-			{% if message.tags == 'error' %}
-				<div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-bottom: 0; border-radius: 0;">
-			{% elif message.tags == 'success' %}
-				<div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 0; border-radius: 0;">
+	{% for message in messages %}
+	{% if message.tags == 'error' %}
+	<div class="alert alert-danger alert-dismissible fade show" role="alert"
+		style="margin-bottom: 0; border-radius: 0;">
+		{% elif message.tags == 'success' %}
+		<div class="alert alert-success alert-dismissible fade show" role="alert"
+			style="margin-bottom: 0; border-radius: 0;">
 			{% else %}
-				<div class="alert alert-primary alert-dismissible fade show" role="alert" style="margin-bottom: 0; border-radius: 0;">
+			<div class="alert alert-primary alert-dismissible fade show" role="alert"
+				style="margin-bottom: 0; border-radius: 0;">
+				{% endif %}
+				<strong>{{message|safe}}</strong>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			{% endfor %}
 			{% endif %}
-					<strong>{{message|safe}}</strong>
-				  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				    <span aria-hidden="true">&times;</span>
-				  </button>
-				</div>
-		{% endfor %}
-	{% endif %}
 
 
-	{% block content %}
-	{% endblock  %}
+			{% block content %}
+			{% endblock  %}
 
-	<footer>
-		<div class="firstFooter">
-			<div class="row no-gutters ">
+			<footer>
+				<div class="firstFooter">
+					<div class="row no-gutters ">
 
-				<div class="col-lg-4 col-sm-6 mt-3 container">
-					<h3 class="text-center text-uppercase text-white ">{% trans 'Suis-nous' %}</h3>
-					<ul class="my-5">
-						<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li><a href="#"><i class="fa fa-snapchat" aria-hidden="true"></i></a></li>
-						<li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-						<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-					</ul>
+						<div class="col-lg-4 col-sm-6 mt-3 container">
+							<h3 class="text-center text-uppercase text-white ">{% trans 'Suis-nous' %}</h3>
+							<ul class="my-5">
+								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-snapchat" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+							</ul>
 
-				</div>
+						</div>
 
-				<div class="col-lg-4 col-sm-6 mt-3 text-center VIP ">
-					<a href="{% url 'pronos' %}">
-					<h3 class="mb-5">{% trans 'Devenir'%} VIP</h3>
-					</a>
-				</div>
-				{% if user.is_anonymous %}
-					<div class="col-lg-4 col-xs-12 mt-3 px-3 part1 text-center">
-						<h4 class="text-uppercase text-white">{% trans 'ne laisse passer aucune offre' %}</h4>
-						<p class="text-white mediaText">{% trans 'Tu veux profiter de bonus, promo et jeux concours?' %}</p>
-						<p class="text-white mediaText">{% trans 'Inscris-toi sans plus attendre' %}</p>
-						<form id="emailEntry" action="{% url 'register' %}">
-							<input class="w-100 mx-auto pl-2 mb-3" type="email" name="email" placeholder="Email">
-				            <input class="w-100 mx-auto pl-2 mb-3" type="email" name="email_confirmation" placeholder="Confirmation Email">
-				            <div class="d-flex justify-content-center">
-				              <button class="suivant">Suivant</button>
-				            </div>
-						</form>					
-					</div>
-				{% else %}
-					<div class="col-lg-4 col-sm-6 mt-3 text-center text-white">
-					<h3 class="mb-5" style="margin-bottom: 1rem!important;">{% trans 'Some other text'%}</h3>
-					<p>
-						blablabla
-					</p>
-					</div>
-				{% endif %}	
-			</div>
-		</div>
-		<svg id="home-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-			viewBox="0 0 1400 300" preserveAspectRatio="none">
-			<polygon class="p-curve" points="0,0 700,300 1400,0 1400,310 0,300 "></polygon>
-		</svg>
-		<div class="secondFooter">
-			<div class="conrainer d-flex justify-content-around conditions">
-				<p class="sous-conditions" style="text-align: left;">
-					{% trans "JOUER COMPORTE DES RISQUES : ENDETTEMENT, ISOLEMENT, DÉPENDANCE." %}
-					{% trans "POUR ÊTRE AIDÉ, APPELEZ LE 09 74 75 13 13 (France) où 0800 35 777 (Belgique)" %}
-					{% trans "Les jeux d'argent en ligne sont strictement interdits aux mineurs." %}
-				</p>
-				<div class="sous-conditions">
-					<p>Copyright © 2020 CARLITOSPORT. {% trans 'Tous droits réservés' %}.</p>
-				</div>
-				<div class="sous-conditions">
-					<p><a href="">{% trans 'Mentions légales' %} - CGU/CGV</a></p>
-					<div><img src="{% static './img/18.png' %}" class=" mb-3 img18 " alt=""></div>
-
-
-				</div>
-				<div class="sous-conditions">
-					{% trans 'Payements 100% sécurisés' %}
-					<div>
-						<img src="{% static './img/visa.png' %}" style="width:64px;height:64px;margin-right: 10px;">
-						<img src="{% static './img/mastercard.png' %}" style="width:64px;height:64px;">
+						<div class="col-lg-4 col-sm-6 mt-3 text-center VIP ">
+							<a href="{% url 'pronos' %}">
+								<h3 class="mb-5">{% trans 'Devenir'%} VIP</h3>
+							</a>
+						</div>
+						{% if user.is_anonymous %}
+						<div class="col-lg-4 col-xs-12 mt-3 px-3 part1 text-center">
+							<h4 class="text-uppercase text-white">{% trans 'ne laisse passer aucune offre' %}</h4>
+							<p class="text-white mediaText">
+								{% trans 'Tu veux profiter de bonus, promo et jeux concours?' %}</p>
+							<p class="text-white mediaText">{% trans 'Inscris-toi sans plus attendre' %}</p>
+							<form id="emailEntry" action="{% url 'register' %}">
+								<input class="w-100 mx-auto pl-2 mb-3" type="email" name="email" placeholder="Email">
+								<input class="w-100 mx-auto pl-2 mb-3" type="email" name="email_confirmation"
+									placeholder="Confirmation Email">
+								<div class="d-flex justify-content-center">
+									<button class="suivant">Suivant</button>
+								</div>
+							</form>
+						</div>
+						{% else %}
+						<div class="col-lg-4 col-sm-6 mt-3 text-center text-white">
+							<h3 class="mb-5" style="margin-bottom: 1rem!important;">{% trans 'Some other text'%}</h3>
+							<p>
+								blablabla
+							</p>
+						</div>
+						{% endif %}
 					</div>
 				</div>
-			</div>
+				<svg id="home-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+					y="0px" viewBox="0 0 1400 300" preserveAspectRatio="none">
+					<polygon class="p-curve" points="0,0 700,300 1400,0 1400,310 0,300 "></polygon>
+				</svg>
+				<div class="secondFooter">
+					<div class="conrainer d-flex justify-content-around conditions">
+						<p class="sous-conditions" style="text-align: left;">
+							{% trans "JOUER COMPORTE DES RISQUES : ENDETTEMENT, ISOLEMENT, DÉPENDANCE." %}
+							{% trans "POUR ÊTRE AIDÉ, APPELEZ LE 09 74 75 13 13 (France) où 0800 35 777 (Belgique)" %}
+							{% trans "Les jeux d'argent en ligne sont strictement interdits aux mineurs." %}
+						</p>
+						<div class="sous-conditions">
+							<p>Copyright © 2020 CARLITOSPORT. {% trans 'Tous droits réservés' %}.</p>
+						</div>
+						<div class="sous-conditions">
+							<p><a href="">{% trans 'Mentions légales' %} - CGU/CGV</a></p>
+							<div><img src="{% static './img/18.png' %}" class=" mb-3 img18 " alt=""></div>
 
-		</div>
+
+						</div>
+						<div class="sous-conditions">
+							{% trans 'Payements 100% sécurisés' %}
+							<div>
+								<img src="{% static './img/visa.png' %}"
+									style="width:64px;height:64px;margin-right: 10px;">
+								<img src="{% static './img/mastercard.png' %}" style="width:64px;height:64px;">
+							</div>
+						</div>
+					</div>
+
+				</div>
 
 		</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
-  </script>
-	<script src="{% static 'js/script.js' %}">
+	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
 	</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+	</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+	</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
+</script>
+<script src="{% static 'js/script.js' %}">
+</script>
 </head>
 <script type="text/javascript"></script>
 

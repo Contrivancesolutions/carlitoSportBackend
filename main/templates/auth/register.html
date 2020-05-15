@@ -3,41 +3,41 @@
 {% block content %}
 
 <div class="actuSport">
-    <h2>{% trans 'Inscription' %}</h2>
-  </div>
+	<h2>{% trans 'Inscription' %}</h2>
+</div>
 
 
-  <section class="inscription ">
-    <div class=" my-5 py-5">
-      <div class="row ">
-	      <div class="col-md-6 col-sm-12  py-3 alreadySign">
-	          <h3 class="my-3" >{% trans 'Utilisateur' %}</h3>
-	          {% load static %}
-	          <img src="{% static 'img/signin.png' %}" style="margin-top: 5%; margin-bottom: 10%; width: 25%;">
-	          <a  class="my-3" href="{% url 'login' %}">{% trans 'Connecte-toi' %}</a>
-	      </div>
-	      <div class="col-md-6 col-sm-12 sign py-3 ">
-	        <h2 class="text-center" style="margin-top: 1rem;">{% trans "S'incrire" %}</h2>
-	        <form class="mt-5" method="POST">
-	        	{% csrf_token  %}
-	        	{% for field in form %}
+<section class="inscription ">
+	<div class=" my-5 py-5">
+		<div class="row ">
+			<div class="col-md-6 col-sm-12  py-3 alreadySign">
+				<h3 class="my-3">{% trans 'Utilisateur' %}</h3>
+				{% load static %}
+				<img src="{% static 'img/signin.png' %}" style="margin-top: 5%; margin-bottom: 10%; width: 25%;">
+				<a class="my-3" href="{% url 'login' %}">{% trans 'Connecte-toi' %}</a>
+			</div>
+			<div class="col-md-6 col-sm-12 sign py-3 ">
+				<h2 class="text-center" style="margin-top: 1rem;">{% trans "S'incrire" %}</h2>
+				<form class="mt-5" method="POST">
+					{% csrf_token  %}
+					{% for field in form %}
 					<p>
 						{{ field.label_tag }} {{ field }}
 					</p>
 					{% if field.errors %}
-						<span class="helptext text-danger font-italic">{{ field.errors }}</span>
+					<span class="helptext text-danger font-italic">{{ field.errors }}</span>
 					{% endif %}
 					{% if field.help_text %}
-			        <span class="helptext font-italic">*{{ field.help_text|safe }}</span>
-			        {% endif %}
-				{%endfor%}
-	          <div class="text-center">
-	            <button class="contact-submit">{% trans "S'inscrire" %}</button>
-	          </div>
-	        </form>
+					<span class="helptext font-italic">*{{ field.help_text|safe }}</span>
+					{% endif %}
+					{%endfor%}
+					<div class="text-center">
+						<button class="contact-submit">{% trans "S'inscrire" %}</button>
+					</div>
+				</form>
 
-	      </div>
-    	</div>
-    </div>
-  </section>
+			</div>
+		</div>
+	</div>
+</section>
 {% endblock %}

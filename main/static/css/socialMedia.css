@@ -25,7 +25,7 @@
     text-decoration: none;
     -webkit-transition: all 0.15s ease;
     transition: all 0.15s ease;
-    
+
   }
   .social-icon:hover {
     color: #fff;
@@ -120,7 +120,7 @@
     position: relative;
     top: 1px;
   }
-  
+
   /* Tooltips */
   .tooltip {
     display: block;

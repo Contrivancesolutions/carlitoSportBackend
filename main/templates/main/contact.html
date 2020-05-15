@@ -3,15 +3,15 @@
 {% block content %}
 
 <div class="actuSport">
-    <h2>{%trans 'Nous contacter'%}</h2>
-  </div>
-  <section class="contact container d-flex justify-content-center my-5">
-    <form method="POST" class="form-cont">
-    	{% csrf_token  %}
-		  {{ form.as_p }}
-      	<div class="text-center">
-        	<button class="submit-cont"><i class="fa fa-paper-plane"></i></button>
-      	</div>
-    </form>
-  </section>
+	<h2>{%trans 'Nous contacter'%}</h2>
+</div>
+<section class="contact container d-flex justify-content-center my-5">
+	<form method="POST" class="form-cont">
+		{% csrf_token  %}
+		{{ form.as_p }}
+		<div class="text-center">
+			<button class="submit-cont"><i class="fa fa-paper-plane"></i></button>
+		</div>
+	</form>
+</section>
 {% endblock %}

@@ -1,121 +1,116 @@
 .textBlockArticle {
-    overflow: hidden;
-    padding: 20px 10px;
-    text-align: center;
-    font-size: 14px;
-    margin: 10px 20px;
-    width: 45%;
-    background-color: #181818;
-    color: white; 
-    border-style: none; 
-    border-radius: 4px;
-  }
-  
-  #appear.textBlockArticle {
-      display: none; 
-      padding: 18px 7px;
-      margin-left: 2.2%; 
-      background-color: #e6f9ff;
-      border-radius: 4px;
-      word-wrap: break-word;
-      border-style: solid;
-      border-width: 2px;
-      border-color: #003b4d;
-      color: black;
-  }
-  
-  .textBlockArticle h1 {
-    margin-bottom: 35px;
-    
-  }
-  
-  .textBlockArticle p {
-    font-size: 26px;
-    height: 100%;
-    margin: auto;
-    padding-bottom: 10px;
-    line-height: 1.6;
-  }
-  
-  .textBlockArticle ol {
-    text-align: center;
-  }
-  
-  .textBlockArticle ul {
-    text-align: center;
-    list-style-type: none; 
-  }
-  
-  .textBlockArticle li {
-    margin-bottom: 35px;
-  }
-  
-  .textBlockArticle button.package {
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    font-size: 20px;
-    border-style: solid;
-    border-color: #3399ff;
-    background-color: #0f1e3e;
-    color: white;
-  }
-  
-  .textBlockArticle button.package:hover {
-      background-color: #ffcc80;
-      color: black;
-  }
-  
-  .textBlockArticle button.package p {
-      font-size: 16px;
-      margin-top: 5px;
-      padding: 0;
-  }
-  
-  .textBlockArticle table {
-    width: 100%;
-    margin-top: 10px;
-  }
-  
-  .textBlockArticle td.title {
-      font-size: 16px;
-      border-bottom: 1px solid;
-      border-top: 1px solid;
-      padding: 25px;
-  }
+  overflow: hidden;
+  padding: 20px 10px;
+  text-align: center;
+  font-size: 14px;
+  margin: 10px 20px;
+  width: 45%;
+  background-color: #181818;
+  color: white;
+  border-style: none;
+  border-radius: 4px;
+}
+
+#appear.textBlockArticle {
+  display: none;
+  padding: 18px 7px;
+  margin-left: 2.2%;
+  background-color: #e6f9ff;
+  border-radius: 4px;
+  word-wrap: break-word;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #003b4d;
+  color: black;
+}
+
+.textBlockArticle h1 {
+  margin-bottom: 35px;
+}
+
+.textBlockArticle p {
+  font-size: 26px;
+  height: 100%;
+  margin: auto;
+  padding-bottom: 10px;
+  line-height: 1.6;
+}
+
+.textBlockArticle ol {
+  text-align: center;
+}
+
+.textBlockArticle ul {
+  text-align: center;
+  list-style-type: none;
+}
+
+.textBlockArticle li {
+  margin-bottom: 35px;
+}
+
+.textBlockArticle button.package {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  font-size: 20px;
+  border-style: solid;
+  border-color: #3399ff;
+  background-color: #0f1e3e;
+  color: white;
+}
+
+.textBlockArticle button.package:hover {
+  background-color: #ffcc80;
+  color: black;
+}
+
+.textBlockArticle button.package p {
+  font-size: 16px;
+  margin-top: 5px;
+  padding: 0;
+}
+
+.textBlockArticle table {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.textBlockArticle td.title {
+  font-size: 16px;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  padding: 25px;
+}
 
 .articleLink {
-    
-    color: white;
-	padding: 10px;
-    font-size: 14px;
-   
+  color: white;
+  padding: 10px;
+  font-size: 14px;
 }
 
 .articleLink:hover {
-	border: solid 2px #6b6b6b;
-	border-radius: 8px;
-	padding: 8px;
+  border: solid 2px #6b6b6b;
+  border-radius: 8px;
+  padding: 8px;
   cursor: pointer;
 }
 .articleLink:active {
-	border: solid 2px #6b6b6b;
-	border-radius: 8px;
-	padding: 8px;
+  border: solid 2px #6b6b6b;
+  border-radius: 8px;
+  padding: 8px;
   cursor: pointer;
 }
 
 .articleLink a {
-  text-decoration: none; 
+  text-decoration: none;
   color: #fff;
 }
 
 .articleLink a:hover {
-    border-bottom: 1px solid #ffff;
-    
-  }
+  border-bottom: 1px solid #ffff;
+}
 .articleLink a:active {
-    border-bottom: 1px solid #fff;
-    
-  }
+  border-bottom: 1px solid #fff;
+}

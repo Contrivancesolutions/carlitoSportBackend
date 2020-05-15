@@ -25,31 +25,31 @@
 				</div>
 			</div>
 			{% if not user.first_name or not user.last_name or not user.country %}
-				<div class="col-md-6 col-sm-12 sign py-3 ">
-					<h2 class="text-center" style="margin-top: 1rem;">{% trans "S'incrire" %}</h2>
+			<div class="col-md-6 col-sm-12 sign py-3 ">
+				<h2 class="text-center" style="margin-top: 1rem;">{% trans "S'incrire" %}</h2>
 
 
-					<form class="mt-5" method="POST">
-						{% csrf_token  %}
-						{% for field in form %}
-						<p>
-							{{ field.label_tag }} {{ field }}
-						</p>
-						{% if field.errors %}
-						<span class="helptext text-danger font-italic">{{ field.errors }}</span>
-						{% endif %}
-						{% if field.help_text %}
-						<span class="helptext font-italic">*{{ field.help_text|safe }}</span>
-						{% endif %}
-						{%endfor%}
-						<input type="hidden" name="package_id" value="{{package.id}}" />
-						<div class="text-center" style="margin-top: 50px;">
-							<button class="contact-submit">{% trans "S'inscrire" %}</button>
-						</div>
-					</form>
+				<form class="mt-5" method="POST">
+					{% csrf_token  %}
+					{% for field in form %}
+					<p>
+						{{ field.label_tag }} {{ field }}
+					</p>
+					{% if field.errors %}
+					<span class="helptext text-danger font-italic">{{ field.errors }}</span>
+					{% endif %}
+					{% if field.help_text %}
+					<span class="helptext font-italic">*{{ field.help_text|safe }}</span>
+					{% endif %}
+					{%endfor%}
+					<input type="hidden" name="package_id" value="{{package.id}}" />
+					<div class="text-center" style="margin-top: 50px;">
+						<button class="contact-submit">{% trans "S'inscrire" %}</button>
+					</div>
+				</form>
 
-				</div>
 			</div>
+		</div>
 		{% endif %}
 
 	</div>

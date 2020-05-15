@@ -1,87 +1,80 @@
-.news{
-    background-color: #181818;
+.news {
+  background-color: #181818;
 }
 
 .article {
-    
-    color: white;
-	padding: 10px;
-    font-size: 14px;
-   
+  color: white;
+  padding: 10px;
+  font-size: 14px;
 }
 
 .article:hover {
-	border: solid 2px #6b6b6b;
-	border-radius: 8px;
-	padding: 8px;
+  border: solid 2px #6b6b6b;
+  border-radius: 8px;
+  padding: 8px;
   cursor: pointer;
 }
 .article:active {
-	border: solid 2px #6b6b6b;
-	border-radius: 8px;
-	padding: 8px;
+  border: solid 2px #6b6b6b;
+  border-radius: 8px;
+  padding: 8px;
   cursor: pointer;
 }
 
 .article a {
-    text-decoration: none; 
-    color: #6b6b6b;
-  }
+  text-decoration: none;
+  color: #6b6b6b;
+}
 
 .article a:hover {
-    border-bottom: 1px solid #6b6b6b;
-    
-  }
-.article a:active {
-    border-bottom: 1px solid #6b6b6b;
-    
-  }
-
-#svg-top-right{
-    fill: #181818;
-    bottom: 100%;
-    margin-bottom: -1px;
-    width: 100%;
-    height: 150px;
-    transform: translateY(1.4px);
-
+  border-bottom: 1px solid #6b6b6b;
 }
-.news{
- 
+.article a:active {
+  border-bottom: 1px solid #6b6b6b;
+}
+
+#svg-top-right {
+  fill: #181818;
+  bottom: 100%;
+  margin-bottom: -1px;
+  width: 100%;
+  height: 150px;
+  transform: translateY(1.4px);
+}
+.news {
 }
 #svg-bottom-left {
-    fill: #181818;
-    transform: translateY(-1.2px);
-    width: 100%;
-    height: 150px;
-    color: transparent;
+  fill: #181818;
+  transform: translateY(-1.2px);
+  width: 100%;
+  height: 150px;
+  color: transparent;
 }
 
-.tilteNews{
-    border-bottom: 1px solid white;
+.tilteNews {
+  border-bottom: 1px solid white;
 }
 
-.moreArticles a{
-    text-decoration: none;
-    color: white;
+.moreArticles a {
+  text-decoration: none;
+  color: white;
 }
 
 .moreArticles h2:hover {
-    border-bottom: 1px solid #6b6b6b ;
-    color: #6b6b6b;
-  }
+  border-bottom: 1px solid #6b6b6b;
+  color: #6b6b6b;
+}
 .moreArticles h2:active {
-    border-bottom: 1px solid #6b6b6b;
-    color: #6b6b6b;
-  }
-
-.newsbg{
-  background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    background-image: url('../img/stadium.jpg');
+  border-bottom: 1px solid #6b6b6b;
+  color: #6b6b6b;
 }
 
+.newsbg {
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-image: url("../img/stadium.jpg");
+}
 
 @media screen and (max-width: 992px) {
   .img-fluid {
@@ -91,7 +84,7 @@
     width: 60%;
   }
 
-  .article-main-page h3{
+  .article-main-page h3 {
     text-align: center;
     margin-top: 1%;
   }

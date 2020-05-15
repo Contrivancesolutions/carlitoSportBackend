@@ -1,124 +1,124 @@
 input {
-    margin-bottom: 15%;
+  margin-bottom: 15%;
 }
 
-input[name=password] {
-    margin-bottom: 0;
+input[name="password"] {
+  margin-bottom: 0;
 }
 
 .helptext {
-    display: inline-block;
-    margin-bottom: 15%;
+  display: inline-block;
+  margin-bottom: 15%;
 }
 
 .resetPwd {
-    margin-top: 30px; 
-    text-align: center;
+  margin-top: 30px;
+  text-align: center;
 }
 
 .resetPwd a {
-    color: black;
-    background: none; 
-    font-weight: normal; 
-    border: none;
-} 
+  color: black;
+  background: none;
+  font-weight: normal;
+  border: none;
+}
 
 .resetPwd a:hover {
-    text-decoration: underline;
-    background: none;
-} 
+  text-decoration: underline;
+  background: none;
+}
 
 .inscriptionField {
-    display: block;
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    font-size: 14px;
-    font-family: "Open Sans", sans-serif;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    -webkit-border-radius: 0;
-    border-radius: 0;
-    color: #222;
-    border: 0;
-    border-bottom: 2px solid #222;
-    height: 3em;
-    outline: none;
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  color: #222;
+  border: 0;
+  border-bottom: 2px solid #222;
+  height: 3em;
+  outline: none;
 }
 
-.contact-submit{
-    display: inline-block;
-    background-color: #222;
-    padding: 12px;
-    border: 2px solid #222;
-    color: #fff;
-    text-transform: uppercase;
-    -webkit-transition: .5s background-color ease;
-    -o-transition: .5s background-color ease;
-    transition: .5s background-color ease;
-    font-size: 100%;
-    font-weight: 600;
-    cursor: pointer;
-    outline: none;
+.contact-submit {
+  display: inline-block;
+  background-color: #222;
+  padding: 12px;
+  border: 2px solid #222;
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-transition: 0.5s background-color ease;
+  -o-transition: 0.5s background-color ease;
+  transition: 0.5s background-color ease;
+  font-size: 100%;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
 }
 
-.contact-submit:hover{
-    color: #222;
-    background-color: #ffffff;
-    -webkit-transition: .5s background-color ease;
-    -o-transition: .5s background-color ease;
-    transition: .5s background-color ease;  
+.contact-submit:hover {
+  color: #222;
+  background-color: #ffffff;
+  -webkit-transition: 0.5s background-color ease;
+  -o-transition: 0.5s background-color ease;
+  transition: 0.5s background-color ease;
 }
-.contact-submit:active{
-    color: #222;
-    background-color: #ffffff;
-    -webkit-transition: .5s background-color ease;
-    -o-transition: .5s background-color ease;
-    transition: .5s background-color ease;  
+.contact-submit:active {
+  color: #222;
+  background-color: #ffffff;
+  -webkit-transition: 0.5s background-color ease;
+  -o-transition: 0.5s background-color ease;
+  transition: 0.5s background-color ease;
 }
 
-.alreadySign{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
+.alreadySign {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
 }
 
 .alreadySign a {
-    background-color: #222;
-    padding: 30px 46px;
-    border: 2px solid #222;
-    border-radius: 0;
-    color: #fff;
-    text-transform: uppercase;
-    -webkit-transition: .5s background-color ease;
-    -o-transition: .5s background-color ease;
-    transition: .5s background-color ease;
-    font-size: 100%;
-    font-weight: 600;
-    cursor: pointer;
-    outline: none;
-    text-decoration: none;
+  background-color: #222;
+  padding: 30px 46px;
+  border: 2px solid #222;
+  border-radius: 0;
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-transition: 0.5s background-color ease;
+  -o-transition: 0.5s background-color ease;
+  transition: 0.5s background-color ease;
+  font-size: 100%;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
 }
 
 .alreadySign a:hover {
-    color: #222;
-    background-color: #ffffff;
-    -webkit-transition: .5s background-color ease;
-    -o-transition: .5s background-color ease;
-    transition: .5s background-color ease; 
+  color: #222;
+  background-color: #ffffff;
+  -webkit-transition: 0.5s background-color ease;
+  -o-transition: 0.5s background-color ease;
+  transition: 0.5s background-color ease;
 }
 
 .alreadySign a:active {
-    color: #222;
-    background-color: #ffffff;
-    -webkit-transition: .5s background-color ease;
-    -o-transition: .5s background-color ease;
-    transition: .5s background-color ease; 
+  color: #222;
+  background-color: #ffffff;
+  -webkit-transition: 0.5s background-color ease;
+  -o-transition: 0.5s background-color ease;
+  transition: 0.5s background-color ease;
 }
-.sign{
-    padding: 0 12%;
+.sign {
+  padding: 0 12%;
 }

@@ -47,7 +47,7 @@ class RegisterForm(forms.Form):
     subscribed_newsletter = forms.BooleanField(
         label=_('Voulez-vous vous inscrire à la newsletter?'),
         required=False,
-        )
+    )
 
     def clean(self):
         super().clean()
