@@ -15,7 +15,7 @@ from django.views.generic import DetailView, ListView, TemplateView, View
 from django.views.generic.edit import CreateView
 
 from main import conf
-from main.forms import ContactForm, LoginForm, PaymentForm, RegisterForm
+from main.forms import ContactForm, LoginForm, RegisterForm
 from main.models import Article, Package, NewsLetterUser, Subscription, User
 from main.payement import make_payement
 from main.tokens import account_activation_token
@@ -180,15 +180,6 @@ class SubscriptionView(LoginRequiredMixin, CreateView):
 
 class PaymentView(LoginRequiredMixin, FormErrorsView):
     login_url = 'login'
-    form_class = PaymentForm
-
-    def get_initial(self):
-        user = self.request.user
-        return {
-            'first_name': user.first_name,
-            'last_name': user.last_name,
-            'country': user.country,
-        }
 
     def get(self, request, *args, **kwargs):
         try:
@@ -202,11 +193,6 @@ class PaymentView(LoginRequiredMixin, FormErrorsView):
 
     def form_valid(self, form):
         context = {'packages': Package.objects.all()}
-
-        user.first_name = form.cleaned_data.get('first_name')
-        user.last_name = form.cleaned_data.get('last_name')
-        user.country = form.cleaned_data.get('country')
-        user.save()
 
         try:
             package_id = request.POST.get('package_id', 0)

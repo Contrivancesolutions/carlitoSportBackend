@@ -44,6 +44,25 @@ class RegisterForm(forms.Form):
                 'class': 'inscriptionField',
             },
         ))
+
+    first_name = forms.CharField(
+        max_length=255, label=_('Prénom'), widget=forms.TextInput(
+            attrs={
+                'placeholder': _('Prénom'),
+                'class': 'inscriptionField',
+            },
+        ))
+    last_name = forms.CharField(
+        max_length=255, label=_('Nom'), widget=forms.TextInput(
+            attrs={
+                'placeholder': _('Nom'),
+                'class': 'inscriptionField',
+            },
+        ))
+    country = forms.ChoiceField(choices=conf.COUNTRIES, label=_('Pays'), widget=forms.Select(
+        attrs={
+            'class': 'custom-select',
+        }))
     subscribed_newsletter = forms.BooleanField(
         label=_('Voulez-vous vous inscrire à la newsletter?'),
         required=False,
@@ -122,29 +141,6 @@ class ContactForm(forms.Form):
         except ValidationError:
             self.add_error('email', _('Veuillez insérer un email valide'))
 
-
-class PaymentForm(forms.Form):
-    class Meta:
-        model = User
-
-    last_name = forms.CharField(
-        max_length=255, label=_('Nom'), widget=forms.TextInput(
-            attrs={
-                'placeholder': _('Nom'),
-                'class': 'inscriptionField',
-            },
-        ))
-    first_name = forms.CharField(
-        max_length=255, label=_('Prénom'), widget=forms.TextInput(
-            attrs={
-                'placeholder': _('Prénom'),
-                'class': 'inscriptionField',
-            },
-        ))
-    country = forms.ChoiceField(choices=conf.COUNTRIES, label=_('Pays'), widget=forms.Select(
-        attrs={
-            'class': 'custom-select',
-        }))
 
 
 class LoginForm(AuthenticationForm):
