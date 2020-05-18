@@ -1,1 +1,1 @@
-web: carlitoSport.wsgi --log-file -
+web: gunicorn carlitoSport.wsgi --log-file -
