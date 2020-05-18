@@ -25,7 +25,8 @@ SECRET_KEY = '%78r)u1)-)ba&u%c^d116rkvzd8590olfn3re&@6rhtt)sadrj'
 DEBUG = True
 
 ALLOWED_HOSTS = ['ec2-35-180-55-60.eu-west-3.compute.amazonaws.com',
-                 'localhost', '35.180.55.60', '127.0.0.1']
+                 'localhost', '35.180.55.60', '127.0.0.1',
+		'calritosport.herokuapp.com']
 
 
 # Application definition
