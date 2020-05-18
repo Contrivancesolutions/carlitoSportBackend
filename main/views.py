@@ -225,12 +225,13 @@ class ContactView(FormErrorsView):
     form_class = ContactForm
 
     def get_initial(self):
-        user = self.request.user
-        return {
-            'first_name': user.first_name,
-            'last_name': user.last_name,
-            'email': user.email,
-        }
+        if not self.request.user.is_anonymous:
+            user = self.request.user
+            return {
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'email': user.email,
+            }
 
     def form_valid(self, form):
         first_name = form.cleaned_data.get('first_name')
