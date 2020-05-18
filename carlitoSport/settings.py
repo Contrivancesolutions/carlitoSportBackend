@@ -26,7 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['ec2-35-180-55-60.eu-west-3.compute.amazonaws.com',
                  'localhost', '35.180.55.60', '127.0.0.1',
-		'calritosport.herokuapp.com']
+                 'carlitosport.herokuapp.com']
 
 
 # Application definition
